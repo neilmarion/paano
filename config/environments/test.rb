@@ -44,6 +44,15 @@ Ppm::Application.configure do
     }
   }
 
+  OmniAuth.config.mock_auth[:facebook] = {
+    'uid' => '12345',
+    'provider' => 'facebook',
+    'info' => {
+      'name' => 'facebookuser'
+    }
+  }
+
+  OmniAuth.config.mock_auth[:twitter_fail] = :invalid_credentials
   OmniAuth.config.mock_auth[:twitter_fail] = :invalid_credentials
 
 
