@@ -44,5 +44,7 @@ Ppm::Application.configure do
     }
   }
 
+  OmniAuth.config.mock_auth[:twitter_fail] = :invalid_credentials
+
 
 end
