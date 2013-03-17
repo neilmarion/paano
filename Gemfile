@@ -22,8 +22,8 @@ end
 
 gem 'jquery-rails'
 gem 'omniauth-twitter'
-
 gem 'omniauth-facebook'
+gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -43,6 +43,7 @@ gem 'omniauth-facebook'
 group :test, :development do
   gem 'rspec-rails'
   gem 'rb-inotify', '~> 0.9'
+  gem 'better_errors'
 end
 
 group :test do
