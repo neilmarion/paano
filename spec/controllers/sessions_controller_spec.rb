@@ -3,7 +3,9 @@ require 'spec_helper'
 describe SessionsController do
 
   describe "GET 'create'" do
-    pending
+    it "signs up facebook users" do
+      pending #see missionhub tests
+    end
   end
 
   describe "GET 'destroy'" do
