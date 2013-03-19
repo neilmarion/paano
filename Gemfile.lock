@@ -119,6 +119,9 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
+    omniauth-identity (1.1.0)
+      bcrypt-ruby (~> 3.0)
+      omniauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -232,6 +235,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   omniauth-facebook
+  omniauth-identity
   omniauth-twitter
   rails (= 3.2.12)
   rb-inotify (~> 0.9)
