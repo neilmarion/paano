@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl'
 require 'capybara/rspec'
+require 'webmock/rspec'
 FactoryGirl.find_definitions
 
 # Requires supporting ruby files with custom matchers and macros, etc,
