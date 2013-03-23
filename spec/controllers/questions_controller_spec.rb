@@ -42,6 +42,15 @@ describe QuestionsController do
           }.to_not change(Post, :count)
         end
       end
+
+      describe "user not logged in" do
+        it "does not create a question" do
+          pending
+          #expect{
+          #  post :create, { question: { title: "Las Pinas to Los Banos"}} 
+          #}.to_not change(Post, :count)
+        end
+      end
     end
  
   end
