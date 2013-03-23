@@ -25,7 +25,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
 gem 'devise'
-gem 'webmock'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -49,6 +48,8 @@ group :test, :development do
 end
 
 group :test do
+
+  gem 'webmock'
   gem 'capybara'
   gem 'factory_girl'
   gem 'guard-rspec'
