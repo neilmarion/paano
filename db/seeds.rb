@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+for i in 1..10
+  user = User.create(provider: "facebook", uid: i, name: Faker::Name.name)
+  for i in 1..10
+    user.questions.create(title: "#{Faker::Lorem.sentence(2)} to #{Faker::Lorem.sentence(1)}")
+  end 
+end

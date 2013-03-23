@@ -45,6 +45,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rb-inotify', '~> 0.9'
   gem 'better_errors'
+  gem 'faker'
 end
 
 group :test do
