@@ -36,24 +36,15 @@ Ppm::Application.configure do
   config.active_support.deprecation = :stderr
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:twitter] = {
-    'uid' => '12345',
-    'provider' => 'twitter',
-    'info' => {
-      'name' => 'twitteruser'
-    }
-  }
 
   OmniAuth.config.mock_auth[:facebook] = {
-    'uid' => '12345',
+    'uid' => '1234',
     'provider' => 'facebook',
     'info' => {
       'name' => 'facebookuser'
     }
   }
 
-  OmniAuth.config.mock_auth[:twitter_fail] = :invalid_credentials
-  OmniAuth.config.mock_auth[:twitter_fail] = :invalid_credentials
-
+  OmniAuth.config.mock_auth[:facebook_fail] = { }
 
 end

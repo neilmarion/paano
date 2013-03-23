@@ -4,19 +4,56 @@ describe SessionsController do
 
   describe "GET 'create'" do
     before(:each) do
-     # stub_request(:get, "https://graph.facebook.com/oath/authorize?").to_return(:status => 500, :body =>     "{hello}", :headers => {})
-      @controller.stubs(:env).returns("omniauth.auth" => Hashie::Mash.new(uid: '555', provider: 'facebook', info: { name: 'facebookuser' }))
+      @params = {"state" => "1234", "code" => "1234", "provider" => "facebook"}  
     end
 
-    it "signs up facebook users" do
-      expect{  
-        get :create, {"state" => "a", "code" => "a", "provider" => "facebook"}  
-      }.to change(User, :count).by 1
+    describe "success" do
+      before(:each) do
+        @controller.stubs(:env).returns("omniauth.auth" => 
+          OmniAuth.config.mock_auth[:facebook])
+      end
+
+      it "signs up facebook users" do
+        expect{  
+          get :create, @params
+        }.to change(User, :count).by 1
+        session[:user_id].should eq User.first.id
+      end
+
+      it "signs in facebook user" do
+        FactoryGirl.create(:user_facebook, uid: @params["code"])
+        expect{
+          get :create, @params
+        }.to_not change(User, :count)
+        session[:user_id].should eq User.first.id
+      end
+    end
+
+    describe "fail" do
+      before(:each) do
+        @controller.stubs(:env).returns("omniauth.auth" => 
+          OmniAuth.config.mock_auth[:facebook_fail])
+      end
+
+      it "does not sign up with an invalid auth returned by facebook" do
+        pending
+      end
+    
+      it "does not sign in with an invalid auth returned by facebook" do
+        pending
+      end
     end
   end
 
   describe "GET 'destroy'" do
-    pending
+    before(:each) do
+      session[:user_id] = FactoryGirl.create(:user_facebook).id
+    end
+
+    it "destroys session" do
+      get :destroy 
+      session[:user_id].should be_nil
+    end
   end
 
 end
