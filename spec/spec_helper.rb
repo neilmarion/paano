@@ -38,3 +38,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def signin
+  @user = FactoryGirl.create(:user_facebook)
+  session[:user_id] = @user.id
+end
