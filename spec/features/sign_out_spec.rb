@@ -7,7 +7,6 @@ describe "Signing out" do
     page.should have_link "Sign out"
     click_link "Sign out"
     page.should have_link "Sign in with Facebook"
-    page.should have_link "Sign in with Twitter"
   end
 
 end
