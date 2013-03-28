@@ -5,7 +5,7 @@ describe "Signing in through Facebook Account" do
     it "succeeds signing up through facebook" do
       visit root_path
       expect{
-        click_link "Sign in with Facebook"
+        click_link "with Facebook"
       }.to change(User, :count).by 1
       page.should have_link "Sign out"
     end
@@ -25,7 +25,7 @@ describe "Signing in through Facebook Account" do
 
       expect{
         visit root_path
-        click_link "Sign in with Facebook"
+        click_link "with Facebook"
         page.should have_link "Sign out"
       }.to_not change(User, :count)
     end   

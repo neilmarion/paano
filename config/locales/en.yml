@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      sign_in_with_facebook: "Sign in with Facebook"  
+      sign_out: "Sign out"
+      sign_in: "Sign in"
