@@ -7,7 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 for i in 1..10
-  user = User.create(provider: "facebook", uid: i, name: Faker::Name.name)
+  token = Devise.friendly_token[0,20]
+  user = User.create(provider: "facebook", uid: i, name: Faker::Name.name,
+    email: Faker::Internet.email, password: token, password_confirmation: token)
   for i in 1..10
     user.questions.create(title: "#{Faker::Lorem.sentence(2)} to #{Faker::Lorem.sentence(1)}")
   end 
