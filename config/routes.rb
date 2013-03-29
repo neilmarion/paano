@@ -1,8 +1,9 @@
 Ppm::Application.routes.draw do
   devise_for :users
 
-  root :to => 'questions#index'
+  root :to => 'posts#index'
   resources :questions  
+  resources :posts
 
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')

@@ -3,18 +3,29 @@ require 'spec_helper'
 describe QuestionsController do
 
   describe "GET 'index'" do
-    before(:each) do
-      @question_1 = FactoryGirl.create(:question)
-    end
-  
     it "returns http success" do
       get 'index'
       response.should be_success
     end
 
-    it "returns search results" do
-      get :index, { query: "Question 1" }
-      assigns(:questions).should eq [@question_1]
+    it "returns all unanswered questions" do
+      pending
+    end
+
+    it "returns all top questions" do
+      pending
+    end
+
+    it "returns all hot questions" do
+      pending
+    end
+
+    it "returns the current users' questions" do
+      pending
+    end
+
+    it "returns all the questions in DESC order by date created" do
+      pending
     end
   end
 
