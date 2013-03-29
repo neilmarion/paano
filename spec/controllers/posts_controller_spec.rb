@@ -14,8 +14,8 @@ describe PostsController do
     end
 
     it "returns search results" do
-      get :index, { query: "Question 1" }
-      assigns(:posts).should eq [@question_1]
+      get :index, { query: "Question" }
+      assigns(:posts).should eq [@question_1, @question_2]
     end
   end
 
