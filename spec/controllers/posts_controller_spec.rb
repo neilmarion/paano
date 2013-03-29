@@ -23,6 +23,10 @@ describe PostsController do
       assigns(:posts).should eq [@question_1]
     end
 
+    it "returns results according to reputation * relevance scores" do
+      pending
+    end
+
   end
 
 end
