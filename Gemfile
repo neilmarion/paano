@@ -52,7 +52,6 @@ group :test, :development do
 end
 
 group :test do
-
   gem 'webmock'
   gem 'capybara'
   gem 'factory_girl'
