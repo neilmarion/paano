@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :provider
   validates_presence_of :uid
 
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
   has_many :questions
   has_many :answers
 
