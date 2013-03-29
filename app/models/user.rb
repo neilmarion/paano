@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates_presence_of :uid
 
   has_many :questions
+  has_many :answers
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)

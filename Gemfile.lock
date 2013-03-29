@@ -24,6 +24,7 @@ GEM
       tzinfo (~> 0.3.29)
     activerecord-postgresql-adapter (0.0.1)
       pg
+    activerecord-reputation-system (2.0.2)
     activeresource (3.2.12)
       activemodel (= 3.2.12)
       activesupport (= 3.2.12)
@@ -250,6 +251,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgresql-adapter
+  activerecord-reputation-system
   better_errors
   capybara
   coffee-rails (~> 3.2.1)
