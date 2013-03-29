@@ -1,0 +1,12 @@
+scoring: &scoring
+  accepted: 15
+  up: 10
+  down: -2
+development:
+  <<: *scoring
+
+production:
+  <<: *scoring
+
+test:
+  <<: *scoring
