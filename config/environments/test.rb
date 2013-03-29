@@ -41,7 +41,9 @@ Ppm::Application.configure do
     'uid' => '1234',
     'provider' => 'facebook',
     'info' => {
-      'name' => 'facebookuser'
+      'name' => 'Facebook User',
+      'nickname' => 'facebookuser',
+      'email' => 'facebookuser@email.com'
     }
   }
 
