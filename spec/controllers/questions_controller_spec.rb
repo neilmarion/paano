@@ -3,9 +3,18 @@ require 'spec_helper'
 describe QuestionsController do
 
   describe "GET 'index'" do
+    before(:each) do
+      @question_1 = FactoryGirl.create(:question)
+    end
+  
     it "returns http success" do
       get 'index'
       response.should be_success
+    end
+
+    it "returns search results" do
+      get :index, { query: "Question 1" }
+      assigns(:questions).should eq [@question_1]
     end
   end
 
@@ -30,11 +39,11 @@ describe QuestionsController do
           signin
         end
       # correct question format is /(.*) to (.*)/
-        it "does not create a question when question format is wrong" do
-          expect {
-            post :create, { question: {title: "Las Pinas"} }
-          }.to_not change(Post, :count)
-        end
+#        it "does not create a question when question format is wrong" do
+#          expect {
+#            post :create, { question: {title: "Las Pinas"} }
+#          }.to_not change(Post, :count)
+#        end
 
         it "does not create a question if blank" do
           expect {
