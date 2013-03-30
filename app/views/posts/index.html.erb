@@ -1,4 +1,10 @@
 <%- model_class = Question -%>
+
+<%= form_tag posts_path, :method => 'get', :class => 'search' do %>
+  <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search' %>
+  <%= submit_tag "Search", :class => "btn" %>
+<% end %>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
