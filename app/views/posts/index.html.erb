@@ -2,7 +2,7 @@
 
 <div class="well-large text-center">
 <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
-  <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search' %>
+  <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search_input' %>
   <div>
   <%= submit_tag "Search", :class => "btn btn-primary" %>
   or
@@ -18,8 +18,8 @@
   </thead>
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.title, post_path(post) %></td>
+      <tr class = "search_result_row">
+        <td class = "search_result_col"><%= link_to post.title, post_path(post) %></td>
       </tr>
     <% end %>
   </tbody>
