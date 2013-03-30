@@ -33,7 +33,7 @@ describe PostsController do
 
     it "returns (plainly) by significance (ts_rank)" do
       get :index, { query: "water" }
-      assigns(:posts).should eq [@questions[0], @questions[6], @questions[9]]
+      assigns(:posts).should eq [@questions[6], @questions[0], @questions[9]]
     end
 
     it "returns (plainly) by reputation values" do
