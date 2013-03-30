@@ -21,16 +21,28 @@ describe PostsController do
       assigns(:posts).should eq @questions 
     end
 
-    it "returns exact search results" do
-      get :index, { query: "Exactly Michael Jackson" }
-      assigns(:posts).should eq [@question_1]
+    it "returns all search results if query is blank" do
+      get :index, {query: ""}
+      assigns(:posts).should eq @questions 
     end
 
-    it "returns results according to reputation * relevance scores" do
-      get :index, { query: "Question Exact" } 
-      assigns(:posts).should eq [@question_1, @question_3]
+    it "returns no search results" do
+      get :index, { query: "bulabudakimbristitur" }
+      assigns(:posts).should eq []
     end
 
+    it "returns (plainly) by significance (ts_rank)" do
+      get :index, { query: "water" }
+      assigns(:posts).should eq [@questions[0], @questions[6], @questions[9]]
+    end
+
+    it "returns (plainly) by reputation values" do
+      question = FactoryGirl.create(:question, title: @questions[1].title, content: @questions[1].content)
+      question.add_evaluation(:votes, 3, @user_1)
+      get :index, { query: "fingerprint" }
+      assigns(:posts).should eq [question, @questions[1]]
+    end
+    
   end
 
 end
