@@ -4,13 +4,11 @@ describe PostsController do
 
   describe "GET 'index'" do
     before(:each) do
-      @question_1 = FactoryGirl.create(:question, content: "Question Exactly Michael Jackson")
-      @question_2 = FactoryGirl.create(:question)
-      @question_3 = FactoryGirl.create(:question, content: "Question Exact This is")
-
+      @questions = []
+      posts.each do |post|
+        @questions << FactoryGirl.create(:question, title: post['title'], content: post['content'])
+      end
       @user_1 = FactoryGirl.create(:user_facebook)
-      
-      @question_1.add_evaluation(:votes, 15, @user_1)
     end
   
     it "returns http success" do
@@ -18,9 +16,9 @@ describe PostsController do
       response.should be_success
     end
 
-    it "returns search results" do
-      get :index, { query: "Question" }
-      assigns(:posts).should eq [@question_1, @question_2, @question_3]
+    it "returns all search results" do
+      get :index
+      assigns(:posts).should eq @questions 
     end
 
     it "returns exact search results" do
@@ -35,4 +33,10 @@ describe PostsController do
 
   end
 
+end
+
+def posts
+  file = File.read(
+    File.expand_path('../../factories/test_data.json', __FILE__))
+  ActiveSupport::JSON.decode(file)
 end

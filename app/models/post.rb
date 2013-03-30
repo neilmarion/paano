@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
         ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
         ts_rank(to_tsvector(content), plainto_tsquery(#{sanitize(query)}))
       RANK
-      select("*").join_rs_reputations.where("to_tsvector('english', title) @@ plainto_tsquery(:q) or to_tsvector('english', content) @@ plainto_tsquery(:q)", q: query).order("(rs_reputations.value * (#{rank})) desc")
+      join_rs_reputations.where("to_tsvector('english', title) @@ plainto_tsquery(:q) or to_tsvector('english', content) @@ plainto_tsquery(:q)", q: query).order("(rs_reputations.value * (#{rank})) desc")
     else
       scoped
     end
