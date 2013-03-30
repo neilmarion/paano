@@ -1,17 +1,19 @@
 <%- model_class = Question -%>
 
+<div class="well-large text-center">
 <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
   <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search' %>
-  <%= submit_tag "Search", :class => "btn" %>
+  <div>
+  <%= submit_tag "Search", :class => "btn btn-primary" %>
+  or
+  <%= submit_tag "Ask", :class => "btn btn-success" %>
+  </div>
 <% end %>
-
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:title) %></th>
     </tr>
   </thead>
   <tbody>
