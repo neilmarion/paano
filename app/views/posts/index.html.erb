@@ -4,27 +4,33 @@
 <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
   <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search_input' %>
   <div>
-  <%= submit_tag "Search", :class => "btn btn-primary" %>
+  <%= submit_tag "Search", :class => "btn btn-primary btn-large" %>
   or
-  <%= submit_tag "Ask", :class => "btn btn-success" %>
+  <%= submit_tag "Ask", :class => "btn btn-success btn-large" %>
   </div>
 <% end %>
 </div>
 
-<table class="table table-striped">
+<table class="table">
   <thead>
+    <tr>
+    </tr>
     <tr>
     </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
       <tr class = "search_result_row">
-        <td class = "search_result_col"><%= link_to post.title, post_path(post) %></td>
+        <td class = "search_result_col">
+          <div class = "circle_base number_div">
+            23
+          </div>
+        </td>
+        <td class = "search_result_col">
+          answers  
+        </td>
+        <td class = "search_result_col"><%= link_to post.title, post_path(post), :class => "search_result_link" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_question_path,
-            :class => 'btn btn-primary' %>
