@@ -7,12 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 file = File.read(
-  File.expand_path(File.join(File.dirname(__FILE__), "development_data.json")))
-json = ActiveSupport::JSON.decode(file)
+  File.expand_path(File.join(File.dirname(__FILE__), "development_questions_data.json")))
+questions = ActiveSupport::JSON.decode(file)
 
-for i in 1..10
+file = File.read(
+  File.expand_path(File.join(File.dirname(__FILE__), "development_answers_data.json")))
+answers = ActiveSupport::JSON.decode(file)
+
+for i in 1..20
   token = Devise.friendly_token[0,20]
   user = User.create(provider: "facebook", uid: i, name: Faker::Name.name,
     email: Faker::Internet.email, password: token, password_confirmation: token)
-  user.questions.create(title: json[i-1]['title'], content: json[i-1]['content'])
+  question = user.questions.create(title: questions[i-1]['title'], content: questions[i-1]['content'])
+  question.answers.create(content: answers[i-1]['content'])
 end

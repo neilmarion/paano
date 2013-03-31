@@ -7,3 +7,8 @@ en:
       sign_in_with_facebook: "Sign in with Facebook"  
       sign_out: "Sign out"
       sign_in: "Sign in"
+  posts:
+    index:
+      a: "A: "
+      q: "Q: "
+
