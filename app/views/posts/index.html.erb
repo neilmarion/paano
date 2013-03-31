@@ -18,12 +18,12 @@
     <% @posts.each do |post| %>
       <tr class = "search_result_row">
         <td class = "search_result_col number_col">
-          <div class = "circle_base number_div">
-            <%= post.reputation_for(:votes) %>
+          <div class = "circle_base number_div vote_number_div">
+            <%= post.reputation_for(:votes).to_i %>
           </div>
         </td>
         <td class = "search_result_col number_col">
-          <div class = "circle_base number_div">
+          <div class = "circle_base number_div answer_number_div">
             9  
           </div>
         </td>
