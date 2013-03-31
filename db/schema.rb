@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(:version => 20130329075400) do
     t.text     "content"
     t.string   "type"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "rs_evaluations", :force => true do |t|

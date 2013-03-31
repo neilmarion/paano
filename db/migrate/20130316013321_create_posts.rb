@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.string :type
       t.integer :user_id
+      t.integer :question_id #self reference since an answer belongs to a question
 
       t.timestamps
     end

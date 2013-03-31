@@ -12,7 +12,9 @@ describe PostsController do
     end
   
     it "returns http success" do
-      get 'index'
+      Benchmark.realtime{
+        get 'index'
+      }.should < 1 
       response.should be_success
     end
 
