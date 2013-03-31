@@ -4,10 +4,15 @@ describe PostsController do
 
   describe "GET 'index'" do
     before(:each) do
-      @questions = []
-      posts.each do |post|
-        @questions << FactoryGirl.create(:question, title: post['title'], content: post['content'])
+      @posts = []
+      questions.each do |question|
+        @posts << FactoryGirl.create(:question, title: question['title'], content: question['content'])
       end
+
+      answers.each do |answer| 
+        @posts << FactoryGirl.create(:answer, content: answer['content'])
+      end
+
       @user_1 = FactoryGirl.create(:user_facebook)
     end
   
@@ -20,12 +25,12 @@ describe PostsController do
 
     it "returns all search results" do
       get :index
-      assigns(:posts).should eq @questions 
+      assigns(:posts).count.should eq @posts.count 
     end
 
     it "returns all search results if query is blank" do
       get :index, {query: ""}
-      assigns(:posts).should eq @questions 
+      assigns(:posts).should eq @posts 
     end
 
     it "returns no search results" do
@@ -34,23 +39,29 @@ describe PostsController do
     end
 
     it "returns (plainly) by significance (ts_rank)" do
-      get :index, { query: "water" }
-      assigns(:posts).should eq [@questions[6], @questions[0], @questions[9]]
+      get :index, { query: "hiccup" }
+      assigns(:posts).should eq [@posts[7], @posts[27]]
     end
 
     it "returns (plainly) by reputation values" do
-      question = FactoryGirl.create(:question, title: @questions[1].title, content: @questions[1].content)
-      question.add_evaluation(:votes, 3, @user_1)
+      question = FactoryGirl.create(:question, title: @posts[1].title, content: @posts[1].content)
+      question.add_evaluation(:votes, 10, @user_1)
       get :index, { query: "fingerprint" }
-      assigns(:posts).should eq [question, @questions[1]]
+      assigns(:posts).should eq [question, @posts[1], @posts[21]]
     end
     
   end
 
 end
 
-def posts
+def questions 
   file = File.read(
-    File.expand_path('../../factories/test_data.json', __FILE__))
+    File.expand_path('../../factories/test_questions_data.json', __FILE__))
+  ActiveSupport::JSON.decode(file)
+end
+
+def answers 
+  file = File.read(
+    File.expand_path('../../factories/test_answers_data.json', __FILE__))
   ActiveSupport::JSON.decode(file)
 end
