@@ -13,23 +13,28 @@
 
 <table class="table">
   <thead>
-    <tr>
-    </tr>
-    <tr>
-    </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
       <tr class = "search_result_row">
-        <td class = "search_result_col">
+        <td class = "search_result_col number_col">
           <div class = "circle_base number_div">
-            23
+            <%= post.reputation_for(:votes) %>
           </div>
         </td>
-        <td class = "search_result_col">
-          answers  
+        <td class = "search_result_col number_col">
+          <div class = "circle_base number_div">
+            9  
+          </div>
         </td>
-        <td class = "search_result_col"><%= link_to post.title, post_path(post), :class => "search_result_link" %></td>
+        <td class = "search_result_col content_col">
+          <div>
+            <%= link_to post.title, post_path(post), :class => "search_result_link search_result_a" %>
+          </div>
+          <div class="search_result_preview_div">
+            <%= truncate(post.content, :length => 200) %> 
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>

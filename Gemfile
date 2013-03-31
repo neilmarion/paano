@@ -50,6 +50,7 @@ group :test, :development do
   gem 'rb-inotify', '~> 0.9'
   gem 'better_errors'
   gem 'faker'
+  gem 'rack-mini-profiler'
 end
 
 group :test do
