@@ -34,6 +34,17 @@
           <div class="search_result_preview_div">
             <%= truncate(post.content, :length => 200) %> 
           </div>
+          <div class="search_result_other_div">
+            <div class="tags_div span2">
+              tags
+            </div>
+            <div class="asker_div span4">
+              asked
+              <%= time_ago_in_words post.created_at %>
+              by
+              <%= post.user.name if post.user%>
+            </div>
+          </div>
         </td>
       </tr>
     <% end %>
