@@ -31,6 +31,11 @@ describe QuestionsController do
 
   describe 'GET new' do
     describe "success" do
+      before(:each) do
+        sign_in FactoryGirl.create(:user_facebook)
+        #request.env["devise.mapping"] = Devise.mappings[:user]
+      end
+
       it "goes to questions/new" do
         get :new  
         puts response.inspect
@@ -41,9 +46,7 @@ describe QuestionsController do
 
     describe "fail" do 
       describe "while user not signed in" do
-        before(:each) do
-          sign_in FactoryGirl.create(:user_facebook)
-        end
+        
 
         it "unsucessfully goes to posts/new" do 
           #stub_request(:get, new_question_path).to_return(:status => [500, "Internal Server Error"])
@@ -62,6 +65,7 @@ describe QuestionsController do
 
     describe "success" do
       before(:each) do
+        @request.env["devise.mapping"] = Devise.mappings[:admin]
         sign_in FactoryGirl.create(:user_facebook)
       end
     
