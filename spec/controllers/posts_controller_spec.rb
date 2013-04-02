@@ -28,9 +28,9 @@ describe PostsController do
       assigns(:posts).count.should eq @posts.count 
     end
 
-    it "returns all search results if query is blank" do
+    it "returns all posts if query is blank" do
       get :index, {query: ""}
-      assigns(:posts).should eq @posts 
+      assigns(:posts).count.should eq @posts.count 
     end
 
     it "returns no search results" do
