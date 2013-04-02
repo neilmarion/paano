@@ -5,9 +5,12 @@ Ppm::Application.routes.draw do
   resources :questions  
   resources :posts
 
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
+  devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
+                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
+  #match 'auth/:provider/callback', to: 'sessions#create'
+  #match 'auth/failure', to: redirect('/')
+  #match 'signout', to: 'sessions#destroy', as: 'signout'
 
 
   # The priority is based upon order of creation:

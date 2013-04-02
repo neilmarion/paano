@@ -25,7 +25,7 @@ end
 
 gem 'jquery-rails'
 gem 'omniauth-twitter'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-identity'
 gem 'devise'
 gem 'activerecord-reputation-system', require: 'reputation_system'
