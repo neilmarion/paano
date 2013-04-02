@@ -29,50 +29,76 @@ describe QuestionsController do
     end
   end
 
-  describe "POST 'create'" do    
- 
+  describe 'GET new' do
+    describe "success" do
+      it "goes to questions/new" do
+        get :new  
+        puts response.inspect
+        response.should be_success
+        response.should render_template("new")
+      end
+    end
+
+    describe "fail" do 
+      describe "while user not signed in" do
+        before(:each) do
+          sign_in FactoryGirl.create(:user_facebook)
+        end
+
+        it "unsucessfully goes to posts/new" do 
+          #stub_request(:get, new_question_path).to_return(:status => [500, "Internal Server Error"])
+          get :new
+          request.should redirect_to new_session_path
+          #correct handling of exceptions
+          pending
+        end
+      end
+    end
+  end
+
+  describe 'POST create' do
+    before(:each) do
+      @params = {"question" => {"title" => "Question Title", "content" => "Question Content", "tags" => {"0" => "question_tag"}}}
+    end
+
     describe "success" do
       before(:each) do
-        @params = { question: {title: "Las Pinas to Los Banos"} } 
-        signin
+        sign_in FactoryGirl.create(:user_facebook)
       end
-
-      it "creates a question" do
-        expect{
-          post :create, @params 
-        }.to change(Post, :count).by 1
+    
+      it "creates a new question" do
+        post :create, @params
       end
     end
 
     describe "fail" do
-      describe "user logged in" do
-        before(:each) do
-          signin
+      describe "while user signed it" do
+        it "does not create a question if it does not have a title" do
+          @params['question']['title'] = ""
+          post :create, @params
+          request.should render_template("new")
         end
-      # correct question format is /(.*) to (.*)/
-#        it "does not create a question when question format is wrong" do
-#          expect {
-#            post :create, { question: {title: "Las Pinas"} }
-#          }.to_not change(Post, :count)
-#        end
 
-        it "does not create a question if blank" do
-          expect {
-            post :create, { question: { title: "" } } 
-          }.to_not change(Post, :count)
+        it "does nto create a question if it does not have a content" do
+          @params['question']['content'] = ""
+          post :create, @params
+          request.should render_template("new")
+        end
+        
+        it "does not create a question if it does not have tags" do
+          @params['question']['tags'] = ""
+          post :create, @params
+          request.should render_template("new")
         end
       end
 
-      describe "user not logged in" do
-        it "does not create a question" do
-          pending
-          #expect{
-          #  post :create, { question: { title: "Las Pinas to Los Banos"}} 
-          #}.to_not change(Post, :count)
+      describe "while user is not signed in" do
+        it "does not create a question if a user is not signed in" do
+          post :create, {"question" => {"title" => "Question title", "content" => "Question Content"}}
+          request.should redirect_to new_session_path
         end
       end
     end
- 
   end
 
   describe "rspec cool mocks" do 

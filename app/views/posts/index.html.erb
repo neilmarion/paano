@@ -6,7 +6,7 @@
   <div>
   <%= submit_tag "Search", :id => "search", :class => "btn btn-primary btn-large" %>
   or
-  <%= submit_tag "Ask", :id => "ask", :class => "btn btn-success btn-large" %>
+  <%= link_to "Ask", new_question_path, :id => "ask", :class => "btn btn-success btn-large" %>
   </div>
 <% end %>
 </div>
