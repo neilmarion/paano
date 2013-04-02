@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  #before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
+
   def index
     @questions = Question.all
   end
@@ -14,6 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-
+    @question = Question.new
   end
+
 end

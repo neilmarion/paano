@@ -50,7 +50,6 @@ describe QuestionsController do
           get :new
           request.should redirect_to new_session_path
           #correct handling of exceptions
-          pending
         end
       end
     end
