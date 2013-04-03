@@ -54,7 +54,7 @@
               <li class="dropdown">
                 <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#">
                   <% if current_user %> 
-                    <%= current_user.name %>
+                    <%#= current_user.name %>
                   <% else %>
                     <%= t('.sign_in') %>
                   <% end %>
@@ -64,7 +64,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                   <li role="presentation">
                     <% if current_user %> 
-                      <%= link_to t('.sign_out'), signout_path, :role => "menuitem" %>
+                      <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, :role => "menuitem" %>
                     <% else %>
                       <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook) %>
                     <% end %>
