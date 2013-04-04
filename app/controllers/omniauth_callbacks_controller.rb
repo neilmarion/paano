@@ -1,6 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
-    raise session.to_json
     user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
       flash.notice = "Signed in!"
