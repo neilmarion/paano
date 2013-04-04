@@ -38,7 +38,6 @@ describe QuestionsController do
 
       it "goes to questions/new" do
         get :new  
-        puts response.inspect
         response.should be_success
         response.should render_template("new")
       end
