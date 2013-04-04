@@ -64,7 +64,6 @@ describe QuestionsController do
 
     describe "success" do
       before(:each) do
-        @request.env["devise.mapping"] = Devise.mappings[:admin]
         sign_in FactoryGirl.create(:user_facebook)
       end
     
@@ -75,6 +74,10 @@ describe QuestionsController do
 
     describe "fail" do
       describe "while user signed it" do
+        before(:each) do
+          sign_in FactoryGirl.create(:user_facebook)
+        end
+
         it "does not create a question if it does not have a title" do
           @params['question']['title'] = ""
           post :create, @params
