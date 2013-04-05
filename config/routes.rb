@@ -4,7 +4,7 @@ Ppm::Application.routes.draw do
   resources :posts
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
-                     controllers: {omniauth_callbacks: "omniauth_callbacks"}
+                     controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
   #match 'auth/:provider/callback', to: 'sessions#create'
   #match 'auth/failure', to: redirect('/')
