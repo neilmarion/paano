@@ -18,8 +18,4 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def show
-
-  end
-
 end

@@ -3,8 +3,4 @@ class PostsController < ApplicationController
   def index
     @posts = Post.text_search(params[:query])
   end
-  
-  def new
-
-  end
 end

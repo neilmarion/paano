@@ -48,6 +48,7 @@ describe QuestionsController do
         
 
         it "unsucessfully goes to posts/new" do 
+          @request.env["devise.mapping"] = Devise.mappings[:user]
           #stub_request(:get, new_question_path).to_return(:status => [500, "Internal Server Error"])
           get :new
           request.should redirect_to new_session_path
