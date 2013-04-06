@@ -1,7 +1,3 @@
-#RSpec.configure do |config|
-#  config.include Devise::TestHelpers, :type => :controller
-#end
-
 module ControllerMacros
   def login_user(factory = nil)
     before(:each) do
