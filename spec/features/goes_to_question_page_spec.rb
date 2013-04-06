@@ -17,5 +17,6 @@ describe 'clicking an answer link' do
     click_link "A: #{question.answers.first.question.title}"
     page.should have_content(question.title)
     page.should have_content(question.content)
+    page.should have_content(question.answers.first.content)
   end
 end

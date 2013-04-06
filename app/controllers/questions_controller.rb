@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   end
 
   def create 
-    @question = User.find(current_user.id).questions.new(params[:question])
+    @question = User.find(current_user.id).questions.new params[:question]
     if @question.save
       redirect_to :questions
     else
