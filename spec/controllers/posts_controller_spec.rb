@@ -17,10 +17,7 @@ describe PostsController do
     end
   
     it "returns http success" do
-      Benchmark.realtime{
-        get 'index'
-      }.should < 1 
-      response.should be_success
+      xhr :get, :index
     end
 
     it "returns all search results" do
