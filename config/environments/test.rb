@@ -47,6 +47,14 @@ Ppm::Application.configure do
     }
   }
 
-  OmniAuth.config.mock_auth[:facebook_fail] = { }
+  OmniAuth.config.mock_auth[:bad_provider] = {
+    'uid' => '1234',
+    'provider' => 'hacker',
+    'info' => {
+      'name' => 'Facebook User',
+      'nickname' => 'facebookuser',
+      'email' => 'facebookuser@email.com'
+    }
+  }
 
 end
