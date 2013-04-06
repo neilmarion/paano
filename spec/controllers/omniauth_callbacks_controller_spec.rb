@@ -9,9 +9,9 @@ describe Users::OmniauthCallbacksController do
     describe 'invalid user' do
       it 'fails' do
         request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
-        #User.any_instance.expects(:persisted?).returns false
+        User.any_instance.should_receive(:persisted?).at_least(:once) { false }
         get :facebook
-        response.should redirect_to root_path 
+        response.should redirect_to new_user_session_path 
       end
     end
 
