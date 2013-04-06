@@ -57,6 +57,7 @@ describe QuestionsController do
     
       it "creates a new question" do
         xhr :post, :create, params 
+        response.should redirect_to posts_path
       end
     end
 
