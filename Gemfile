@@ -52,6 +52,7 @@ group :test, :development do
   gem 'better_errors'
   gem 'faker'
   gem 'rack-mini-profiler'
+  gem 'binding_of_caller'
 end
 
 group :test do

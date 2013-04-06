@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :title, :user_id
+  attr_accessible :content, :title, :user_id, :tag_list
 
   belongs_to :user
-  acts_as_taggable_on :tags
+  acts_as_taggable
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 

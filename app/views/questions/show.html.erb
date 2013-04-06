@@ -8,6 +8,11 @@
   <dd><%= @question.content %></dd>
 </dl>
 
+<% @question.tags.any? %>
+  <% @question.tags.each do |tag| %>
+  <%= link_to tag.name, tag_path(tag.name) %>
+<% end %>
+
 <%= render 'answers', answers: @question.answers %>
 
 </div>

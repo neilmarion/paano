@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   def create 
     @question = User.find(current_user.id).questions.new params[:question]
     if @question.save
-      redirect_to :questions
+      redirect_to :posts
     else
       render :new      
     end 

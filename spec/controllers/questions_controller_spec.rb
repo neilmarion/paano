@@ -50,7 +50,7 @@ describe QuestionsController do
   end
 
   describe "create" do
-    let(:params) {{"question" => {"title" => "Question Title", "content" => "Question Content", "tags" => {"0" => "question_tag"}}}}
+    let(:params) {{"question" => {"title" => "Question Title", "content" => "Question Content", "tag_list" => "tag_1, tag_2"}}}
 
     describe "success" do
       login_user 
@@ -68,25 +68,25 @@ describe QuestionsController do
         it "does not create a question if it does not have a title" do
           params['question']['title'] = ""
           xhr :post, :create, params 
-          request.should render_template("new")
+          response.should render_template("new")
         end
 
         it "does nto create a question if it does not have a content" do
           params['question']['content'] = ""
           xhr :post, :create, params 
-          request.should render_template("new")
+          response.should render_template("new")
         end
         
         it "does not create a question if it does not have tags" do
-          params['question']['tags'] = ""
+          params['question']['tag_list'] = ""
           xhr :post, :create, params
-          request.should render_template("new")
+          response.should render_template("new")
         end
       end
 
       describe "while user is not signed in" do
         it "does not create a question if a user is not signed in" do
-          xhr :post, :create, {"question" => {"title" => "Question title", "content" => "Question Content"}}
+          xhr :post, :create, params 
           response.status.should eq 401 #unauthorized access
         end
       end

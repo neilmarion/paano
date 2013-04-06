@@ -6,6 +6,8 @@ Ppm::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
                      controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
+  get 'tags/:tag', to: 'posts#index', as: :tag
+
   #match 'auth/:provider/callback', to: 'sessions#create'
   #match 'auth/failure', to: redirect('/')
   #match 'signout', to: 'sessions#destroy', as: 'signout'
