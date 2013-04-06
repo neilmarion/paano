@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe QuestionsController do
-  include Devise::TestHelpers
 
   describe "index" do
     it "success" do
@@ -44,7 +43,7 @@ describe QuestionsController do
       describe "when user not logged in" do
         it "unsucessfully goes to posts/new" do 
           xhr :get, :new
-          response.should eq 401 #unauthorized access
+          response.status.should eq 401 #unauthorized access
         end
       end
     end
