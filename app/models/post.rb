@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
+
   scope :join_rs_reputations, 
     :joins => "LEFT JOIN rs_reputations ON posts.id = rs_reputations.target_id
         AND rs_reputations.reputation_name = 'votes'
