@@ -29,7 +29,7 @@
         </td>
         <td class = "search_result_col content_col">
           <div>
-            <%= link_to post.type == "Question" ? t('.q') + post.title : t('.a') + post.becomes(Answer).question.title, post_path(post), :class => "search_result_link search_result_a" %>
+            <%= link_to post.type == "Question" ? t('.q') + post.title : t('.a') + post.becomes(Answer).question.title, question_path(post.type == "Question" ? post : post.question), :class => "search_result_link search_result_a" %>
           </div>
           <div class="search_result_preview_div">
             <%= truncate(post.content, :length => 200) %> 

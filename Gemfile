@@ -29,6 +29,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-identity'
 gem 'devise'
 gem 'activerecord-reputation-system', require: 'reputation_system'
+gem 'acts-as-taggable-on'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

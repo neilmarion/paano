@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe PostsController do
-
   describe "index" do
     before(:each) do
       @posts = []
@@ -16,7 +15,7 @@ describe PostsController do
       @user_1 = FactoryGirl.create(:user_facebook)
     end
   
-    it "returns http success" do
+    it "goes to index" do
       xhr :get, :index
     end
 

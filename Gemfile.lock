@@ -31,6 +31,8 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.3.3)
+      rails (~> 3.0)
     addressable (2.3.3)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
@@ -254,6 +256,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgresql-adapter
   activerecord-reputation-system
+  acts-as-taggable-on
   better_errors
   capybara
   coffee-rails (~> 3.2.1)

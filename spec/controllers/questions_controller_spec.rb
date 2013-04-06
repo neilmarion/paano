@@ -93,4 +93,12 @@ describe QuestionsController do
     end
   end
 
+  describe 'show' do
+    it 'goes to show' do
+      question = FactoryGirl.create(:question)
+      xhr :get, :show, :id => question.id 
+      response.should be_success
+    end 
+  end
+
 end
