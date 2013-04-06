@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PostsController do
 
-  describe "GET 'index'" do
+  describe "index" do
     before(:each) do
       @posts = []
       questions.each do |question|

@@ -12,7 +12,6 @@ require 'factory_girl'
 require 'capybara/rspec'
 require 'webmock/rspec'
 FactoryGirl.find_definitions
-include Devise::TestHelpers
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -43,9 +42,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-end
-
-def signin
-  @user = FactoryGirl.create(:user_facebook)
-  session[:user_id] = @user.id
+  config.include Devise::TestHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
 end
