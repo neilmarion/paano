@@ -56,7 +56,9 @@ describe QuestionsController do
       login_user 
     
       it "creates a new question" do
-        xhr :post, :create, params 
+        expect { 
+          xhr :post, :create, params 
+        }.to change(Post, :count).by 1
         response.should redirect_to posts_path
       end
     end
@@ -67,26 +69,34 @@ describe QuestionsController do
 
         it "does not create a question if it does not have a title" do
           params['question']['title'] = ""
-          xhr :post, :create, params 
+          expect {
+            xhr :post, :create, params 
+          }.to_not change(Post, :count)
           response.should render_template("new")
         end
 
         it "does nto create a question if it does not have a content" do
           params['question']['content'] = ""
-          xhr :post, :create, params 
+          expect {
+            xhr :post, :create, params 
+          }.to_not change(Post, :count)
           response.should render_template("new")
         end
         
         it "does not create a question if it does not have tags" do
           params['question']['tag_list'] = ""
-          xhr :post, :create, params
+          expect {
+            xhr :post, :create, params
+          }.to_not change(Post, :count)
           response.should render_template("new")
         end
       end
 
       describe "while user is not signed in" do
         it "does not create a question if a user is not signed in" do
-          xhr :post, :create, params 
+          expect {
+            xhr :post, :create, params 
+          }.to_not change(Post, :count)
           response.status.should eq 401 #unauthorized access
         end
       end
@@ -100,5 +110,4 @@ describe QuestionsController do
       response.should be_success
     end 
   end
-
 end
