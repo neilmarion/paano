@@ -18,6 +18,6 @@ for i in 1..20
   token = Devise.friendly_token[0,20]
   user = User.create(provider: "facebook", uid: i, name: Faker::Name.name,
     email: Faker::Internet.email, password: token, password_confirmation: token)
-  question = user.questions.create(title: questions[i-1]['title'], content: questions[i-1]['content'])
-  question.answers.create(content: answers[i-1]['content'])
+  question = user.questions.create(title: questions[i-1]['title'], content: questions[i-1]['content'], tag_list: Faker::Name.first_name)
+  question.answers.create(content: answers[i-1]['content'], tag_list: Faker::Name.first_name)
 end
