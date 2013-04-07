@@ -7,7 +7,7 @@ en:
       models:
         post:
           attributes:
-            taggings:
+            tag_list:
               blank: 'Please put at least one tag'
   layouts:
     application:
