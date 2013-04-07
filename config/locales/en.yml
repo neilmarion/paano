@@ -2,6 +2,13 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            taggings:
+              blank: 'Please put at least one tag'
   layouts:
     application:
       sign_in_with_facebook: "Sign in with Facebook"  
@@ -11,4 +18,4 @@ en:
     index:
       a: "A: "
       q: "Q: "
-
+  
