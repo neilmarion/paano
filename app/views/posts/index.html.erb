@@ -15,40 +15,6 @@
   <thead>
   </thead>
   <tbody>
-    <% @posts.each do |post| %>
-      <tr class = "search_result_row">
-        <td class = "search_result_col number_col">
-          <div class = "circle_base number_div vote_number_div">
-            <%= post.reputation_for(:votes).to_i %>
-          </div>
-        </td>
-        <td class = "search_result_col number_col">
-          <div class = "circle_base number_div answer_number_div">
-            9  
-          </div>
-        </td>
-        <td class = "search_result_col content_col">
-          <div>
-            <%= link_to post.type == "Question" ? t('.q') + post.title : t('.a') + post.becomes(Answer).question.title, question_path(post.type == "Question" ? post : post.question), :class => "search_result_link search_result_a" %>
-          </div>
-          <div class="search_result_preview_div">
-            <%= truncate(post.content, :length => 200) %> 
-          </div>
-          <div class="search_result_other_div">
-            <div class="tags_div span2">
-              <% post.tags.each do |tag| %>   
-                <%= tag.name %>
-              <% end %>
-            </div>
-            <div class="asker_div span4">
-              asked
-              <%= time_ago_in_words post.created_at %>
-              by
-              <%= post.user.name if post.user%>
-            </div>
-          </div>
-        </td>
-      </tr>
-    <% end %>
+    <%= render "posts", posts: @posts %>
   </tbody>
 </table>

@@ -1,0 +1,6 @@
+<div class="asker_div span4">
+  asked
+  <%= time_ago_in_words post.created_at %>
+  by
+  <%= post.user.name if post.user%>
+</div>
