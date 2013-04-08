@@ -1,0 +1,10 @@
+pagination: &pagination
+  posts_index: 10
+development:
+  <<: *pagination
+
+production:
+  <<: *pagination
+
+test:
+  <<: *pagination

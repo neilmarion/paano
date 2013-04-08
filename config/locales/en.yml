@@ -20,10 +20,11 @@ en:
       sign_in: "Sign in"
   posts:
     index:
-      a: "A: "
-      q: "Q: "
       search: "Search" 
       ask: "Ask"
+    title:
+      a: "A: "
+      q: "Q: "
   questions:
     form:
       post: "Post"

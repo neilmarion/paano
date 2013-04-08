@@ -18,12 +18,12 @@ describe PostsController do
 
     it "returns all search results" do
       get :index
-      assigns(:posts).count.should eq @posts.count 
+      assigns(:posts).count.should eq PAGINATION['posts_index'] 
     end
 
     it "returns all posts if query is blank" do
       get :index, {query: ""}
-      assigns(:posts).count.should eq @posts.count 
+      assigns(:posts).count.should eq PAGINATION['posts_index'] 
     end
 
     it "returns no search results" do
