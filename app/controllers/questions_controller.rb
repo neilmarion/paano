@@ -10,7 +10,8 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to :posts
     else
-      render :new      
+      flash[:error] = @question.errors.full_messages.to_sentence
+      render :new 
     end 
   end
 

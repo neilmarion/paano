@@ -19,7 +19,7 @@
 
   
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit t('.post'), :class => 'btn btn-primary', :id => 'post' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 questions_path, :class => 'btn' %>
   </div>

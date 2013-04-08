@@ -8,7 +8,7 @@ en:
         post:
           attributes:
             tag_list:
-              blank: 'Please put at least one tag'
+              blank: "Please put at least one tag"
   layouts:
     application:
       sign_in_with_facebook: "Sign in with Facebook"  
@@ -19,3 +19,6 @@ en:
       a: "A: "
       q: "Q: "
       search: "Search" 
+  questions:
+    form:
+      post: "Post"

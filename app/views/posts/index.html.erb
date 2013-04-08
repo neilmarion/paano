@@ -36,7 +36,9 @@
           </div>
           <div class="search_result_other_div">
             <div class="tags_div span2">
-              tags
+              <% post.tags.each do |tag| %>   
+                <%= tag.name %>
+              <% end %>
             </div>
             <div class="asker_div span4">
               asked

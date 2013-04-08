@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "Signing in through Facebook Account" do
-  describe "signup" do
+describe "Authorization through Facebook" do
+  describe "signup (first-time sign in)" do
     it "succeeds signing up through facebook" do
       visit root_path
       expect{
@@ -33,6 +33,10 @@ describe "Signing in through Facebook Account" do
     it "fails signing in through facebook" do
       pending
     end
+  end
+
+  describe "after authorization will redirect to previous page" do
+    pending
   end
 
 end
