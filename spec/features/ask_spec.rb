@@ -13,7 +13,7 @@ describe "Asking a question" do
     before(:each) do
       click_link I18n.t('layouts.application.sign_in_with_facebook')
       click_link I18n.t('posts.index.ask')
-      page.should have_button "post"
+      page.should have_button "post_button"
       current_path.should eq new_question_path
     end
 
@@ -21,10 +21,15 @@ describe "Asking a question" do
       fill_in :question_title, with: question_title 
       fill_in :question_content, with: question_content 
       fill_in :question_tag_list, with: question_tag_list
-      click_button "Post"
+      click_button "post_button"
       page.should have_content question_title
       page.should have_content question_content
       page.should have_content question_tag_list
+    end
+
+    it "but will not post a question and return back to previous page when '#cancel_button is clicked'" do
+      click_link "cancel_link"  
+      current_path.should eq root_path
     end
   end
   
@@ -38,14 +43,14 @@ describe "Asking a question" do
       before(:each) do
         click_link I18n.t('layouts.application.sign_in_with_facebook')
         click_link I18n.t('posts.index.ask')
-        page.should have_button "post"
+        page.should have_button "post_button"
         current_path.should eq new_question_path
       end
 
       it "#question_title field is blank" do
         fill_in :question_content, with: question_content 
         fill_in :question_tag_list, with: question_tag_list
-        click_button "Post"
+        click_button "post_button"
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.title.blank')
       end
 
@@ -53,16 +58,17 @@ describe "Asking a question" do
       it "#question_content field is blank" do
         fill_in :question_title, with: question_title 
         fill_in :question_tag_list, with: question_tag_list
-        click_button "Post"
+        click_button "post_button"
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.content.blank')
       end
 
       it "#question_tag_list field is blank" do 
         fill_in :question_title, with: question_title 
         fill_in :question_content, with: question_content
-        click_button "Post"
+        click_button "post_button"
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.tag_list.blank')
       end
     end
   end
+
 end

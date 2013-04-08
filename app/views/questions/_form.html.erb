@@ -19,8 +19,8 @@
 
   
   <div class="form-actions">
-    <%= f.submit t('.post'), :class => 'btn btn-primary', :id => 'post' %>
+    <%= f.submit t('.post'), :class => 'btn btn-primary', :id => 'post_button' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                questions_path, :class => 'btn' %>
+                request.env['HTTP_REFERER'], :class => 'btn', :id => 'cancel_link' %>
   </div>
 <% end %>
