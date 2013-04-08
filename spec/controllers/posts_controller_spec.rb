@@ -3,14 +3,7 @@ require 'spec_helper'
 describe PostsController do
   describe "index" do
     before(:all) do
-      @posts = []
-      questions.each do |question|
-        @posts << FactoryGirl.create(:question, title: question['title'], content: question['content'])
-      end
-
-      answers.each do |answer| 
-        @posts << FactoryGirl.create(:answer, content: answer['content'])
-      end
+     load_test_posts 
     end
 
     after(:all) do
@@ -50,16 +43,4 @@ describe PostsController do
       assigns(:posts).should eq [question, @posts[1], @posts[21]]
     end
   end
-end
-
-def questions 
-  file = File.read(
-    File.expand_path('../../factories/test_questions_data.json', __FILE__))
-  ActiveSupport::JSON.decode(file)
-end
-
-def answers 
-  file = File.read(
-    File.expand_path('../../factories/test_answers_data.json', __FILE__))
-  ActiveSupport::JSON.decode(file)
 end

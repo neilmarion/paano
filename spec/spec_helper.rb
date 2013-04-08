@@ -45,3 +45,26 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
 end
+
+def test_questions 
+  file = File.read(
+    File.expand_path('../factories/test_questions_data.json', __FILE__))
+  ActiveSupport::JSON.decode(file)
+end 
+
+def test_answers 
+  file = File.read(
+    File.expand_path('../factories/test_answers_data.json', __FILE__))
+  ActiveSupport::JSON.decode(file)
+end 
+
+def load_test_posts
+  @posts = []
+  test_questions.each do |question|
+    @posts << FactoryGirl.create(:question, title: question['title'], content: question['content'])
+  end 
+
+  test_answers.each do |answer| 
+    @posts << FactoryGirl.create(:answer, content: answer['content'])
+  end 
+end

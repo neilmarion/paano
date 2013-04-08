@@ -4,9 +4,9 @@
 <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
   <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search_input' %>
   <div>
-  <%= submit_tag t('.search'), :id => "search", :class => "btn btn-primary btn-large" %>
+  <%= submit_tag t('.search'), :id => "search_button", :class => "btn btn-primary btn-large" %>
   or
-  <%= link_to t('.ask'), new_question_path, :id => "ask", :class => "btn btn-success btn-large" %>
+  <%= link_to t('.ask'), new_question_path, :id => "ask_button", :class => "btn btn-success btn-large" %>
   </div>
 <% end %>
 </div>
