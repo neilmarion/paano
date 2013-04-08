@@ -18,9 +18,9 @@ describe "Asking a question" do
     end
 
     it "and all fields are filled-in completely" do
-      fill_in "question_title", with: question_title 
-      fill_in "question_content", with: question_content 
-      fill_in "question_tag_list", with: question_tag_list
+      fill_in :question_title, with: question_title 
+      fill_in :question_content, with: question_content 
+      fill_in :question_tag_list, with: question_tag_list
       click_button "Post"
       page.should have_content question_title
       page.should have_content question_content
@@ -43,23 +43,23 @@ describe "Asking a question" do
       end
 
       it "#question_title field is blank" do
-        fill_in "question_content", with: question_content 
-        fill_in "question_tag_list", with: question_tag_list
+        fill_in :question_content, with: question_content 
+        fill_in :question_tag_list, with: question_tag_list
         click_button "Post"
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.title.blank')
       end
 
 
       it "#question_content field is blank" do
-        fill_in "question_title", with: question_title 
-        fill_in "question_tag_list", with: question_tag_list
+        fill_in :question_title, with: question_title 
+        fill_in :question_tag_list, with: question_tag_list
         click_button "Post"
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.content.blank')
       end
 
       it "#question_tag_list field is blank" do 
-        fill_in "question_title", with: question_title 
-        fill_in "question_content", with: question_content
+        fill_in :question_title, with: question_title 
+        fill_in :question_content, with: question_content
         click_button "Post"
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.tag_list.blank')
       end
