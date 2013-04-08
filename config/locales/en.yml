@@ -7,8 +7,12 @@ en:
       models:
         post:
           attributes:
+            title:
+              blank: "Please put a title"
             tag_list:
               blank: "Please put at least one tag"
+            content:
+              blank: "Please put a content"
   layouts:
     application:
       sign_in_with_facebook: "Sign in with Facebook"  
@@ -19,6 +23,7 @@ en:
       a: "A: "
       q: "Q: "
       search: "Search" 
+      ask: "Ask"
   questions:
     form:
       post: "Post"
