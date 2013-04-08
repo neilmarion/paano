@@ -1,9 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
-
-  def index
-    @questions = Question.all
-  end
+  before_filter :authenticate_user!, except: [:show]
 
   def create 
     @question = User.find(current_user.id).questions.new params[:question]

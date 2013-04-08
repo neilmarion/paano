@@ -3,11 +3,6 @@ require 'spec_helper'
 describe QuestionsController do
 
   describe "index" do
-    it "success" do
-      xhr :get, :index
-      response.should be_success
-    end
-
     it "returns all unanswered questions" do
       pending
     end
