@@ -1,6 +1,6 @@
 <%- model_class = Question -%>
 
-<div class="well-large text-center">
+<div class="well-large text-center" id="search_div">
 <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
   <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search_input' %>
   <div>
