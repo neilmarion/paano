@@ -34,9 +34,8 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
   </head>
-  <body class="container_signin">
+  <body class="<%= 'container_signin' if request.fullpath == "/users/login" %>">
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -46,31 +45,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"> </a>
+          <a class="brand" href="#">
+            <%= image_tag "paano_logo_navbar.png" %>
+          </a>
+
           <div class="container nav-collapse">
             <ul class="nav">
             </ul>
             <ul class="nav pull-right">
+              <% if user_signed_in? %>
               <li class="dropdown">
                 <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#">
-                  <% if user_signed_in? %> 
-                    <%= current_user.name %>
-                  <% else %>
-                    <%= t('.sign_in') %>
-                  <% end %>
+                  <%= current_user.name %>
                   <b class="caret">
                   </b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                   <li role="presentation">
-                    <% if user_signed_in? %> 
-                      <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, :role => "menuitem" %>
-                    <% else %>
-                      <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook) %>
-                    <% end %>
+                    <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, :role => "menuitem" %>
                   </li>
                 </ul>
               </li>
+              <% else %>
+                <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), id: "navbar_signin_link" %>
+                <%= image_tag "facebook_sign_in_icon_navbar.png", class: "img-rounded" %>
+              <% end %>
             </ul> 
           </div><!--/.nav-collapse -->
         </div>
@@ -89,9 +88,11 @@
           </div>
         </div><!--/row-->
 
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
+      <% if request.fullpath != "/users/login" %>
+        <footer>
+          <p>&copy; Company 2013</p>
+        </footer>
+      <% end %>
 
     </div> <!-- /container -->
 
