@@ -1,6 +1,9 @@
-<div class="asker_div span4">
-  asked
-  <%= time_ago_in_words post.created_at %>
-  by
-  <%= post.user.name if post.user%>
+<div class="asker_div span7">
+  <div>
+  asked <%= time_ago_in_words post.created_at %> by
+  </div>
+  <div> 
+    <%= image_tag "nmfdelacruz_fb.jpg", class: "img-polariod" %>
+    <%= post.user.name if post.user%>
+  </div>
 </div>
