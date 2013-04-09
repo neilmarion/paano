@@ -1,1 +1,13 @@
-<%= render "devise/shared/links" %>
+
+<div class="row">
+  <div class="span1">
+  </div>
+  <div class="span9">
+    <div id="sign_in_text">
+      <%= image_tag "facebook_sign_in_icon_signin_page.png" %> 
+     <%= link_to "Sign in with your facebook account.", omniauth_authorize_path(:user, "facebook") %>  
+    </div>
+  </div>
+  <div class="span2">
+  </div>
+</div>

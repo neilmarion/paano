@@ -32,25 +32,10 @@ body { padding-top: 60px; }
 // @linkColor: #ff0000;
 
 .navbar-inner {
-  background-color: #f57a13;
-  height: 50px;
+  background: #232323;
   vertical-align: middle;
   padding-top: 10px;
   border: none;
-background-image: linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
-background-image: -o-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
-background-image: -moz-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
-background-image: -webkit-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
-background-image: -ms-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
-
-background-image: -webkit-gradient(
-  linear,
-  left bottom,
-  left top,
-  color-stop(0.11, rgb(244,115,9)),
-  color-stop(1, rgb(246,134,37))
-);
-
 }
 
 #search_input {
@@ -141,7 +126,52 @@ a {
   color: #fff;
 }
 
-#search_div{
+.container {
   width: 100%;
-  background: url("<%= asset_path 'blackorchid.png' %>")
+}
+
+.row {
+  margin-left: 0px;
+}
+
+#sign_in_text{
+  color: #fff;
+  padding-top: 150px;
+}
+
+#sign_in_text {
+  font-size: 40px;
+  text-shadow:1px 1px #666;
+}
+
+#sign_in_text a{
+  color: #fff;
+  text-decoration: none;
+}
+
+#push, #footer{
+  height: 60px;
+}
+
+#wrap{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+}
+
+.navbar .brand{
+  padding: 0px 100px 10px;
+}
+
+#user_name{
+  color: #fff;
+}
+
+.navbar .nav li a{
+  text-shadow: none;
+}
+
+li.dropdown.open{
+  background-color: #000;
 }

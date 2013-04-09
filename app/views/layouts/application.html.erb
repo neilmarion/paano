@@ -36,7 +36,7 @@
 
   </head>
   <body class="<%= 'container_signin' if request.fullpath == "/users/login" %>">
-
+    <div id="wrap">
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -57,7 +57,7 @@
             <ul class="nav pull-right">
               <% if user_signed_in? %>
               <li class="dropdown">
-                <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#">
+                <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#" id="user_name">
                   <%= current_user.name %>
                   <b class="caret">
                   </b>
@@ -69,8 +69,10 @@
                 </ul>
               </li>
               <% else %>
-                <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), id: "navbar_signin_link" %>
-                <%= image_tag "facebook_sign_in_icon_navbar.png", class: "img-rounded" %>
+                <% if request.fullpath != '/users/login' %>
+                  <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), id: "navbar_signin_link" %>
+                  <%= image_tag "facebook_sign_in_icon_navbar.png", class: "img-rounded" %>
+                <% end %>
               <% end %>
             </ul> 
           </div><!--/.nav-collapse -->
@@ -78,8 +80,9 @@
       </div>
     </div>
 
-    <div class="container">
-        <div class="row">
+    <div class="container", id="container">
+      <div class="row">
+        <div>
           <div class="span2">
           </div>
           <div class="span8">
@@ -88,20 +91,20 @@
           </div>
           <div class="span2">
           </div>
-        </div><!--/row-->
-
-      <% if request.fullpath != "/users/login" %>
-        <footer>
-          <p>&copy; Company 2013</p>
-        </footer>
-      <% end %>
-
+        </div>
+      </div><!--/row-->
+      
     </div> <!-- /container -->
+    <div id="push">
+    </div>
 
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+  </div>
+  <% if request.fullpath != "/users/login" %> 
+    <div id="footer">
+      FOOTER
+    </div>
+  <% end %>
 
   </body>
 </html>
