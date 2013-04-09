@@ -36,17 +36,21 @@ body { padding-top: 60px; }
   height: 50px;
   vertical-align: middle;
   padding-top: 10px;
-  background-image: none;
-  border: none;
-}
+background-image: linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
+background-image: -o-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(244,115,9) 11%, rgb(246,134,37) 100%);
 
-.navbar-fixed-top .navbar-inner{
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-}
+background-image: -webkit-gradient(
+  linear,
+  left bottom,
+  left top,
+  color-stop(0.11, rgb(244,115,9)),
+  color-stop(1, rgb(246,134,37))
+);
 
-//.navbar .nav li a{
-//  color: #fff;
-//}
+}
 
 #search_input {
   font-size: 32px;
