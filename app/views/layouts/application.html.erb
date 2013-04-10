@@ -11,20 +11,7 @@
   </head>
   <body class="<%= 'container_signin' if request.fullpath == "/users/login" %>">
     <%= render 'shared/navbar' %>
-    <div class="container", id="container">
-      <div class="row">
-        <div>
-          <div class="span2">
-          </div>
-          <div class="span8">
-            <%= bootstrap_flash %>
-            <%= yield %>
-          </div>
-          <div class="span2">
-          </div>
-        </div>
-      </div><!--/row-->
-    </div> <!-- /container -->
+    <%= render 'shared/content'%>
     <%= javascript_include_tag "application" %>
     <% if request.fullpath != "/users/login" %> 
       <div id="footer">
