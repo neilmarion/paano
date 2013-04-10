@@ -1,9 +1,5 @@
 <% posts.each do |post| %>
   <tr class = "search_result_row">
-    <td class = "search_result_col number_col">
-      <div>
-      </div>
-    </td>
     <td class = "search_result_col content_col">
       <%= render 'reputations', post: post %>
       <%= render 'title', post: post %> 
