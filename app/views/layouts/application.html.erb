@@ -46,32 +46,7 @@
             <span class="icon-bar"></span>
           </a>
           <%= render "shared/brand" %>
-
-          <div class="container nav-collapse">
-            <ul class="nav">
-            </ul>
-            <ul class="nav pull-right">
-              <% if user_signed_in? %>
-              <li class="dropdown">
-                <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#" id="user_name">
-                  <%= current_user.name %>
-                  <b class="caret">
-                  </b>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                  <li role="presentation">
-                    <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, :role => "menuitem" %>
-                  </li>
-                </ul>
-              </li>
-              <% else %>
-                <% if request.fullpath != '/users/login' %>
-                  <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), id: "navbar_signin_link" %>
-                  <%= image_tag "facebook_sign_in_icon_navbar.png", class: "img-rounded" %>
-                <% end %>
-              <% end %>
-            </ul> 
-          </div><!--/.nav-collapse -->
+          <%= render "shared/user_links" %> 
         </div>
       </div>
     </div>
