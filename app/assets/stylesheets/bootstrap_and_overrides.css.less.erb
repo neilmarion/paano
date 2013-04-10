@@ -4,10 +4,20 @@ body { padding-top: 60px; }
 
 @white: #fff;
 @almost_black: #232323;
-@grey: #555;
+@grey: #999;
 
 @transition_time: .5s;
 
+.grey_text{
+  color: @grey;
+}
+
+
+
+
+
+
+// old
 
 #search_input {
   font-size: 32px;
@@ -21,11 +31,6 @@ body { padding-top: 60px; }
 .table .search_result_col {
   vertical-align: middle;
   border-top: none;
-}
-
-.search_result_a {
-  font-weight: bold;
-  font-size: 24px;
 }
 
 .search_result_preview_div {
@@ -144,22 +149,6 @@ li.dropdown.open{
 
 .post_tag {
   background-color: #52a552;
-}
-
-.post_tag, .reputation_link {
-  color: #fff;
-  padding: 6px;
-  font-size: 12px;
-}
-
-.post_tag:hover, .reputation_link:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-.reputation_link{
-  border-radius: 5px;
-  background-color: #b20000;
 }
 
 .reputations_div{
