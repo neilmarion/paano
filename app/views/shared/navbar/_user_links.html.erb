@@ -1,14 +1,10 @@
-<div id="user_links" style="display:none">
-  <div class="container nav-collapse" id="">
-    <ul class="nav">
-    </ul>
-    <ul class="nav pull-right">
-      <% if user_signed_in? %>
+<div class="container">
+  <ul class="nav pull-right">
+  <% if user_signed_in? %>
       <li class="dropdown">
-        <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#" id="user_name">
+        <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#">
           <%= current_user.name %>
-          <b class="caret">
-          </b>
+          <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
           <li role="presentation">
@@ -16,13 +12,8 @@
           </li>
         </ul>
       </li>
-      <% else %>
-        <% if request.fullpath != '/users/login' %>
-          <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), id: "navbar_signin_link" %>
-          <%= image_tag "facebook_sign_in_icon_navbar.png", class: "img-rounded" %>
-        <% end %>
-      <% end %>
-    </ul> 
-  </div><!--/.nav-collapse -->
+  <% else %>
+    <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook) %>
+  <% end %>
+  </ul>
 </div>
-
