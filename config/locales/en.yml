@@ -21,6 +21,7 @@ en:
     index:
       search: "Search" 
       ask: "Ask"
+      or: "or"
     title:
       a: "A: "
       q: "Q: "
