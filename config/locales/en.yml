@@ -25,6 +25,8 @@ en:
     title:
       a: "A: "
       q: "Q: "
+    asker:
+      asked: "Asked %{time_ago} ago by %{name}"
   questions:
     form:
       post: "Post"

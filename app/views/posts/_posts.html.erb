@@ -2,9 +2,11 @@
   <tr class = "post_row">
     <td>
       <%= render 'reputations', post: post %>
-      <%= render 'title', post: post %> 
-      <%= render 'preview', post: post %> 
-      <%= render 'other', post: post %> 
+      <div class="non-reputations-div">
+        <%= render 'title', post: post %> 
+        <%= render 'preview', post: post %> 
+        <%= render 'other', post: post %> 
+      </div>
     </td>
   </tr>
 <% end %>
