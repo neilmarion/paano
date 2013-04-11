@@ -1,14 +1,14 @@
 <%- model_class = Question -%>
 
-<div class="well-large text-center" id="search_div">
-<%= form_tag posts_path, :method => 'get', :class => 'search' do %>
-  <%= text_field_tag :query, params[:query], :class => 'input-xxlarge', :id => 'search_input' %>
-  <div>
-  <%= submit_tag t('.search'), :id => "search_button", :class => "btn btn-primary btn-large" %>
-  <span class="grey_text"><%= t('.or') %></span>
-  <%= link_to t('.ask'), new_question_path, :id => "ask_button", :class => "btn btn-success btn-large" %>
+<div class="row-fluid">
+  <div class="span8">
+    <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
+      <%= text_field_tag :query, params[:query], :id => 'search-input' %>
+    <% end %>
   </div>
-<% end %>
+  <div class="span4">
+    <%= link_to t('.ask'), new_question_path, :class => "btn btn-success pull-right" %>
+  </div>
 </div>
 
 <table class="table">
