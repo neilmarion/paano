@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "paano" %></title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag "application", :media => "all" %>
-  </head>
-  <body class="<%= 'container_signin' if request.fullpath == "/users/login" %>">
+  <%= render 'shared/head' %>
+  <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/content'%>
     <%= javascript_include_tag "application" %>
-    <% if request.fullpath != "/users/login" %> 
-      <%= render 'shared/footer'%>
-    <% end %>
+    <%= render 'shared/footer'%>
   </body>
 </html>
