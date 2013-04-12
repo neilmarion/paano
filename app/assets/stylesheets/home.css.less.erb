@@ -29,6 +29,15 @@ body { padding-top: 60px; }
   color: @white; 
 }
 
+.navbar .nav li a{ //removing the shadow on the username text on the dropdown
+  text-shadow: none;
+}
+
+.navbar .nav li.dropdown.open .dropdown-toggle{
+  background-color: #666;
+  color: @white;
+}
+
 //sidebar
 
 .left li a:hover {
