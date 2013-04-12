@@ -14,16 +14,37 @@ file = File.read(
   File.expand_path(File.join(File.dirname(__FILE__), "development_answers_data.json")))
 answers = ActiveSupport::JSON.decode(file)
 
-def create_user(uid)
+file = File.read(
+  File.expand_path(File.join(File.dirname(__FILE__), "development_tags_data.json")))
+@tags = ActiveSupport::JSON.decode(file)
+
+def user(uid = rand(32767))
   token = Devise.friendly_token[0,20]
   User.create(provider: "facebook", uid: uid, name: Faker::Name.name,
     email: Faker::Internet.email, password: token, password_confirmation: token)
 end
 
+def random_tags
+  size = @tags.size-1
+  tag_list = [] 
+  (rand(2)+1).times{
+    tag_list << @tags[rand(size)]
+  }
+  tag_list.join(',')
+end
+
+def user_with_an_answer(question, answer = nil)
+  user.answers.create(content: answer ? answer : Faker::Lorem.paragraph, tag_list: random_tags,
+    question: question) 
+end
+
 for i in 1..20
-  question = create_user(i).questions.create(title: questions[i-1]['title'], content: questions[i-1]['content'], tag_list: Faker::Name.first_name)
-  create_user(i).answers.create(content: answers[i-1]['content'], tag_list: Faker::Name.first_name,
-    question: question)
+  question = user.questions.create(title: questions[i-1]['title'], content: questions[i-1]['content'], 
+    tag_list: random_tags)
+  user_with_an_answer(question, answers[i-1]['content']) #english answer, not lorem
+  rand(10).times{
+    user_with_an_answer(question) #lorem answers, just for filling space
+  }
 end
 
 
