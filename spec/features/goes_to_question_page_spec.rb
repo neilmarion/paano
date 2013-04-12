@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe 'clicking a question link' do
   it 'goes to the question page' do
-    question = FactoryGirl.create(:question)
+    user = FactoryGirl.create(:user_facebook)
+    user.questions.create(title: "Question Title", content: "Question Content", tag_list: "tag1, tag2")
+    question = user.questions.first
     visit root_path
     click_link "Q: #{question.title}"
     page.should have_content(question.title)
