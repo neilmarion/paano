@@ -1,13 +1,5 @@
 <%- model_class = Question -%>
 <div class="row-fluid">
-  <div>
-    <h2><%= @question.title %></h2>
-  </div>
-  <div>
-    <%= @question.content %>
-  </div>
-  <%= render 'shared/other', post: @question %>
-  <div class="row-fluid">
-    <%= render 'answers', answers: @question.answers %>
-  </div>
+  <%= render 'post', post: @question %>
+  <%= render 'answers', answers: @question.answers %>
 </div>

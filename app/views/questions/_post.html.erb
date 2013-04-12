@@ -1,0 +1,14 @@
+<div class="row-fluid <%= post.class.name.downcase %>">
+  <div class="span1">
+    <%= render 'reputation' %>    
+  </div>
+  <div class="span11">
+    <div>
+      <h2><%= post.title %></h2>
+    </div>
+    <div>
+      <%= post.content %>
+    </div>
+    <%= render 'shared/other', post: post %>
+  </div>
+</div>
