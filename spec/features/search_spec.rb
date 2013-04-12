@@ -1,23 +1,34 @@
 require 'spec_helper'
 
 describe "Searching" do
-  let(:question){ FactoryGirl.create(:question_with_an_answer) }
-
   before(:each) do
-    visit root_path
+    @question = FactoryGirl.create(:user_with_a_question).questions.first
+    @question.answers << FactoryGirl.create(:user_with_an_answer).answers.first
+
+    #noise post, to verify the output
+    FactoryGirl.create(:user_with_a_question)
   end
 
   describe "will be successful" do
-    it "after the #search_button is clicked and the relevance of the value in the #search_input query is > 0%" do
-      fill_in :query, with: "question.title\n"
-      page.should have_content question.title
+    it "after the #query field is submitted by return button and the relevance of the value in the #query search_field_input is > 0%" do 
+      result = Post.text_search(@question.title)
+      #fill_in 'query', with: "#{@question.title}\n"
+      Post.should_receive(:text_search).at_least(:once){ result }
+      visit root_path
+      page.should have_content @question.title
+      page.should have_css(".post-row", count: 1)
     end
   end 
 
   describe "will fail" do
-    it "after the #search_button is clicked and the relevance of the value in the #search_input query is < 0%" do
-      fill_in :query, with: "xxx\n" 
-      page.should_not have_content question.title
+    it "after the #query field is submitted by return button and the relevance of the value in the #query search_field_input is < 0%" do
+      jiberish = "xxx"
+      result = Post.text_search(jiberish)
+      #fill_in :query, with: jiberish 
+      Post.should_receive(:text_search){ result }
+      visit root_path
+      page.should_not have_content @question.title
+      page.should have_css(".post-row", count: 0)
     end
   end
 end

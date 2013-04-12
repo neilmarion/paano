@@ -15,8 +15,6 @@ en:
               blank: "Please put a content"
   layouts:
     application:
-      sign_out: "Sign out"
-      sign_in: "Sign in"
   posts:
     index:
       search: "Search" 
@@ -34,5 +32,6 @@ en:
     navbar:
       user_links:
         sign_in_with_facebook: "Sign in with Facebook"  
+        sign_out: "Sign out"
     asker:
       asked: "Asked %{time_ago} ago by %{name}"
