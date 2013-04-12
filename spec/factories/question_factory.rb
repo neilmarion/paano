@@ -5,9 +5,7 @@ FactoryGirl.define do
     sequence(:tag_list) { |n| "tag#{n}" }
 
     factory :question_with_an_answer do
-      after(:create) do |question|
-        FactoryGirl.create(:answer, question: question)
-      end
+      answers { Array.new(1) { FactoryGirl.build(:answer) } }
     end
   end
 end

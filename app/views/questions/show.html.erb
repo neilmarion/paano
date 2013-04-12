@@ -6,4 +6,7 @@
   <div>
     <%= @question.content %>
   </div>
+  <div>
+    <%= render 'answers', answers: @question.answers %>
+  </div>
 </div>
