@@ -5,7 +5,6 @@ jQuery ->
       width: 400 
     , "fast"
   ).blur ->
-    
     # lookup the original width 
     w = $(this).attr("data-default")
     $(this).animate

@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  layout 'home', only: :show
   before_filter :authenticate_user!, except: [:show]
 
   def create 
