@@ -2,9 +2,7 @@
 
 <div class="row-fluid">
   <div class="span8">
-    <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
-      <%= text_field_tag :query, params[:query], :id => 'search-input' %>
-    <% end %>
+    <%= render 'search_field' %>
   </div>
   <div class="span4">
     <%= link_to t('.ask'), new_question_path, :class => "btn btn-success pull-right" %>
