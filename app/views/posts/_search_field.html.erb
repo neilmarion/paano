@@ -1,3 +1,3 @@
 <%= form_tag posts_path, :method => 'get', :class => 'search' do %>
-  <%= text_field_tag :query, params[:query], class: "input-xlarge" %>
+  <%= text_field_tag :query, params[:query], class: "input-xlarge", placeholder: t('.search') %>
 <% end %>

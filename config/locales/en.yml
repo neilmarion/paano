@@ -27,6 +27,8 @@ en:
       q: "Q: "
     asker:
       asked: "Asked %{time_ago} ago by %{name}"
+    search_field:
+      search: "Search"
   questions:
     form:
       post: "Post"
