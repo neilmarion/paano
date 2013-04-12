@@ -1,0 +1,77 @@
+@import "twitter/bootstrap/bootstrap";
+body { padding-top: 60px; }
+@import "twitter/bootstrap/responsive";
+
+@import "vars.css.less.erb";
+
+
+//navbar
+
+.navbar-inner { 
+  background: @almost-black; 
+  padding-top: 10px; 
+  border: none; 
+  min-height: 30px; 
+} 
+ 
+.navbar a{ 
+  color: @grey; 
+  font-weight: bold; 
+  -o-transition: @transition_time; 
+  -ms-transition: @transition_time; 
+  -moz-transition: @transition_time; 
+  -webkit-transition: @transition_time; 
+  transition: @transition_time; 
+} 
+ 
+.navbar a:hover{ 
+  text-decoration: none; 
+  color: @white; 
+}
+
+//sidebar
+
+.left li a:hover {
+  background-color: #f5f5f5;
+}
+
+.left li a { 
+  padding: 8px 14px;
+  display: block;
+  border: 1px solid #e5e5e5; 
+  margin: 0 0 -1px;
+}
+
+.left li:first-child a { 
+  border-radius: 6px 6px 0 0;
+}
+
+//posts
+
+.post-row td{ 
+  padding: 0;
+}
+
+.post-title a{
+  font-weight: bold;
+}
+
+.preview-div {
+  color: #777;
+  font-size: @smaller-text-size;;
+}
+
+.reputation-span {
+  color: #7c7c7c;
+  font-size: 13px;
+}
+
+//tags
+
+.tag {
+  font-size: @smallest-text-size;
+}
+
+.tag-div{
+  padding-left: 10px;
+}
