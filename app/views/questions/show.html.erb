@@ -6,7 +6,8 @@
   <div>
     <%= @question.content %>
   </div>
-  <div>
+  <%= render 'shared/other', post: @question %>
+  <div class="row-fluid">
     <%= render 'answers', answers: @question.answers %>
   </div>
 </div>
