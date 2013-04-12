@@ -2,7 +2,7 @@ jQuery ->
   $("#query").focus(->
     $(this).attr "data-default", $(this).width()
     $(this).animate
-      width: 500 
+      width: 400 
     , "fast"
   ).blur ->
     
