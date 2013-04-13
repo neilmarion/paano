@@ -29,6 +29,14 @@ en:
     form:
       post: "Post"
   shared:
+    home:
+      left:
+        results: "Results"
+        unanswered: "Unanswered"
+        top: "Top"
+        hot: "Hot"  
+        mine: "Mine"
+        recent: "Recent"
     navbar:
       user_links:
         sign_in_with_facebook: "Sign in with Facebook"  
