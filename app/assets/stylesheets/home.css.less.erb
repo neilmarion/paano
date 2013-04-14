@@ -1,15 +1,55 @@
 @import "twitter/bootstrap/bootstrap";
 body { padding-top: 60px; }
 @import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot?v=3.0.2");
+@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
+@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
+@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
+
+// Font Awesome
+@import "fontawesome";
+// Glyphicons
+@import "twitter/bootstrap/sprites.less";
 @import "vars.css.less.erb";
 
 //bootstrap overrides
 
-.navbar .brand {
-  padding: 0px 0px 0px 175px;
+
+
+.navbar-fixed-top .navbar-inner{
+  padding: 5px 0px 5px 0px;
+}
+
+.navbar .btn{
+  margin-top: 0px;
+}
+
+.navbar .nav li a{
+  padding: 4px 15px 0px;
 }
 
 //navbar
+.navbar .brand {
+  padding: 0px 0px 0px 175px;
+  opacity: 0.5;
+  -o-transition: @transition_time; 
+  -ms-transition: @transition_time; 
+  -moz-transition: @transition_time; 
+  -webkit-transition: @transition_time; 
+  transition: @transition_time; 
+}
+
+.navbar .brand:hover{
+  opacity: 1;
+}
 
 .navbar-inner { 
   background: @almost-black; 
@@ -19,13 +59,8 @@ body { padding-top: 60px; }
 } 
  
 .navbar a{ 
-  color: @grey; 
   font-weight: bold; 
-  -o-transition: @transition_time; 
-  -ms-transition: @transition_time; 
-  -moz-transition: @transition_time; 
-  -webkit-transition: @transition_time; 
-  transition: @transition_time; 
+  
 } 
  
 .navbar a:hover{ 
@@ -38,7 +73,7 @@ body { padding-top: 60px; }
 }
 
 .navbar .nav li.dropdown.open .dropdown-toggle{
-  background-color: #666;
+  background-color: transparent;
   color: @white;
 }
 
