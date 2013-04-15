@@ -2,15 +2,9 @@ FactoryGirl.define do
   factory :answer do
     sequence(:content) { |n| "Answer Content #{n}" }
     sequence(:tag_list) { |n| "tag#{n}" }
-    
 
-    factory :answer_with_a_user do
-      user { FactoryGirl.build(:user_facebook) }
-    end
-
-    factory :answer_with_a_question_with_a_user do
-      question { FactoryGirl.build(:user_with_a_question).questions.first }
-      user { FactoryGirl.build(:user_facebook) }
-    end
+    # an answer must have a user and a question
+    user { FactoryGirl.build(:user_facebook) }
+    question { FactoryGirl.build(:user_with_a_question).questions.first }
   end 
 end

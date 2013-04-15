@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "Filtering questions without an answer i.e. clicking the 'Unanswered' link at home" do
   before(:each) do
-    @question = FactoryGirl.create(:user_with_a_question).questions.first
-    @question_with_an_answer = FactoryGirl.create(:user_with_a_question_with_an_answer).questions.first
+    @question = FactoryGirl.create(:question) 
+    @question_with_an_answer = FactoryGirl.create(:question_with_an_answer)
     visit root_path
     current_path.should eq root_path 
   end
