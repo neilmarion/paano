@@ -5,5 +5,4 @@ describe User do
   it { should validate_presence_of :uid } 
   it { should have_many :questions }
   it { should have_many :answers }
-
 end

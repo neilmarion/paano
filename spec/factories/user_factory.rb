@@ -14,5 +14,9 @@ FactoryGirl.define do
     factory :user_with_an_answer do
       answers { Array.new(1) { FactoryGirl.build(:answer) } }
     end
+
+    factory :user_with_a_question_with_an_answer do
+      questions { Array.new(1) { FactoryGirl.build(:question_with_an_answer)} }
+    end
   end
 end
