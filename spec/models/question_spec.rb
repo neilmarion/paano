@@ -17,4 +17,16 @@ describe Question do
       questions.should eq [@question]
     end
   end
+
+  describe "Creating an answer" do
+    before(:each) do
+      @question = FactoryGirl.create(:user_with_a_question).questions.first
+    end
+
+    it "will increment answer_count" do
+      expect{
+        @question.answers.create()
+       }.to change(@question.answers_count).by 1
+    end
+  end
 end
