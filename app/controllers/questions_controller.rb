@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
-  layout 'home', only: :show
+  layout 'home', only: [:show, :index]
   before_filter :authenticate_user!, except: [:show]
+
+  def index
+    @questions = Question.find_questions_without_an_answer
+  end
 
   def create 
     @question = User.find(current_user.id).questions.new params[:question]

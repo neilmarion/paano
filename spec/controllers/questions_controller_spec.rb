@@ -3,8 +3,14 @@ require 'spec_helper'
 describe QuestionsController do
 
   describe "index" do
+    before(:each) do
+      @question = FactoryGirl.create(:user_with_a_question).questions.first
+      @question_with_an_answer = FactoryGirl.create(:user_with_a_question_with_an_answer).questions.first
+    end
+
     it "returns all unanswered questions" do
-      pending
+      xhr :get, :index, {'filter' => 'unanswered'} 
+      assigns(:questions).should eq [@question]
     end
 
     it "returns all top questions" do

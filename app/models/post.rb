@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
-
   def self.text_search(query)
     if query.present?
       join_rs_reputations.where_title_and_content_matches(query).order_by_prod_of_rep_and_rel(query)

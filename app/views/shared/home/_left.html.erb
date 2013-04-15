@@ -1,6 +1,6 @@
 <ul class="nav nav-list left">
   <li class="active"><%= link_to t('.results'), posts_path %></li>
-  <li><a href="#"><%= t('.unanswered') %></a></li>
+  <li><%= link_to t('.unanswered'), questions_path(filter: 'unanswered') %></li>
   <li><a href="#"><%= t('.top') %></a></li>
   <li><a href="#"><%= t('.hot') %></a></li>
   <li><a href="#"><%= t('.mine') %></a></li>
