@@ -10,6 +10,5 @@ FactoryGirl.define do
       answers { Array.new(1) { FactoryGirl.build(:answer) } }
       answers_count 1
     end
-
   end
 end
