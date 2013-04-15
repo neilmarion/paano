@@ -8,11 +8,12 @@ describe Question do
 
   describe "filters question" do
     before(:each) do
-      @question = FactoryGirl.create(:user_with_a_question).questions.first
-      @question_with_an_answer = FactoryGirl.create(:user_with_a_question_with_an_answer).questions.first
+      @question = FactoryGirl.create(:question)
+      @question_with_an_answer = FactoryGirl.create(:question_with_an_answer)
     end
 
     it "by no answers" do
+      @question_with_an_answer
       questions = Question.find_questions_without_an_answer
       questions.should eq [@question]
     end

@@ -8,6 +8,7 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user_facebook) }
     factory :question_with_an_answer do
       answers { Array.new(1) { FactoryGirl.build(:answer) } }
+      answers_count 1
     end
 
   end
