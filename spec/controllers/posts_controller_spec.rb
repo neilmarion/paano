@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PostsController do
   describe "index" do
     before(:all) do
-     load_test_posts 
+      load_test_posts 
     end
 
     after(:all) do
