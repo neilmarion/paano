@@ -10,7 +10,7 @@ describe PostsController do
       Post.destroy_all
     end
 
-    let!(:user_1){ FactoryGirl.create(:user_facebook) }
+    let!(:user_1){ FactoryGirl.build(:user_facebook) }
   
     it "goes to index" do
       xhr :get, :index
