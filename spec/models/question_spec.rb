@@ -27,7 +27,7 @@ describe Question do
       expect{
         expect{
           @question.answers.create(content: "Answer content", tag_list: "tag_1, tag_2", user: FactoryGirl.create(:user_facebook))
-          puts @question.inspect
+          @question.reload
         }.to change(Answer, :count).by 1
        }.to change(@question, :answers_count).by 1
 
