@@ -1,10 +1,10 @@
 <% posts.each do |post| %>
   <tr class = "post-row">
     <td>
-      <%= render 'reputations', post: post %>
-      <%= render 'title', post: post %> 
-      <%= render 'preview', post: post %> 
-      <%= render 'shared/other', post: post %> 
+      <%= render 'shared/posts/reputations', post: post %>
+      <%= render 'shared/posts/title', post: post %> 
+      <%= render 'shared/posts/preview', post: post %> 
+      <%= render 'shared/posts/other', post: post %> 
     </td>
   </tr>
 <% end %>
