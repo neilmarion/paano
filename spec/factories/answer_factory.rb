@@ -5,6 +5,5 @@ FactoryGirl.define do
 
     # an answer must have a user and a question
     user { FactoryGirl.build(:user_facebook) }
-    question { FactoryGirl.build(:question) }
   end 
 end

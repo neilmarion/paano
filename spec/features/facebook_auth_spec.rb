@@ -18,7 +18,7 @@ describe "Authorization through Facebook" do
   describe "signin" do
     it "through facebook" do
       expect{
-        user = FactoryGirl.build(:user_facebook, 
+        user = FactoryGirl.create(:user_facebook, 
           uid: OmniAuth.config.mock_auth[:facebook]['uid'],
           name: OmniAuth.config.mock_auth[:facebook]['info']['name'])
       }.to change(User, :count).by 1

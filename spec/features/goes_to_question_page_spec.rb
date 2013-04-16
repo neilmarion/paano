@@ -13,8 +13,7 @@ end
 
 describe 'clicking an answer link' do
   it "goes to the answer's question page" do
-    answer = FactoryGirl.create(:answer)
-    question = answer.question
+    question = FactoryGirl.create(:question_with_an_answer)
     visit root_path
     click_link "A: #{question.title}"
     page.should have_content(question.title)

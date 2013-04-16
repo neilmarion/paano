@@ -2,11 +2,9 @@ require 'spec_helper'
 
 describe "Searching" do
   before(:each) do
-    @question = FactoryGirl.create(:user_with_a_question).questions.first
-    @question.answers << FactoryGirl.create(:user_with_an_answer).answers.first
-
+    @question = FactoryGirl.create(:question_with_an_answer)
     #noise post, to verify the output
-    FactoryGirl.create(:user_with_a_question)
+    FactoryGirl.create(:question)
   end
 
   describe "will be successful" do
