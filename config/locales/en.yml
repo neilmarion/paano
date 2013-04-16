@@ -18,13 +18,9 @@ en:
   posts:
     index:
       search: "Search" 
-      ask: "Ask"
       or: "or"
-    title:
-      a: "A: "
-      q: "Q: "
-    search_field:
-      search: "Search"
+
+    
   questions:
     form:
       post: "Post"
@@ -44,3 +40,12 @@ en:
     asker:
       asked: "Asked %{time_ago} ago<br>by %{name}"
       answered: "Answered %{time_ago}ago<br>by %{name}"
+    search_field:
+      search_field:
+        search: "Search"
+      search_field_holder:
+        ask: "Ask"
+    posts:
+      title:
+        a: "A: "
+        q: "Q: "
