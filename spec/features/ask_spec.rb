@@ -12,7 +12,7 @@ describe "Asking a question" do
   describe "will be successful if user is signed in" do
     before(:each) do
       click_link I18n.t('shared.navbar.user_links.sign_in_with_facebook')
-      click_link I18n.t('posts.index.ask')
+      click_link I18n.t('shared.search_field.search_field_holder.ask')
       page.should have_button "post_button"
       current_path.should eq new_question_path
     end
@@ -35,14 +35,14 @@ describe "Asking a question" do
   
   describe "will fail" do
     it "if #ask button is clicked without even signing in then will be redirected to new_user_session_path" do
-      click_link I18n.t('posts.index.ask')
+      click_link I18n.t('shared.search_field.search_field_holder.ask')
       current_path.should eq new_user_session_path
     end
 
     describe "and render nothing then outputs error messages if #post button is clicked and" do
       before(:each) do
         click_link I18n.t('shared.navbar.user_links.sign_in_with_facebook')
-        click_link I18n.t('posts.index.ask')
+        click_link I18n.t('shared.search_field.search_field_holder.ask')
         page.should have_button "post_button"
         current_path.should eq new_question_path
       end
