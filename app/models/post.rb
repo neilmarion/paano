@@ -28,6 +28,9 @@ class Post < ActiveRecord::Base
     #order by product of reputation and relevance
     order("(COALESCE(rs_reputations.value, 0) * (#{rank(query)}) + #{rank(query)}) DESC") }
 
+  scope :paginate, lambda { |page|
+    page(page).per(PAGINATION['posts_index']) }
+
   private
 
   def self.rank(query)
