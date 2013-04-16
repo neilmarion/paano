@@ -2,12 +2,8 @@ require 'spec_helper'
 
 describe PostsController do
   describe "index" do
-    before(:all) do
-      20.times{ FactoryGirl.create(:question_with_an_answer) }
-    end
-
-    after(:all) do
-      Post.destroy_all
+    before(:each) do
+      10.times{ FactoryGirl.create(:question_with_an_answer) }
     end
 
     let!(:user_1){ FactoryGirl.build(:user_facebook) }
