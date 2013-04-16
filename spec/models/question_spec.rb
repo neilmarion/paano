@@ -21,13 +21,13 @@ describe Question do
 
   describe "Creating an answer" do
     before(:each) do
-      @question = FactoryGirl.create(:user_with_a_question).questions.first
+      @question = FactoryGirl.create(:question)
     end
 
     it "will increment answer_count" do
       expect{
         expect{
-          @question.answers.create(content: "Answer content", tag_list: "tag_1, tag_2", user: FactoryGirl.build(:user_facebook))
+          @question.answers.create(content: "Answer content", tag_list: "tag_1, tag_2", user: FactoryGirl.create(:user_facebook))
           @question.reload
         }.to change(Answer, :count).by 1
        }.to change(@question, :answers_count).by 1
