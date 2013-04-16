@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
 
   def index
-    @questions = Question.find_questions_without_an_answer
+    @questions = Question.find_questions_without_an_answer.paginate params[:page]
   end
 
   def create 

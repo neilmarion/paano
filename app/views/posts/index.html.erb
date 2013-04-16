@@ -1,19 +1,9 @@
-<%- model_class = Question -%>
-
-<div class="row-fluid">
-  <div class="span8">
-    <%= render 'search_field' %>
-  </div>
-  <div class="span4">
-    <%= link_to t('.ask'), new_question_path, :class => "btn btn-success pull-right" %>
-  </div>
-</div>
-
+<%= render "shared/search_field/search_field_holder" %>
 <table class="table">
   <thead>
   </thead>
   <tbody>
-    <%= render "posts", posts: @posts %>
+    <%= render "shared/posts/posts", posts: @posts %>
   </tbody>
 </table>
-<%= render "pagination", posts: @posts%>
+<%= render "shared/posts/pagination", posts: @posts%>
