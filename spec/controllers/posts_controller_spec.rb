@@ -43,5 +43,19 @@ describe PostsController do
         assigns(:posts).should eq [@post_1, @post_3]
       end
     end
+
+    describe "filtering posts" do
+      it "returns all the top posts" do
+        title = "title"
+        content = "title"
+        tag_list = "tag"
+        @post_1 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
+        @post_2 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list).
+          add_evaluation(:votes, 10, FactoryGirl.create(:user_facebook))
+
+        get :index, {filter: 'top'} 
+        assigns(:posts).should eq [@post_2, @post_1]
+      end
+    end
   end
 end
