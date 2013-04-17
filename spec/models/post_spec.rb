@@ -28,12 +28,12 @@ describe Post do
       content = "title"
       tag_list = "tag"
       @post_1 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
-      @post_2 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list).
-        add_evaluation(:votes, 10, FactoryGirl.create(:user_facebook))
+      @post_2 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
+      @post_2.add_evaluation(:votes, 10, FactoryGirl.create(:user_facebook))
     end
 
     it 'finds posts ordered by highest reputation at descending order' do
-      Post.find_top_posts 
+      Post.find_top_posts.should eq [@post_2, @post_1]
     end
   end
 end

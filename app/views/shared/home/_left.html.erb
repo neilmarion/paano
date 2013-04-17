@@ -2,8 +2,8 @@
   <%= render_list :class => "nav nav-list left" do |li|
     li << link_to(t('.recent'), '#' )
     li << link_to(t('.results'), posts_path)
-    li << link_to(t('.unanswered'), questions_path(filter: 'unanswered'))
-    li << link_to(t('.top'), '#' )
+    li << link_to(t('.unanswered'), questions_path(filter: t('.unanswered')))
+    li << link_to(t('.top'), posts_path(filter: t('.top')) )
     li << link_to(t('.hot'), '#' )
     li << link_to(t('.mine'), '#' )
   end %>

@@ -15,6 +15,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def self.find_top_posts
+    join_rs_reputations.order_by_rep 
+  end
+
   scope :join_rs_reputations, 
     :joins => "LEFT JOIN rs_reputations ON posts.id = rs_reputations.target_id
         AND rs_reputations.reputation_name = 'votes'
@@ -27,6 +31,9 @@ class Post < ActiveRecord::Base
   scope :order_by_prod_of_rep_and_rel, lambda { |query|
     #order by product of reputation and relevance
     order("(COALESCE(rs_reputations.value, 0) * (#{rank(query)}) + #{rank(query)}) DESC") }
+
+  scope :order_by_rep, #order by reputation
+    order("COALESCE(rs_reputations.value, 0) DESC")
 
   scope :paginate, lambda { |page|
     page(page).per(PAGINATION['posts_index']) }
