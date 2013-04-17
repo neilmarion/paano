@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if params[:filter]
       case params[:filter]
       when I18n.t('shared.home.left.top')
-        @posts = Post.find_top_posts
+        @posts = Post.find_top_posts.paginate params[:page]
       end
     else
       @posts = Post.text_search(params[:query]).paginate params[:page]
