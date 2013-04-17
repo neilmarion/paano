@@ -32,8 +32,9 @@ describe PostsController do
       end
 
       it "returns (plainly) by significance (ts_rank)" do
+        Post.destroy(@post_1.id)
         get :index, { query: @query }
-        assigns(:posts).should eq [@post_1, @post_3, @post_2]
+        assigns(:posts).should eq [@post_3, @post_2]
       end
 
       it "returns (plainly) by reputation values" do
