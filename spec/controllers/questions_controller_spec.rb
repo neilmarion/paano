@@ -13,10 +13,6 @@ describe QuestionsController do
       assigns(:questions).should eq [@question]
     end
 
-    it "returns all top questions" do
-      pending
-    end
-
     it "returns all hot questions" do
       pending
     end
