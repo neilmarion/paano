@@ -1,9 +1,10 @@
 <ul class="nav nav-list left">
-  <li class="active"><%= link_to t('.results'), posts_path %></li>
-  <li><%= link_to t('.unanswered'), questions_path(filter: 'unanswered') %></li>
-  <li><a href="#"><%= t('.top') %></a></li>
-  <li><a href="#"><%= t('.hot') %></a></li>
-  <li><a href="#"><%= t('.mine') %></a></li>
-  <li><a href="#"><%= t('.recent') %></a></li>
-
+  <%= render_list :class => "nav nav-list left" do |li|
+    li << link_to(t('.recent'), '#' )
+    li << link_to(t('.results'), posts_path)
+    li << link_to(t('.unanswered'), questions_path(filter: 'unanswered'))
+    li << link_to(t('.top'), '#' )
+    li << link_to(t('.hot'), '#' )
+    li << link_to(t('.mine'), '#' )
+  end %>
 </ul>
