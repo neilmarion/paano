@@ -9,7 +9,7 @@ describe QuestionsController do
     end
 
     it "returns all unanswered questions" do
-      xhr :get, :index, {'filter' => 'unanswered'} 
+      xhr :get, :index, {'filter' => I18n.t('shared.home.left.unanswered')} 
       assigns(:questions).should eq [@question]
     end
 
@@ -18,7 +18,10 @@ describe QuestionsController do
     end
 
     it "returns the current users' questions" do
-      pending
+      user = @question.user
+      FactoryGirl.create(:question) # noise question
+      xhr :get, :index, {'filter' => I18n.t('shared.home.left.mine')} 
+      assigns(:questions).should eq [@question]
     end
 
     it "returns all the questions in DESC order by date created" do
