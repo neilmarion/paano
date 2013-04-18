@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe "Filtering current user's question i.e. clicking the 'Mine' link at home" do
   before(:each) do
-    @user = FactoryGirl.create(:user_facebook)
-    @question_1 = FactoryGirl.create(:question, user: @user)
-    @question_2 = FactoryGirl.create(:question) #noise question
     visit root_path
     current_path.should eq root_path 
   end
@@ -15,7 +12,12 @@ describe "Filtering current user's question i.e. clicking the 'Mine' link at hom
   end
 
   it "succeeds because user is signed-in" do
-    # at user sign in, it should show the user's questions
+    question = FactoryGirl.create(:question)
+    User.any_instance.should_receive(:questions).and_return question
+
+    click_link I18n.t('shared.navbar.user_links.sign_in_with_facebook')
+    click_link I18n.t('shared.home.left.mine')
+    #page.should have_content question.title
     pending
   end
 end
