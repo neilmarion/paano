@@ -1,20 +1,18 @@
 class QuestionsController < ApplicationController
-  layout 'home', only: [:show, :index, :mine]
-  before_filter :authenticate_user!, except: [:show, :index]
+  layout 'home', only: [:show, :index, :mine, :unanswered]
+  before_filter :authenticate_user!, except: [:show, :index, :unanswered]
 
   def index
-    if params[:filter]
-      case params[:filter]
-      when I18n.t('shared.home.left.mine')
-        @questions = current_user.questions.paginate params[:page]
-      when I18n.t('shared.home.left.unanswered')
-        @questions = Question.find_questions_without_an_answer.paginate params[:page]
-      end
-    end 
+
   end
 
   def mine
     @questions = current_user.questions.paginate params[:page]
+    render :index
+  end
+
+  def unanswered
+    @questions = Question.find_questions_without_an_answer.paginate params[:page]
     render :index
   end
 

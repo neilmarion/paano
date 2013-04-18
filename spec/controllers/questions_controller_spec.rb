@@ -9,7 +9,7 @@ describe QuestionsController do
     end
 
     it "returns all unanswered questions" do
-      xhr :get, :index, {'filter' => I18n.t('shared.home.left.unanswered')} 
+      xhr :get, :unanswered
       assigns(:questions).should eq [@question]
     end
 

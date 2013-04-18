@@ -3,6 +3,7 @@ Ppm::Application.routes.draw do
   resources :questions do
     collection do
       get :mine
+      get :unanswered
     end
   end
 
