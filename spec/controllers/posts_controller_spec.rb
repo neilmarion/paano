@@ -54,7 +54,7 @@ describe PostsController do
         @post_2 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
         @post_2.add_evaluation(:votes, 10, FactoryGirl.create(:user_facebook))
 
-        get :index, {filter: I18n.t('shared.home.left.top')} 
+        xhr :get, :top
         assigns(:posts).should eq [@post_2, @post_1]
       end
     end

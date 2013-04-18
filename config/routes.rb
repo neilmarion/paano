@@ -7,7 +7,11 @@ Ppm::Application.routes.draw do
     end
   end
 
-  resources :posts
+  resources :posts do
+    collection do
+      get :top
+    end
+  end
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
                      controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
