@@ -17,11 +17,23 @@ describe QuestionsController do
       pending
     end
 
-    it "returns the current users' questions" do
-      user = @question.user
-      FactoryGirl.create(:question) # noise question
-      xhr :get, :index, {'filter' => I18n.t('shared.home.left.mine')} 
-      assigns(:questions).should eq [@question]
+    describe "returns the current users' questions" do
+      it "fails because there's no user signed in" do
+        xhr :get, :index, {'filter' => I18n.t('shared.home.left.mine')} 
+        response.status.should eq 401 #unauthorized access
+      end
+
+      it "succeeds because there's a user signed in" do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @user = FactoryGirl.create(factory || :user_facebook)
+        sign_in @user
+
+        FactoryGirl.create(:question, user: @user)
+        FactoryGirl.create(:question) # noise question
+
+        xhr :get, :index, {'filter' => I18n.t('shared.home.left.mine')} 
+        assigns(:questions).should eq [@question]
+      end
     end
 
     it "returns all the questions in DESC order by date created" do

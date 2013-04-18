@@ -3,7 +3,14 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
 
   def index
-    @questions = Question.find_questions_without_an_answer.paginate params[:page]
+    if params[:filter]
+      case params[:filter]
+      when I18n.t('shared.home.left.mine')
+        @questions = current_user.questions.paginate params[:page]
+      when I18n.t('shared.home.left.unanswered')
+        @questions = Question.find_questions_without_an_answer.paginate params[:page]
+      end
+    end 
   end
 
   def create 
