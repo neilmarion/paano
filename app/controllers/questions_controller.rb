@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  layout 'home', only: [:show, :index]
+  layout 'home', only: [:show, :index, :mine]
   before_filter :authenticate_user!, except: [:show, :index]
 
   def index
@@ -11,6 +11,11 @@ class QuestionsController < ApplicationController
         @questions = Question.find_questions_without_an_answer.paginate params[:page]
       end
     end 
+  end
+
+  def mine
+    @questions = current_user.questions.paginate params[:page]
+    render :index
   end
 
   def create 

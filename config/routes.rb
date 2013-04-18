@@ -1,6 +1,11 @@
 Ppm::Application.routes.draw do
   root :to => 'posts#index'
-  resources :questions  
+  resources :questions do
+    collection do
+      get :mine
+    end
+  end
+
   resources :posts
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},

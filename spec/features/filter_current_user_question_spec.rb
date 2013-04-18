@@ -15,9 +15,7 @@ describe "Filtering current user's question i.e. clicking the 'Mine' link at hom
   end
 
   it "succeeds because user is signed-in" do
-    click_link I18n.t('shared.navbar.user_links.sign_in_with_facebook')
-    click_link I18n.t('shared.home.left.mine') 
-    page.should have_content @question_1.title
-    page.should_not have_content @question_2.title
+    # at user sign in, it should show the user's questions
+    pending
   end
 end

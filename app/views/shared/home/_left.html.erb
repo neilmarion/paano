@@ -4,5 +4,5 @@
   <li class=<%= current_class t('.unanswered') %>><%= link_to t('.unanswered'), questions_path(filter: t('.unanswered')) %></li>
   <li class=<%= current_class t('.top') %>><%= link_to t('.top'), posts_path(filter: t('.top')) %></li>
   <li><%= link_to t('.hot'), '#' %></li>
-  <li><%= link_to t('.mine'), '#' %></li>
+  <li><%= link_to t('.mine'), mine_questions_path %></li>
 </ul>
