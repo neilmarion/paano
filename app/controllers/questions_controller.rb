@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  layout 'home', only: [:show, :index, :mine, :unanswered]
+  layout 'home', only: [:show, :index, :mine, :unanswered, :new]
   before_filter :authenticate_user!, except: [:show, :index, :unanswered]
 
   def index
