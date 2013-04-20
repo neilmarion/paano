@@ -27,6 +27,9 @@ en:
       title: "Title of your question"
       content: "What's your question?"
       tags: "At least a tag"
+      answer: "Answer own question"
+    answer_form:
+      answer_own: "What's your answer?"
   shared:
     home:
       left:

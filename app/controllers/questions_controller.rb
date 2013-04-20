@@ -28,6 +28,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question.answers.new
   end
 
   def show

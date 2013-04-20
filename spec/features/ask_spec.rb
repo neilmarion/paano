@@ -31,6 +31,27 @@ describe "Asking a question" do
       click_link "cancel_link"  
       current_path.should eq root_path
     end
+
+    describe "and the user decided to answer his own question" do
+      before(:each) do
+        fill_in :question_title, with: question_title 
+        fill_in :question_content, with: question_content 
+        fill_in :question_tag_list, with: question_tag_list
+        click_link I18n.t('questions.form.answer')
+      end
+
+      describe "will fail" do
+        it "if the answer content is blank" do
+          pending
+        end
+      end
+
+      describe "will be successfull" do
+        it "if answer content is not blank" do
+          fill_in :question_answers_content, with: "My Answer" 
+        end
+      end
+    end 
   end
   
   describe "will fail" do

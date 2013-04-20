@@ -14,11 +14,21 @@
       <%= f.text_field :tag_list, :class => 'text_field', placeholder: t('.tags') %>
     </div>
   </div>
+  
+ 
+  <%= f.fields_for :answers do |builder|%>
+    <%= render 'answer_form', f: builder %>
+  <% end %>  
 
   
-  <div class="form-actions">
-    <%= f.submit t('.post'), :class => 'btn btn-primary', :id => 'post_button' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <div class="form-actions row-fluid">
+    <div class="span6 pull-left">
+      <%= f.submit t('.post'), :class => 'btn btn-primary', :id => 'post_button' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 request.env['HTTP_REFERER'], :class => 'btn', :id => 'cancel_link' %>
+    </div>
+    <div class="span6 pull-right answer_own">
+      <%= link_to t('.answer'), '#', class: 'btn' %>
+    </div>
   </div>
 <% end %>

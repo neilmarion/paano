@@ -2,7 +2,6 @@ class Post < ActiveRecord::Base
   attr_accessible :content, :title, :user_id, :tag_list
   acts_as_taggable
   validates_presence_of :content
-  validates_presence_of :tag_list
   belongs_to :user
 
   has_many :evaluations, class_name: "RSEvaluation", as: :source
