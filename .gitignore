@@ -18,3 +18,4 @@
 /coverage
 /app/assets/images/
 config/database.yml
+ppm_notes

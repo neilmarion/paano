@@ -15,7 +15,7 @@ describe "Filtering current user's question i.e. clicking the 'Mine' link at hom
     question = FactoryGirl.create(:question)
     User.any_instance.should_receive(:questions).and_return question
 
-    click_link I18n.t('shared.navbar.user_links.sign_in_with_facebook')
+    click_link I18n.t('shared.navbar.sign_in_with_fb_link.sign_in_with_facebook')
     click_link I18n.t('shared.home.left.mine')
     #page.should have_content question.title
     pending
