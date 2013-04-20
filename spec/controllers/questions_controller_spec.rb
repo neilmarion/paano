@@ -63,16 +63,26 @@ describe QuestionsController do
   end
 
   describe "create" do
-    let(:params) {{"question" => {"title" => "Question Title", "content" => "Question Content", "tag_list" => "tag_1, tag_2"}}}
+    let(:params) {{"question" => {"title" => "Question Title", "content" => "Question Content", "tag_list" => "tag_1, tag_2", "answers_attributes"=>{"0"=>{"content"=>""}}}}}
 
     describe "success" do
       login_user 
     
-      it "creates a new question" do
+      it "creates a new question even if the user did not answer own question" do
         expect { 
           xhr :post, :create, params 
-        }.to change(Post, :count).by 1
+        }.to change(Question, :count).by 1
         response.should redirect_to posts_path
+      end
+
+      it "creates a new question and the first answer to that question if the user filled in an answer to the question" do
+        params["question"]["answers_attributes"]["0"]["content"] = "My Answer"
+
+        expect {
+          expect {
+            xhr :post, :create, params
+          }.to change(Question, :count).by 1
+        }.to change(Answer, :count).by 1
       end
     end
 

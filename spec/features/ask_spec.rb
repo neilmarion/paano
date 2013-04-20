@@ -41,13 +41,18 @@ describe "Asking a question" do
 
       describe "will fail" do
         it "if the answer content is blank" do
-          pending
+          expect{
+            click_button I18n.t('questions.form.post') 
+          }.to_not change(Answer, :count)
         end
       end
 
       describe "will be successfull" do
         it "if answer content is not blank" do
-          fill_in :question_answers_attributes_0_content, with: "My Answer" 
+          expect{
+            fill_in :question_answers_attributes_0_content, with: "My Answer" 
+            click_button I18n.t('questions.form.post') 
+          }.to change(Answer, :count).by 1
         end
       end
     end 
@@ -70,7 +75,7 @@ describe "Asking a question" do
       it "#question_title field is blank" do
         fill_in :question_content, with: question_content 
         fill_in :question_tag_list, with: question_tag_list
-        click_button "post_button"
+        click_button I18n.t('questions.form.post')
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.title.blank')
       end
 
