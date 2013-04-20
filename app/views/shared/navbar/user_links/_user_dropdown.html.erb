@@ -1,0 +1,11 @@
+<li class="dropdown">
+  <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#">
+    <%= current_user.name %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+    <li role="presentation">
+      <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, :role => "menuitem", class: 'user-link'  %>
+    </li>
+  </ul>
+</li>

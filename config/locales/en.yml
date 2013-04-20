@@ -34,10 +34,11 @@ en:
         mine: "Mine"
         recent: "Recent"
     navbar:
-      sign_in_with_fb_link:
-        sign_in_with_facebook: "Sign in with Facebook"  
       user_links:
-        sign_out: "Sign out"
+        user_dropdown:
+          sign_out: "Sign out"
+        sign_in_with_fb_link:
+          sign_in_with_facebook: "Sign in with Facebook"  
     asker:
       asked: "Asked %{time_ago} ago<br>by %{name}"
       answered: "Answered %{time_ago}ago<br>by %{name}"

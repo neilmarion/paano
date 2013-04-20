@@ -1,19 +1,9 @@
 <div class="container">
   <ul class="nav pull-right">
   <% if user_signed_in? %>
-      <li class="dropdown">
-        <a class="dropdown-toggle" role="buttom" data-toggle="dropdown" href="#">
-          <%= current_user.name %>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-          <li role="presentation">
-            <%= link_to t('.sign_out'), destroy_user_session_path, method: :delete, :role => "menuitem", class: 'user-link'  %>
-          </li>
-        </ul>
-      </li>
+     <%= render 'shared/navbar/user_links/user_dropdown'%> 
   <% else %>
-    <%= render 'shared/navbar/sign_in_with_fb_link' %>
+    <%= render 'shared/navbar/user_links/sign_in_with_fb_link' %>
   <% end %>
   </ul>
 </div>
