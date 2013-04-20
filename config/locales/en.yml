@@ -49,3 +49,5 @@ en:
       title:
         a: "A: "
         q: "Q: "
+      reputations:
+        votes: "%{votes} votes"

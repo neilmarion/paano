@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "Searching" do
+  include_context "shared features stuff"
   before(:each) do
     @question = FactoryGirl.create(:question_with_an_answer)
     #noise post, to verify the output
@@ -15,6 +16,7 @@ describe "Searching" do
       visit root_path
       page.should have_content @question.title
       page.should have_css(".post-row", count: 1)
+      page_should_have_votes_count @question.votes
     end
   end 
 

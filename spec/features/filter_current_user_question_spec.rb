@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe "Filtering current user's question i.e. clicking the 'Mine' link at home" do
+  include_context "shared features stuff"
   before(:each) do
     visit root_path
     current_path.should eq root_path 
   end
 
-  it "fails because user is not signed-in" do
-    click_link I18n.t('shared.home.left.mine') 
-    current_path.should eq new_user_session_path
+  it "the filter-by-current-user's-question will not be shown if the user is not logged in ('Mine')" do
+    page.should_not have_link I18n.t('shared.home.left.mine')
   end
 
   it "succeeds because user is signed-in" do

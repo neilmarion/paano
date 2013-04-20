@@ -38,6 +38,10 @@ class Post < ActiveRecord::Base
   scope :paginate, lambda { |page|
     page(page).per(PAGINATION['posts_index']) }
 
+  def votes
+    reputation_for(:votes).to_i
+  end
+
   private
 
   def self.rank(query)
