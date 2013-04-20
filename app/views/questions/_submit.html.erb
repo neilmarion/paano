@@ -1,0 +1,7 @@
+<div class="form-actions row-fluid">
+  <div class="span6 pull-left">
+    <%= f.submit t('.post'), :class => 'btn btn-primary', :id => 'post_button' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              request.env['HTTP_REFERER'], :class => 'btn', :id => 'cancel_link' %>
+  </div>
+</div>
