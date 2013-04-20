@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
       redirect_to :posts
     else
       flash[:error] = @question.errors.full_messages.to_sentence
-      render :new 
+      render :new, :layout => 'home'  
     end 
   end
 

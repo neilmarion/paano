@@ -13,7 +13,7 @@ describe "Asking a question" do
     before(:each) do
       click_link I18n.t('shared.navbar.user_links.sign_in_with_fb_link.sign_in_with_facebook')
       click_link I18n.t('shared.search_field.search_field_holder.ask')
-      page.should have_button "post_button"
+      page.should have_button I18n.t('questions.form.post')
       current_path.should eq new_question_path
     end
 
@@ -21,7 +21,7 @@ describe "Asking a question" do
       fill_in :question_title, with: question_title 
       fill_in :question_content, with: question_content 
       fill_in :question_tag_list, with: question_tag_list
-      click_button "post_button"
+      click_button I18n.t('questions.form.post') 
       page.should have_content question_title
       page.should have_content question_content
       page.should have_content question_tag_list
@@ -43,7 +43,7 @@ describe "Asking a question" do
       before(:each) do
         click_link I18n.t('shared.navbar.user_links.sign_in_with_fb_link.sign_in_with_facebook')
         click_link I18n.t('shared.search_field.search_field_holder.ask')
-        page.should have_button "post_button"
+        page.should have_button I18n.t('questions.form.post')
         current_path.should eq new_question_path
       end
 
@@ -58,14 +58,14 @@ describe "Asking a question" do
       it "#question_content field is blank" do
         fill_in :question_title, with: question_title 
         fill_in :question_tag_list, with: question_tag_list
-        click_button "post_button"
+        click_button I18n.t('questions.form.post') 
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.content.blank')
       end
 
       it "#question_tag_list field is blank" do 
         fill_in :question_title, with: question_title 
         fill_in :question_content, with: question_content
-        click_button "post_button"
+        click_button I18n.t('questions.form.post')
         page.should have_content I18n.t('activerecord.errors.models.post.attributes.tag_list.blank')
       end
     end
