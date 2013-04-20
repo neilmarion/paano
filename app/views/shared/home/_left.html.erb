@@ -1,8 +1,7 @@
 <%= render_list :class => "nav nav-list left" do |li|
-  li << link_to(t(".recent"), '#')
-  li << link_to(t(".results"), posts_path )
+  li << link_to(t(".recent"), posts_path)
+  li << link_to(t(".results"), posts_path ) if params[:query]
   li << link_to(t(".unanswered"), unanswered_questions_path )
   li << link_to(t(".top"), top_posts_path)
-  li << link_to(t(".hot"), '#' )
-  li << link_to(t(".mine"), mine_questions_path)
+  li << link_to(t(".mine"), mine_questions_path) if current_user
 end %>
