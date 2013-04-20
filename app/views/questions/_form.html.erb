@@ -17,9 +17,13 @@
   
  
   <%= f.fields_for :answers do |builder|%>
-    <%= render 'answer_form', f: builder %>
   <% end %>  
 
+  <div class="control-group" id="answer_form">
+    <div class="controls">
+      <%= render 'answer_form', f: f %>
+    </div>
+  </div>
   
   <div class="form-actions row-fluid">
     <div class="span6 pull-left">
@@ -28,7 +32,7 @@
                 request.env['HTTP_REFERER'], :class => 'btn', :id => 'cancel_link' %>
     </div>
     <div class="span6 pull-right answer_own">
-      <%= link_to t('.answer'), '#', class: 'btn' %>
+      <%= link_to t('.answer'), '#', class: 'btn', id: 'show_answer_own' %>
     </div>
   </div>
 <% end %>
