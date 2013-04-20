@@ -25,7 +25,6 @@ en:
       title: "Title of your question"
       content: "What's your question?"
       tags: "At least a tag"
-      answer: "Answer own question"
     answer_form:
       answer_own: "Answer your own question here or just leave this blank"
   shared:

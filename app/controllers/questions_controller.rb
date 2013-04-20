@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
   end
 
   def create 
+    remove_blank_answer_param if params[:answers_attributes]
     @question = User.find(current_user.id).questions.new params[:question]
     if @question.save
       redirect_to :posts
@@ -33,6 +34,12 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find params[:id]
+  end
+
+  private
+
+  def remove_blank_answer_param #this happens during question create
+    params.delete(:answer_attributes) if params[:answers_attributes]['0'][:content].blank?
   end
 
 end

@@ -37,7 +37,6 @@ describe "Asking a question" do
         fill_in :question_title, with: question_title 
         fill_in :question_content, with: question_content 
         fill_in :question_tag_list, with: question_tag_list
-        click_link I18n.t('questions.form.answer')
       end
 
       describe "will fail" do
