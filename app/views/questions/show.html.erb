@@ -2,4 +2,13 @@
 <div class="row-fluid">
   <%= render 'post', post: @question %>
   <%= render 'answers', answers: @question.answers %>
+  <div class="control-group" id="answer_form">
+    <div class="controls">
+      <%= fields_for @question.answers.new, :html => { :class => 'form-horizontal'} do |f|%>
+        <%= f.text_area :content, :class => 'text_field', placeholder: t('.answer') %>
+        <%= f.hidden_field :user_id, value: current_user.id if current_user %>
+        <%= f.hidden_field :question_id, value: @question.id %>
+      <% end %>
+    </div>
+  </div>
 </div>

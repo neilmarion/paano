@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe QuestionsController do
+  include_context "common controller stuff"
 
   describe "index" do
     before(:each) do
@@ -20,13 +21,11 @@ describe QuestionsController do
     describe "returns the current users' questions" do
       it "fails because there's no user signed in" do
         xhr :get, :mine
-        response.status.should eq 401 #unauthorized access
+        should_be_unauthorized_access
       end
 
       it "succeeds because there's a user signed in" do
-        @request.env["devise.mapping"] = Devise.mappings[:user]
-        @user = FactoryGirl.create(:user_facebook)
-        sign_in @user
+        @user = sign_in_user
         #refactor the above block
 
         question = FactoryGirl.create(:question, user: @user)
@@ -132,5 +131,24 @@ describe QuestionsController do
       xhr :get, :show, :id => question.id 
       response.should be_success
     end 
+  end
+
+  describe "update" do
+    before(:each) do
+      @question = FactoryGirl.create(:question)
+    end
+
+    it 'fails if user is not yet signed in' do
+      expect{
+        xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
+      }.to_not change(Answer, :count)
+    end
+
+    it 'succeeds if a user is signed in' do
+      sign_in_user
+      expect{
+        xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
+      }.to change(Answer, :count).by 1
+    end
   end
 end

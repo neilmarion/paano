@@ -20,6 +20,9 @@ en:
       search: "Search" 
       or: "or"
   questions:
+    show:
+      answer: 'Answer this question'
+    notice: "Successfully answered question"
     form:
       post: "Post"
       title: "Title of your question"

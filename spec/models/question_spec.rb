@@ -29,7 +29,7 @@ describe Question do
     it "will increment answer_count" do
       expect{
         expect{
-          @question.answers.create(content: "Answer content", tag_list: "tag_1, tag_2", user: FactoryGirl.create(:user_facebook))
+          @question.answers.create(content: "Answer content", tag_list: "tag_1, tag_2", user_id: FactoryGirl.create(:user_facebook).id)
           @question.reload
         }.to change(Answer, :count).by 1
        }.to change(@question, :answers_count).by 1
