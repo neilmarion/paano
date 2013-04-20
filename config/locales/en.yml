@@ -34,8 +34,9 @@ en:
         mine: "Mine"
         recent: "Recent"
     navbar:
-      user_links:
+      sign_in_with_fb_link:
         sign_in_with_facebook: "Sign in with Facebook"  
+      user_links:
         sign_out: "Sign out"
     asker:
       asked: "Asked %{time_ago} ago<br>by %{name}"

@@ -13,8 +13,7 @@
         </ul>
       </li>
   <% else %>
-    <%= link_to t('.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), 
-          class: "btn btn-primary btn-small" %>
+    <%= render 'shared/navbar/sign_in_with_fb_link' %>
   <% end %>
   </ul>
 </div>
