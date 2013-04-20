@@ -48,7 +48,7 @@ describe "Asking a question" do
 
       describe "will be successfull" do
         it "if answer content is not blank" do
-          fill_in :question_answers_content, with: "My Answer" 
+          fill_in :question_answers_attributes_0_content, with: "My Answer" 
         end
       end
     end 

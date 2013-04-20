@@ -27,8 +27,5 @@
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 request.env['HTTP_REFERER'], :class => 'btn', :id => 'cancel_link' %>
     </div>
-    <div class="span6 pull-right answer_own">
-      <%= link_to t('.answer'), '#', class: 'btn', id: 'show_answer_own' %>
-    </div>
   </div>
 <% end %>
