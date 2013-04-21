@@ -48,7 +48,7 @@ en:
           sign_in_with_facebook: "Sign in with Facebook"  
     asker:
       asked: "Asked %{time_ago} ago<br>by %{name}"
-      answered: "Answered %{time_ago}ago<br>by %{name}"
+      answered: "Answered %{time_ago} ago<br>by %{name}"
     search_field:
       search_field:
         search: "Search"
