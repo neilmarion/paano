@@ -138,13 +138,21 @@ describe QuestionsController do
       @question = FactoryGirl.create(:question)
     end
 
-    it 'fails if user is not yet signed in' do
-      expect{
-        xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
-      }.to_not change(Answer, :count)
+    describe "fails" do
+      it 'if user is not yet signed in' do #for answering questions
+        expect{
+          xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
+        }.to_not change(Answer, :count)
+      end
+
+      it 'if content is blank' do
+        expect{
+          xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>""}}}} 
+        }.to_not change(Answer, :count)
+      end
     end
 
-    it 'succeeds if a user is signed in' do
+    it 'succeeds if a user is signed in' do #for answering questions
       sign_in_user
       expect{
         xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
