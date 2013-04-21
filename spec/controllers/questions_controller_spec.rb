@@ -66,13 +66,6 @@ describe QuestionsController do
 
     describe "success" do
       login_user 
-    
-      it "creates a new question even if the user did not answer own question" do
-        expect { 
-          xhr :post, :create, params 
-        }.to change(Question, :count).by 1
-        response.should redirect_to posts_path
-      end
 
       it "creates a new question and the first answer to that question if the user filled in an answer to the question" do
         params["question"]["answers_attributes"]["0"]["content"] = "My Answer"
