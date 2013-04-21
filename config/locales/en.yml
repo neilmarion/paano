@@ -30,7 +30,7 @@ en:
       content: "What's your question?"
       tags: "At least a tag"
     answer_form:
-      answer_own: "Answer your own question here or just leave this blank"
+      answer: "What's your answer?"
   shared:
     home:
       left:
