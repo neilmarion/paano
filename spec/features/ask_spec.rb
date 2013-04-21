@@ -31,31 +31,6 @@ describe "Asking a question" do
       click_link "cancel_link"  
       current_path.should eq root_path
     end
-
-    describe "and the user decided to answer his own question" do
-      before(:each) do
-        fill_in :question_title, with: question_title 
-        fill_in :question_content, with: question_content 
-        fill_in :question_tag_list, with: question_tag_list
-      end
-
-      describe "will fail" do
-        it "if the answer content is blank" do
-          expect{
-            click_button I18n.t('questions.submit.post') 
-          }.to_not change(Answer, :count)
-        end
-      end
-
-      describe "will be successfull" do
-        it "if answer content is not blank" do
-          expect{
-            fill_in :question_answers_attributes_0_content, with: "My Answer" 
-            click_button I18n.t('questions.submit.post') 
-          }.to change(Answer, :count).by 1
-        end
-      end
-    end 
   end
   
   describe "will fail" do
