@@ -1,6 +1,6 @@
 <div class="row-fluid other-div">
   <div class="span6">
-    <%= render 'shared/tags', post: post %>
+    <%= render 'shared/tags', post: post if post.class.name == 'Question' %>
   </div>
   <div class="span6">
     <%= render 'shared/asker', post: post %>
