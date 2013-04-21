@@ -139,6 +139,7 @@ describe QuestionsController do
       end
 
       it 'if content is blank' do
+        sign_in_user
         expect{
           xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>""}}}} 
         }.to_not change(Answer, :count)
