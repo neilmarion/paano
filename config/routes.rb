@@ -10,6 +10,7 @@ Ppm::Application.routes.draw do
   resources :posts do
     collection do
       get :top
+      get :autocomplete_tag_name
     end
   end
 

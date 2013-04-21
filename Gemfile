@@ -33,6 +33,7 @@ gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap_helper'
+gem 'rails3-jquery-autocomplete'
 
 
 # To use ActiveModel has_secure_password
