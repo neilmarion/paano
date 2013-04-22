@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
 
   def self.text_search(query)
     if query.present?
-      join_rs_reputations.where_title_and_content_matches(query).order_by_prod_of_rep_and_rel(query)
+      join_rs_reputations.where_title_and_content_matches(query).where_post_is_not_a_comment.order_by_prod_of_rep_and_rel(query)
     else
       scoped
     end
@@ -27,6 +27,9 @@ class Post < ActiveRecord::Base
   scope :where_title_and_content_matches, lambda { |query|
     where("to_tsvector('english', title) @@ plainto_tsquery(:q) 
       OR to_tsvector('english', content) @@ plainto_tsquery(:q)", q: query) }
+
+  scope :where_post_is_not_a_comment,
+    where("type NOT IN ('Comment')")
 
   scope :order_by_prod_of_rep_and_rel, lambda { |query|
     #order by product of reputation and relevance
