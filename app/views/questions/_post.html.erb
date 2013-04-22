@@ -7,7 +7,7 @@
       <h2><%= post.title %></h2>
     </div>
     <div>
-      <%= post.content %>
+      <%=raw sanitize(simple_format(post.content), :tags => %w(br p) ) %>
     </div>
     <%= render 'shared/posts/other', post: post %>
   </div>
