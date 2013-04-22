@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20130406054358) do
     t.string   "type"
     t.integer  "answers_count", :default => 0
     t.integer  "user_id"
-    t.integer  "question_id"
+    t.integer  "post_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end

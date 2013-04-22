@@ -35,7 +35,7 @@ end
 
 def user_with_an_answer(question, answer = nil)
   user.answers.create(content: answer ? answer : Faker::Lorem.paragraph(rand(20)+1), tag_list: random_tags,
-    question_id: question.id) 
+    post_id: question.id) 
 end
 
 for i in 1..20

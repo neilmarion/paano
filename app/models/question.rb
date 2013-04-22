@@ -2,7 +2,7 @@ class Question < Post
   attr_accessible :answers_attributes
   validates_presence_of :title, :tag_list
   has_reputation :votes, :source => :user
-  has_many :answers, :foreign_key => "question_id"
+  has_many :answers, :foreign_key => "post_id"
   accepts_nested_attributes_for :answers, :allow_destroy => true
 
   scope :paginate, lambda { |page|

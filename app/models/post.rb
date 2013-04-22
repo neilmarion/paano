@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :content
   belongs_to :user
 
+  has_many :comments
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
   def self.text_search(query)
