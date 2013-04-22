@@ -28,13 +28,13 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-      if @question.update_attributes(params[:question])
-        redirect_to(@question,
-          :notice => I18n.t('questions.notice'))
-      else
-        flash[:error] = @question.errors.full_messages.to_sentence
-        redirect_to @question
-      end
+    if @question.update_attributes(params[:question])
+      redirect_to(@question,
+        :notice => I18n.t('questions.notice'))
+    else
+      flash[:error] = @question.errors.full_messages.to_sentence
+      redirect_to @question
+    end
   end
 
   def new

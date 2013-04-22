@@ -128,29 +128,25 @@ describe QuestionsController do
 
   describe "update" do
     before(:each) do
-      @question = FactoryGirl.create(:question)
+      @post = FactoryGirl.create(:question)
+      @post_key = :question
     end
 
-    describe "fails" do
-      it 'if user is not yet signed in' do #for answering questions
-        expect{
-          xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
-        }.to_not change(Answer, :count)
+    
+    describe "a user answered the question" do
+      before(:each) do
+        @post_of_post_attributes_key = :answers_attributes
       end
+    
+      it_behaves_like "a user posted on a post"
+    end
 
-      it 'if content is blank' do
-        sign_in_user
-        expect{
-          xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>""}}}} 
-        }.to_not change(Answer, :count)
+    describe "a user commented" do
+      before(:each) do
+        @post_of_post_attributes_key = :comments_attributes
       end
-    end
-
-    it 'succeeds if a user is signed in' do #for answering questions
-      sign_in_user
-      expect{
-        xhr :put, :update, {id: @question.id, :question=>{:answers_attributes=> {'0'=>{:content=>"My Answer"}}}} 
-      }.to change(Answer, :count).by 1
-    end
+  
+      it_behaves_like "a user posted on a post"
+    end   
   end
 end
