@@ -2,13 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-
 $(".text_field.comment").keypress (e) ->
-  if e.which is 13
-    alert "hello"
-    $(this).closest("form").submit ->
-      $.post this.attr("action"), this.serialize(), ((json) ->
-        alert json
-      ), "json"    
-    false #<---- Add this line
+  if e.which is 13    
+    form = $(this).closest("form")    
 
+    $.ajax
+      url: form.attr('action')
+      type: "PUT"
+      dataType: "json"
+      data: form.serialize()
+
+    false
