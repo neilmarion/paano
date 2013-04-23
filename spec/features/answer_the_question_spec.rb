@@ -24,8 +24,7 @@ describe "Answering a question in the question show page" do
   end
   
   it "succeeds if user is signed in" do
-    click_link I18n.t('shared.navbar.user_links.sign_in_with_fb_link.sign_in_with_facebook')
-    click_link @question.title
+    click_link I18n.t('general.sign_in_with_facebook')
     expect{ 
       fill_in :question_answers_attributes_0_content, with: "My Answer" 
       click_button I18n.t('questions.submit.post')

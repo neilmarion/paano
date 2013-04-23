@@ -13,6 +13,8 @@ en:
               blank: "Please put at least one tag"
             content:
               blank: "Please put a content"
+  general:
+    sign_in_with_facebook: "Sign in with Facebook"  
   layouts:
     application:
   posts:
@@ -48,8 +50,6 @@ en:
       user_links:
         user_dropdown:
           sign_out: "Sign out"
-        sign_in_with_fb_link:
-          sign_in_with_facebook: "Sign in with Facebook"  
     asker:
       asked: "Asked %{time_ago} ago<br>by %{name}"
       answered: "Answered %{time_ago} ago<br>by %{name}"

@@ -4,7 +4,7 @@
   </div>
   <div class="span9">
     <div id="sign_in_text">
-     <%= link_to "Sign in with your facebook account.", omniauth_authorize_path(:user, "facebook") %>  
+     <%= link_to t('general.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook) %>  
      <a href="#" class="btn btn-primary"><i class="icon-white icon-heart"></i> Bootstrap Button Generator</a>
     </div>
   </div>
