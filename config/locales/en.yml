@@ -31,6 +31,9 @@ en:
       tags: "At least a tag"
     answer_form:
       answer: "What's your answer?"
+  comments:
+    form:
+      comment: "Add a comment"
   shared:
     home:
       left:
