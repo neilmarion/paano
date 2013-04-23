@@ -29,8 +29,9 @@ en:
       title: "Title of your question"
       content: "What's your question?"
       tags: "At least a tag"
+  answers:
     answer_form:
-      answer: "What's your answer?"
+      answer: "What's your answer?" 
   comments:
     form:
       comment: "Add a comment"
