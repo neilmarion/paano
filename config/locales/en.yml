@@ -30,11 +30,11 @@ en:
       content: "What's your question?"
       tags: "At least a tag"
   answers:
-    answer_form:
+    form:
       answer: "What's your answer?" 
   comments:
     form:
-      comment: "Add a comment"
+      comment: "Add a comment. Press enter to post it"
   shared:
     home:
       left:
