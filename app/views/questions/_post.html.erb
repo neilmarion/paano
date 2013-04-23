@@ -10,7 +10,7 @@
       <%=raw sanitize(simple_format(post.content), :tags => %w(br p) ) %>
     </div>
     <%= render 'shared/posts/other', post: post %>
-
+    <% if current_user%>
     <% post.comments.new %>
     <%= form_for post, :html => { :class => 'form-horizontal'} do |f| %>
       <div class="row-fluid">
@@ -21,6 +21,7 @@
         </div>
       </div>
       </div>
+    <% end %>
     <% end %>
   </div>
 </div>
