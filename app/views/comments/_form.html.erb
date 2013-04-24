@@ -1,3 +1,3 @@
 <%= f.fields_for :comments do |comment_fields|%>
-  <%= comment_fields.text_area :content, :class=> 'text_field comment', placeholder: t('.comment') if comment_fields.object.new_record? %>  
+  <%= comment_fields.text_area :content, :class=> 'text_field new_comment', placeholder: t('.comment') if comment_fields.object.new_record? %>  
 <% end %>

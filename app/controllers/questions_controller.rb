@@ -28,12 +28,17 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if @question.update_attributes(params[:question])
-      redirect_to(@question,
-        :notice => I18n.t('questions.notice'))
-    else
-      flash[:error] = @question.errors.full_messages.to_sentence
-      redirect_to @question
+
+    respond_to do |format|
+      if @question.update_attributes(params[:question])
+        format.json { render :json => @question }
+        format.html { redirect_to(@question,
+          :notice => I18n.t('questions.notice')) }
+      else
+        format.json { render :json => @question.errors.full_messages.to_sentence }
+        format.html { flash[:error] = @question.errors.full_messages.to_sentence
+          redirect_to @question }
+      end
     end
   end
 
