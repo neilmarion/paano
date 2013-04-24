@@ -21,6 +21,7 @@ describe Post do
 
     describe 'query not present' do
       it 'returns all results' do
+        comment = FactoryGirl.create(:comment)
         Post.text_search(nil).should eq [post]
       end
     end

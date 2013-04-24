@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
     if query.present?
       join_rs_reputations.where_title_and_content_matches(query).where_post_is_not_a_comment.order_by_prod_of_rep_and_rel(query)
     else
-      scoped
+      where_post_is_not_a_comment
     end
   end
 
