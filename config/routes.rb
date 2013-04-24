@@ -12,6 +12,11 @@ Ppm::Application.routes.draw do
       get :top
       get :autocomplete_tag_name
     end
+
+    member do
+      put :vote_up
+      put :vote_down
+    end
   end
 
   resources :answers
