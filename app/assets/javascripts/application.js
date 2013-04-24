@@ -16,3 +16,4 @@
 //= require_tree .
 //= require jquery-ui
 //= require autocomplete-rails
+//= require_directory ../../../vendor/assets/javascripts/jackmoore-autosize/

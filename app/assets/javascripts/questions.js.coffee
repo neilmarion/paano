@@ -15,3 +15,5 @@ $ ->
         data: form.serialize()
       e.preventDefault
       false
+
+  $(".text_field.comment").autosize()
