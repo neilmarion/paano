@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   layout 'home', only: [:index, :top]
   before_filter :authenticate_user!, except: [:index, :show, :top]
 
-  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag' # <- New
+  autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag' 
 
   def index
     @posts = Post.text_search(params[:query]).paginate params[:page]
