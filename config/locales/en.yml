@@ -15,6 +15,7 @@ en:
               blank: "Please put a content"
   general:
     sign_in_with_facebook: "Sign in with Facebook"  
+    just_now: "just now"
   layouts:
     application:
   posts:
@@ -35,6 +36,8 @@ en:
     form:
       answer: "What's your answer?" 
   comments:
+    comment:
+      commented: "%{time_ago} ago"
     form:
       comment: "Add a comment. Press enter to post it"
   shared:

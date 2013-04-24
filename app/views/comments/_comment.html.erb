@@ -1,3 +1,8 @@
 <div class="comment">
-  <%= comment.content %>
+  <div class="comment_content">
+    <%= comment.content %>
+  </div>
+  <div class="comment_commenter pull-right">
+    <%= comment.user.name %><br><%= t('.commented', time_ago: time_ago_in_words(comment.created_at)) %>
+  </div>
 </div>

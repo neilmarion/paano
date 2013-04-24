@@ -1,3 +1,3 @@
 <%= f.fields_for :answers do |answer_fields|%>
-  <%= answer_fields.text_area :content, :class=> 'text_field', placeholder: t('.answer') if answer_fields.object.new_record? %>  
+  <%= answer_fields.text_area :content, :class=> 'text_field new_answer', placeholder: t('.answer') if answer_fields.object.new_record? %>  
 <% end %>

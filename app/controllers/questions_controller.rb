@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        format.json { render :json => @question }
+        format.json { render :json => {name: current_user.name } }
         format.html { redirect_to(@question,
           :notice => I18n.t('questions.notice')) }
       else
