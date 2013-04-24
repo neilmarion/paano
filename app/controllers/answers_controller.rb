@@ -3,12 +3,13 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
-    if @answer.update_attributes(params[:answer])
-      redirect_to(@answer,
-        :notice => I18n.t('answer.notice'))
-    else
-      flash[:error] = @answer.errors.full_messages.to_sentence
-      redirect_to @answer
-    end 
+
+    respond_to do |format|
+      if @answer.update_attributes(params[:answer])
+        format.json { render :json => @answer }
+      else
+        format.json { render :json => @answer.errors.full_messages.to_sentence } #output javascript messages
+      end
+    end
   end
 end
