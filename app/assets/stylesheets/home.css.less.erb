@@ -167,6 +167,11 @@ html {
   font-size: 13px;
 }
 
+.reputation_with_vote_links{
+  margin-top: 30px;
+  text-align: center;
+}
+
 //questions
 
 .answers{
@@ -179,6 +184,35 @@ html {
 
 #answer_form{
   padding-top: 100px;
+}
+
+.voted-up a{
+  color: @dark-green;
+}
+
+.voted-down a{
+  color: @dark-red;
+}
+
+.vote-lnk, .voted-up, .voted-down{
+  text-align: center;
+  font-size: 30px;
+  padding: 0 0 20px;
+}
+
+.vote-lnk a{
+  color: @grey;
+}
+
+.vote-lnk a:hover, .voted-up a:hover, .voted-down a:hover{
+  text-decoration: none;
+  color: @dark-grey;
+}
+
+.vote-count{
+  text-align: center;
+  font-size: 30px;
+  padding: 0 0 20px;
 }
 
 //comments

@@ -87,14 +87,14 @@ describe PostsController do
     describe "with vote_down" do
       it "succeeds" do
         expect{
-          xhr :put, :vote_down, @params
+          xhr :get, :vote_down, @params
         }.to change{@post.reputation_for(:votes)}.by SCORING['down']
       end
 
       it "fails" do
         Question.any_instance.should_receive(:add_evaluation).and_return false 
         expect{
-          xhr :put, :vote_down, @params
+          xhr :get, :vote_down, @params
         }.to_not change{@post.reputation_for(:votes)}.by SCORING['down']
       end
     end

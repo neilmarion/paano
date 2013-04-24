@@ -1,3 +1,11 @@
-<div>
- 3  
+<div class="reputation_with_vote_links">
+  <div class="vote-lnk">
+    <%= link_to "▲", vote_up_post_path(post), remote: true, class: "vote-up" %>
+  </div>
+  <div class="vote-count">
+    <%= post.reputation_for(:votes).to_i %>
+  </div>
+  <div class="vote-lnk">
+    <%= link_to "▼", vote_down_post_path(post), remote: true, class: "vote-down" %>
+  </div>
 </div>

@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
     respond_to do |format|
       if @post.add_evaluation(:votes, SCORING['up'], current_user) 
-        format.json { render :json => "" }
+        format.json { render :json => {votes: @post.reputation_for(:votes).to_i} }
       else
         format.json { render :json => @post.errors.full_messages.to_sentence }
       end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
     respond_to do |format|
       if @post.add_evaluation(:votes, SCORING['down'], current_user) 
-        format.json { render :json => "" }
+        format.json { render :json => {votes: @post.reputation_for(:votes).to_i} }
       else
         format.json { render :json => @post.errors.full_messages.to_sentence }
       end

@@ -14,8 +14,8 @@ Ppm::Application.routes.draw do
     end
 
     member do
-      put :vote_up
-      put :vote_down
+      get :vote_up
+      get :vote_down
     end
   end
 
