@@ -1,4 +1,4 @@
-re "bundler/capistrano"
+require "bundler/capistrano"
 
 server "106.187.44.184", :web, :app, :db, primary: true
 

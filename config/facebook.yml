@@ -5,3 +5,7 @@ development:
 test:
   key: 552133841473468 
   secret: o8fM25ZjvKqB2erA78spckxfvgu1cdkShnJZbnUyI
+
+production:
+  key: 136807653171650
+  secret: 911f42c9dfa2a53309246e6a13b23a70
