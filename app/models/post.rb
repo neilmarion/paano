@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.find_top_posts
-    join_rs_reputations.order_by_rep 
+    where_post_is_not_a_comment.join_rs_reputations.order_by_rep 
   end
 
   scope :join_rs_reputations, 

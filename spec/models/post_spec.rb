@@ -40,5 +40,10 @@ describe Post do
     it 'finds posts ordered by highest reputation at descending order' do
       Post.find_top_posts.should eq [@post_2, @post_1]
     end
+
+    it 'does not include comments' do
+      FactoryGirl.create(:comment)
+      Post.find_top_posts.should eq [@post_2, @post_1]
+    end
   end
 end
