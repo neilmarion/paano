@@ -35,6 +35,9 @@ gem 'bootstrap-kaminari-views'
 gem 'bootstrap_helper'
 gem 'rails3-jquery-autocomplete'
 
+gem 'unicorn'
+gem 'capistrano'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
