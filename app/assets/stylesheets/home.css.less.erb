@@ -13,9 +13,16 @@ body { padding-top: 60px; }
 @fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot?#iefix&v=3.0.2");
 @fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff?v=3.0.2");
 @fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf?v=3.0.2");
+@import "fontawesome";
 
 // Font Awesome
 @import "fontawesome";
+
+body{
+  font-family: 'FontAwesome';
+  font-style: normal; 
+}
+
 // Glyphicons
 @import "twitter/bootstrap/sprites.less";
 @import "vars.css.less.erb";
