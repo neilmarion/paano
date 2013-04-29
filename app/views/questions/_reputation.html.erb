@@ -1,11 +1,15 @@
 <div class="reputation_with_vote_links">
   <div class="vote-lnk">
-    <%= link_to "▲", vote_up_post_path(post), remote: true, class: "vote-up" %>
+    <%= link_to vote_up_post_path(post), remote: true, class: "vote-up" do %>
+      <i class="icon-chevron-up"></i>
+    <% end %>
   </div>
   <div class="vote-count">
     <%= post.reputation_for(:votes).to_i %>
   </div>
   <div class="vote-lnk">
-    <%= link_to "▼", vote_down_post_path(post), remote: true, class: "vote-down" %>
+    <%= link_to vote_down_post_path(post), remote: true, class: "vote-up" do %>
+      <i class="icon-chevron-down"></i>
+    <% end %>
   </div>
 </div>
