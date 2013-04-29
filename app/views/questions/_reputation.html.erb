@@ -1,7 +1,9 @@
 <div class="reputation_with_vote_links">
   <div class="vote-lnk">
     <%= link_to vote_up_post_path(post), remote: true, class: "vote-up" do %>
-      <i class="icon-chevron-up"></i>
+      <div class="icon-chevron-up-div">
+        <i class="icon-chevron-up"></i>
+      </div>
     <% end %>
   </div>
   <div class="vote-count">
@@ -9,7 +11,9 @@
   </div>
   <div class="vote-lnk">
     <%= link_to vote_down_post_path(post), remote: true, class: "vote-up" do %>
-      <i class="icon-chevron-down"></i>
+      <div class="icon-chevron-up-div">
+        <i class="icon-chevron-down"></i>
+      </div>
     <% end %>
   </div>
 </div>
