@@ -18,8 +18,8 @@ $ ->
         data: form.serialize()
         success: (data) ->
           console.log data
-          text_field.closest(".span9.offset3.small-grey-text").
-            find(".comments").append "<div class='comment'><div class='comment_content'>"+val+"</div><div class='comment_commenter pull-right'>"+data['name']+"<br><%= I18n.t('general.just_now') %></div></div>"
+          text_field.closest(".span11.offset1.small-grey-text").
+            find(".comments").append "<div class='comment'><div class='comment_content'><a href='#'>" + data['name'] + "</a> - " + val + " " + "<%= I18n.t('general.just_now') %></div></div>"
       $(this).val('')
       e.preventDefault
       false
