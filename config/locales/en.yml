@@ -54,8 +54,9 @@ en:
         user_dropdown:
           sign_out: "Sign out"
     asker:
-      asked: "Asked %{time_ago} ago<br>by %{name}"
-      answered: "Answered %{time_ago} ago<br>by %{name}"
+      asked: "Asked %{time_ago} ago<br>"
+      answered: "Answered %{time_ago} ago<br>"
+      by: 'by'
     search_field:
       search_field:
         search: "Search"

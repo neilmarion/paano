@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   def create 
     @question = User.find(current_user.id).questions.new params[:question]
     if @question.save
-      redirect_to :posts
+      redirect_to question_path @question 
     else
       flash[:error] = @question.errors.full_messages.to_sentence
       render :new, :layout => 'home'  

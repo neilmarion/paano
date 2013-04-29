@@ -1,5 +1,7 @@
 <span class="pull-right smallest-grey-text text-align-right">
   <%= post.class.name.downcase == 'question' ?
-    t('.asked', time_ago: time_ago_in_words(post.created_at), name: post.user.name).html_safe : 
-    t('.answered', time_ago: time_ago_in_words(post.created_at), name: post.user.name).html_safe %>
+    t('.asked', time_ago: time_ago_in_words(post.created_at)).html_safe : 
+    t('.answered', time_ago: time_ago_in_words(post.created_at)).html_safe %>
+    <%= t('.by') %>
+    <%= link_to post.user.name, '#'%>
 </span>
