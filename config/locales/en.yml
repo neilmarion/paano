@@ -70,6 +70,7 @@ en:
         votes: "%{votes} votes"
       controls:
         expand: 'expand'
+        collapse: 'collapse'
         share: 'share'
         vote-up: 'vote-up'
         vote-down: 'vote-down'

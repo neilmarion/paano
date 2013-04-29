@@ -7,7 +7,15 @@ $ ->
     $(this).find('.post_controls').hide()
     $(this).find('.post_controls_hide').show()
 
-  $(".expand").on "click", ->
+  $(".preview_expand").on "click", ->
+    $(this).closest(".post-row").find('.preview_collapse').toggle()
+    $(this).closest(".post-row").find('.preview_expand').toggle()
+    $(this).closest(".post-row").find('.preview-div.expanded').toggle()
+    $(this).closest(".post-row").find('.preview-div.collapsed').toggle()
+
+  $(".preview_collapse").on "click", ->
+    $(this).closest(".post-row").find('.preview_expand').toggle()
+    $(this).closest(".post-row").find('.preview_collapse').toggle()
     $(this).closest(".post-row").find('.preview-div.expanded').toggle()
     $(this).closest(".post-row").find('.preview-div.collapsed').toggle()
 
