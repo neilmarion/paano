@@ -1,8 +1,28 @@
 <div class="post_controls">
-  <span class="post_control"><%= link_to 'expand', '#' %></span>
-  <span class="post_control"><%= link_to 'share', '#' %></span>
-  <span class="post_control"><%= link_to 'vote-up', '#' %></span>
-  <span class="post_control"><%= link_to 'vote-down', '#' %></span>
+  <span class="post_control">
+    <%= link_to '#' do %>
+      <i class="icon-plus"></i>
+      expand
+    <% end %>
+  </span>
+  <span class="post_control">
+    <%= link_to '#' do %>
+      <i class="icon-share"></i>
+      share 
+    <% end %>
+  </span>
+  <span class="post_control">
+    <%= link_to '#' do %>
+      <i class="icon-thumbs-up"></i>
+      vote-up 
+    <% end %>
+  </span>
+  <span class="post_control">
+    <%= link_to '#' do %>
+      <i class="icon-thumbs-down"></i>
+      vote-down 
+    <% end %>
+  </span>
 </div>
 
 <div class="post_controls_hide">
