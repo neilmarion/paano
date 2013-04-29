@@ -1,26 +1,26 @@
 <div class="post_controls">
   <span class="post_control">
-    <%= link_to '#' do %>
+    <%= link_to '', remote: true, class: 'expand' do %>
       <i class="icon-plus"></i>
-      expand
+      <%= t('.expand') %>      
     <% end %>
   </span>
   <span class="post_control">
     <%= link_to '#' do %>
       <i class="icon-share"></i>
-      share 
+      <%= t('.share') %>      
     <% end %>
   </span>
   <span class="post_control">
     <%= link_to '#' do %>
       <i class="icon-chevron-up"></i>
-      vote-up 
+      <%= t('.vote-up') %>      
     <% end %>
   </span>
   <span class="post_control">
     <%= link_to '#' do %>
       <i class="icon-chevron-down"></i>
-      vote-down 
+      <%= t('.vote-down') %>      
     <% end %>
   </span>
 </div>

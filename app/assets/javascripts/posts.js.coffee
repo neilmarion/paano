@@ -7,3 +7,7 @@ $ ->
     $(this).find('.post_controls').hide()
     $(this).find('.post_controls_hide').show()
 
+  $(".expand").on "click", ->
+    $(this).closest(".post-row").find('.preview-div.expanded').toggle()
+    $(this).closest(".post-row").find('.preview-div.collapsed').toggle()
+

@@ -68,3 +68,8 @@ en:
         q: "Q: "
       reputations:
         votes: "%{votes} votes"
+      controls:
+        expand: 'expand'
+        share: 'share'
+        vote-up: 'vote-up'
+        vote-down: 'vote-down'
