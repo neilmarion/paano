@@ -12,10 +12,11 @@ $ ->
     $(this).closest(".post-row").find('.preview_expand').toggle()
     $(this).closest(".post-row").find('.preview-div.expanded').toggle()
     $(this).closest(".post-row").find('.preview-div.collapsed').toggle()
+    false
 
   $(".preview_collapse").on "click", ->
     $(this).closest(".post-row").find('.preview_expand').toggle()
     $(this).closest(".post-row").find('.preview_collapse').toggle()
     $(this).closest(".post-row").find('.preview-div.expanded').toggle()
     $(this).closest(".post-row").find('.preview-div.collapsed').toggle()
-
+    false

@@ -1,4 +1,4 @@
-jQuery ->
+$ ->
   $("#query").focus(->
     $(this).attr "data-default", $(this).width()
     $(this).animate
