@@ -9,3 +9,6 @@ test:
 production:
   key: 136807653171650
   secret: 911f42c9dfa2a53309246e6a13b23a70
+
+staging:
+  production
