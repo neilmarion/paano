@@ -1,5 +1,6 @@
-server "www.staging.uplb.paano.info"
+server "www.paano.info", :web, :app, :db, primary: true
 
+set :user, "deployer"
 set :branch, "staging"
 set :application, "paanouplb_staging"
 set :deploy_to, "/home/#{user}/apps/#{application}"
