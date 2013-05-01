@@ -2,6 +2,7 @@ require "bundler/capistrano"
 require 'capistrano/ext/multistage'
 #server "106.187.44.184", :web, :app, :db, primary: true
 
+server "www.paano.info", :web, :app, :db, primary: true
 set :stages, %w(production staging)
 set :default_stage, "staging"
 

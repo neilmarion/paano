@@ -1,5 +1,3 @@
-server "www.paano.info", :web, :app, :db, primary: true
-
 set :user, "deployer"
 set :branch, "staging"
 set :application, "paanouplb_staging"
