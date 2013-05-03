@@ -54,11 +54,14 @@ gem 'capistrano'
 # To use debugger
 # gem 'debugger'
 
+group :test, :development, :staging do
+  gem 'faker'
+end
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'rb-inotify', '~> 0.9'
   gem 'better_errors'
-  gem 'faker'
   gem 'rack-mini-profiler'
   gem 'binding_of_caller'
 end
