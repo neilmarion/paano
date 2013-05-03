@@ -11,4 +11,5 @@ production:
   secret: 911f42c9dfa2a53309246e6a13b23a70
 
 staging:
-  production
+  key: 359869950792051
+  secret: 35c963ccdab7019241e8f24644bbadcc
