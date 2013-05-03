@@ -35,7 +35,6 @@ gem 'bootstrap-kaminari-views'
 gem 'bootstrap_helper'
 gem 'rails3-jquery-autocomplete'
 
-gem 'unicorn'
 gem 'capistrano'
 
 
