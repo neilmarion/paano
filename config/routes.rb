@@ -4,6 +4,7 @@ Ppm::Application.routes.draw do
     collection do
       get :mine
       get :unanswered
+      get :answer
     end
   end
 

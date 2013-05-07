@@ -149,4 +149,18 @@ describe QuestionsController do
       it_behaves_like "a user posted on a post"
     end   
   end
+
+  describe 'answer' do # ajax validator whehter a user can able to answer or not (logged in or not)
+    it 'fails if user is not logged in' do
+      xhr :get, :answer, {format: :json}
+      should_be_unauthorized_access
+    end
+
+    it 'succeeds if user is logged in' do
+      user = FactoryGirl.create(:user_facebook)
+      sign_in user    
+      xhr :get, :answer, {format: :json}
+      response.should be_success
+    end
+  end
 end

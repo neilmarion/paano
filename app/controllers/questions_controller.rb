@@ -28,7 +28,6 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-
     respond_to do |format|
       if @question.update_attributes(params[:question])
         format.json { render :json => {name: current_user.name } }
@@ -49,5 +48,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find params[:id]
+  end
+
+  def answer #validator whether user is able to answer or not
+    render :json => {}
   end
 end
