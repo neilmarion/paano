@@ -14,7 +14,5 @@
       <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', ', :class => 'text_field', placeholder: t('.tags') %> 
     </div>
   </div>
-
-
   <%= render 'submit', f: f %>
 <% end %>
