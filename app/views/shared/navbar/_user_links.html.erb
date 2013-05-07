@@ -1,9 +1,14 @@
 <div class="container">
-  <ul class="nav pull-right">
   <% if user_signed_in? %>
-     <%= render 'shared/navbar/user_links/user_dropdown'%> 
+    <div class="pull-right">
+      <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture", class: "user_thumb_small" %> 
+    </div>
+    <ul class="nav pull-right">
+      <%= render 'shared/navbar/user_links/user_dropdown'%> 
+    </ul>
   <% else %>
-    <%= render 'shared/navbar/user_links/sign_in_with_fb_link' %>
+    <ul class="nav pull-right">
+      <%= render 'shared/navbar/user_links/sign_in_with_fb_link' %>
+    </ul>
   <% end %>
-  </ul>
 </div>
