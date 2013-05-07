@@ -18,7 +18,11 @@ file = File.read(
   File.expand_path(File.join(File.dirname(__FILE__), "development_tags_data.json")))
 @tags = ActiveSupport::JSON.decode(file)
 
-def user(uid = rand(32767))
+file = File.read(
+  File.expand_path(File.join(File.dirname(__FILE__), "test_uids.json")))
+@uids = ActiveSupport::JSON.decode(file)
+
+def user(uid = @uids[rand(19)])
   token = Devise.friendly_token[0,20]
   User.create(provider: "facebook", uid: uid, name: Faker::Name.name,
     email: Faker::Internet.email, password: token, password_confirmation: token)
