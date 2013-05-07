@@ -44,6 +44,8 @@ en:
       title: "Title of your question"
       content: "What's your question?"
       tags: "At least a tag"
+    errors:
+      login_first: "Please login first before answering a question"
   answers:
     form:
       answer: "What's your answer?" 

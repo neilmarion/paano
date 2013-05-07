@@ -36,6 +36,8 @@ gem 'bootstrap_helper'
 gem 'rails3-jquery-autocomplete'
 
 gem 'capistrano'
+gem 'pnotify-rails'
+
 
 
 # To use ActiveModel has_secure_password

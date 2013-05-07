@@ -10,20 +10,18 @@
       <%=raw sanitize(simple_format(post.content), :tags => %w(br p) ) %>
     </div>
     <%= render 'posts/post/other', post: post %>
-    <% if current_user%>
-      <% post.comments.new %>
-      <%= form_for post, :html => { :class => 'form-horizontal'} do |f| %>
-        <div class="row-fluid">
-          <div class="span11 offset1 small-grey-text">
-            <%= render 'comments/comments', post: post %>
-            <div class="control-group" id="comment_form">
-              <div class="controls">
-                <%= render 'comments/form', f: f %>
-              </div>
+    <% post.comments.new %>
+    <%= form_for post, :html => { :class => 'form-horizontal'} do |f| %>
+      <div class="row-fluid">
+        <div class="span11 offset1 small-grey-text">
+          <%= render 'comments/comments', post: post %>
+          <div class="control-group" id="comment_form">
+            <div class="controls">
+              <%= render 'comments/form', f: f %>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
