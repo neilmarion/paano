@@ -12,4 +12,6 @@
  *= require_tree
  */
 
+//= require pnotify/jquery.pnotify.default
+//= require pnotify/jquery.pnotify.default.icons
 //= require_directory ../../../vendor/assets/stylesheets/jquery-ui/
