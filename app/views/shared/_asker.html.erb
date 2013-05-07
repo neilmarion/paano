@@ -1,7 +1,12 @@
-<span class="pull-right smallest-grey-text text-align-right">
-  <%= post.class.name.downcase == 'question' ?
-    t('.asked', time_ago: time_ago_in_words(post.created_at)).html_safe : 
-    t('.answered', time_ago: time_ago_in_words(post.created_at)).html_safe %>
+<span class="pull-right smallest-grey-text text-align-right row-fluid">
+  <div class="span10">
+    <%= post.class.name.downcase == 'question' ?
+      t('.asked', time_ago: time_ago_in_words(post.created_at)).html_safe : 
+      t('.answered', time_ago: time_ago_in_words(post.created_at)).html_safe %>
     <%= t('.by') %>
     <%= link_to post.user.name, '#'%>
+  </div>
+  <div class="span2">
+    <%= image_tag "http://graph.facebook.com/#{post.user.uid}/picture" %>
+  </div>
 </span>

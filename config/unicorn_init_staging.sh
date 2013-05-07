@@ -14,7 +14,11 @@ set -e
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/deployer/apps/paanouplb_staging/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
+<<<<<<< HEAD
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
+=======
+CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E staging"
+>>>>>>> cb1d62c9830d3ed050eaa6da763b3761d4701d36
 AS_USER=deployer
 set -u
 

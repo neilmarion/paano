@@ -1,9 +1,13 @@
 <div class="container">
-  <ul class="nav pull-right">
   <% if user_signed_in? %>
-     <%= render 'shared/navbar/user_links/user_dropdown'%> 
+    <ul class="nav pull-right">
+      <%= render 'shared/navbar/user_links/user_dropdown'%> 
+    </ul>
+    <%= render 'shared/navbar/user_links/user_thumb.html.erb'%>
+    <%= render 'shared/navbar/user_links/user_reputation.html.erb'%>
   <% else %>
-    <%= render 'shared/navbar/user_links/sign_in_with_fb_link' %>
+    <ul class="nav pull-right">
+      <%= render 'shared/navbar/user_links/sign_in_with_fb_link' %>
+    </ul>
   <% end %>
-  </ul>
 </div>
