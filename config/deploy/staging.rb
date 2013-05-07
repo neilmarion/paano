@@ -7,9 +7,9 @@ set :rails_env, "staging"
 
 namespace :deploy do
   %w[start stop restart].each do |command|
-    desc "#{command} unicorn server"
+    desc "restarting nginx"
     task command, roles: :app, except: {no_release: true} do
-      #run "/etc/init.d/unicorn_#{application} #{command}"
+      sudo "service nginx restart"
     end 
   end 
 
