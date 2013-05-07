@@ -55,7 +55,7 @@ describe QuestionsController do
       describe "when user not logged in" do
         it "unsucessfully goes to posts/new" do 
           xhr :get, :new
-          response.status.should eq 401 #unauthorized access
+          should_be_unauthorized_access
         end
       end
     end
@@ -112,7 +112,7 @@ describe QuestionsController do
           expect {
             xhr :post, :create, params 
           }.to_not change(Post, :count)
-          response.status.should eq 401 #unauthorized access
+          should_be_unauthorized_access
         end
       end
     end
