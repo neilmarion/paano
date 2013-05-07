@@ -36,7 +36,6 @@ gem 'bootstrap_helper'
 gem 'rails3-jquery-autocomplete'
 
 gem 'capistrano'
-gem 'pnotify-rails'
 
 
 
