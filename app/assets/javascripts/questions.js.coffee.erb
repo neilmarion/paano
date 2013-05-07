@@ -1,2 +1,6 @@
 $ ->
   $(".text_field.new_question").autosize()
+
+  $(".new_answer").focus ->
+    alert "hello"
+    $(this).blur()
