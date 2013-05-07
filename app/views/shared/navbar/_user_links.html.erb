@@ -1,11 +1,10 @@
 <div class="container">
   <% if user_signed_in? %>
-    <div class="pull-right">
-      <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture", class: "user_thumb_small" %> 
-    </div>
     <ul class="nav pull-right">
       <%= render 'shared/navbar/user_links/user_dropdown'%> 
     </ul>
+    <%= render 'shared/navbar/user_links/user_thumb.html.erb'%>
+    <%= render 'shared/navbar/user_links/user_reputation.html.erb'%>
   <% else %>
     <ul class="nav pull-right">
       <%= render 'shared/navbar/user_links/sign_in_with_fb_link' %>
