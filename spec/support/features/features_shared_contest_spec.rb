@@ -4,7 +4,7 @@ shared_context "shared features stuff" do
   #end
  
   def page_should_have_votes_count(votes) 
-    page.should have_content I18n.t('shared.posts.reputations.votes', votes: votes)
+    page.should have_content I18n.t('posts.post.reputations.votes', votes: votes)
   end
  
   #let(:shared_let) { :some_value }
