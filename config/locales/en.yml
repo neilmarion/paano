@@ -54,6 +54,8 @@ en:
       commented: "%{time_ago} ago"
     form:
       comment: "Add a comment. Press enter to post it"
+    errors:
+      login_first: "Please login first before commenting :)"
   shared:
     home:
       left:

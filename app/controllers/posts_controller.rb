@@ -34,4 +34,8 @@ class PostsController < ApplicationController
       end
     end
   end
+
+  def comment #validator whether user is able to comment or not
+    render :json => {}
+  end
 end
