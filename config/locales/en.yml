@@ -22,6 +22,18 @@ en:
     index:
       search: "Search" 
       or: "or"
+    post:
+      title:
+        a: "A: "
+        q: "Q: "
+      reputations:
+        votes: "%{votes} votes"
+      controls:
+        expand: 'expand'
+        collapse: 'collapse'
+        share: 'share'
+        vote-up: 'vote-up'
+        vote-down: 'vote-down'
   questions:
     submit:
       post: "Post"
@@ -62,15 +74,4 @@ en:
         search: "Search"
       search_field_holder:
         ask: "Ask"
-    posts:
-      title:
-        a: "A: "
-        q: "Q: "
-      reputations:
-        votes: "%{votes} votes"
-      controls:
-        expand: 'expand'
-        collapse: 'collapse'
-        share: 'share'
-        vote-up: 'vote-up'
-        vote-down: 'vote-down'
+  
