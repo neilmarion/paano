@@ -78,4 +78,6 @@ en:
         search: "Search"
       search_field_holder:
         ask: "Ask"
-  
+  user:
+    reputations:
+      tooltip: "This is your fucking reputation! :P" 

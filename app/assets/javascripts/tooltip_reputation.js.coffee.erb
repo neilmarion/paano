@@ -1,0 +1,35 @@
+$ ->
+  tooltip = $.pnotify(
+    text: "<%= I18n.t('user.reputations.tooltip') %>"
+    hide: false
+    closer: false
+    sticker: false
+    history: false
+    animate_speed: 100
+    icon: "ui-icon ui-icon-comment"
+    
+    # Setting stack to false causes Pines Notify to ignore this notice when positioning.
+    stack: false
+    after_init: (pnotify) ->
+      
+      # Remove the notice if the user mouses over it.
+      pnotify.mouseout ->
+        pnotify.pnotify_remove()
+
+    before_open: (pnotify) ->
+      
+      # This prevents the notice from displaying when it's created.
+      pnotify.pnotify before_open: null
+      false
+  )
+
+  $(".user_reputation").mouseover ->
+    tooltip.pnotify_display()
+
+  $(".user_reputation").mouseleave ->
+    tooltip.pnotify_remove()    
+
+  $(".user_reputation").mousemove (event) ->
+    tooltip.css
+      top: event.clientY + 12
+      left: event.clientX + 12
