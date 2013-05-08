@@ -1,6 +1,6 @@
 class Answer < Post
   attr_accessible :post_id, :user_id
-  has_reputation :votes, :source => :user
+  has_reputation :votes, :source => :user, :source_of => { reputation_name: :karma, of: :user }
   belongs_to :question, :foreign_key => "post_id"
   before_create :inherit_question_attr
   after_create :increment_question_answers_count

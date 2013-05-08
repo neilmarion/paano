@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
   end
 
   def karma
-    reputation_for(:karma).to_i
-    #(reputation_for(:questioning_skill) + reputation_for(:answering_skill)).to_i
+    #reputation_for(:karma).to_i
+    (reputation_for(:questioning_skill) + reputation_for(:answering_skill)).to_i
   end
 
 end
