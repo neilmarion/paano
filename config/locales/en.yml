@@ -54,6 +54,8 @@ en:
       commented: "%{time_ago} ago"
     form:
       comment: "Add a comment. Press enter to post it"
+    errors:
+      login_first: "Please login first before commenting :)"
   shared:
     home:
       left:
@@ -76,4 +78,6 @@ en:
         search: "Search"
       search_field_holder:
         ask: "Ask"
-  
+  user:
+    reputations:
+      tooltip: "This is your fucking reputation! :P" 

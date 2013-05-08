@@ -99,4 +99,18 @@ describe PostsController do
       end
     end
   end
+
+  describe "comment" do #authentication whether or not user can comment or not on a post
+    it 'fails if user is not logged in' do
+      xhr :get, :comment, {format: :json}
+      should_be_unauthorized_access
+    end 
+
+    it 'succeeds if user is logged in' do
+      user = FactoryGirl.create(:user_facebook)
+      sign_in user    
+      xhr :get, :comment, {format: :json}
+      response.should be_success
+    end
+  end
 end

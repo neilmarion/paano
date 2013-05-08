@@ -1,0 +1,35 @@
+$ ->
+  show_stack_topleft = (type, message) ->
+    stack_topleft =
+      dir1: "down"
+      dir2: "left"
+      push: "top"
+
+    opts =
+      text: message 
+      addclass: "stack-right"
+      stack: stack_topleft
+      history: false
+      type: type
+    $.pnotify opts
+
+
+  $(".new_answer").focus ->
+    b = $(this)
+    $.ajax
+      url: "/questions/answer"
+      type: "GET"
+      dataType: "json"
+      error: ->
+        show_stack_topleft("error", "<%= I18n.t('questions.errors.login_first') %>")
+        b.blur()
+
+  $(".new_comment").focus ->
+      b = $(this)
+      $.ajax
+        url: "/posts/comment"
+        type: "GET"
+        dataType: "json"
+        error: ->
+          show_stack_topleft("error", "<%= I18n.t('comments.errors.login_first') %>")
+          b.blur()
