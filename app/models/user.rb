@@ -14,15 +14,9 @@ class User < ActiveRecord::Base
   has_many :answers
 
   has_reputation :karma,
-      :source => [
-          { :reputation => :questioning_skill },
-          { :reputation => :answering_skill } ]
-
-  has_reputation :questioning_skill,
-      :source => [{ :reputation => :votes, :of => :questions }]
-
-  has_reputation :answering_skill,
-      :source => [{ :reputation => :votes, :of => :answers }]
+    :source => [
+      {:reputation => :question_votes, :of => :questions},
+      {:reputation => :answer_votes, :of => :answers} ]
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
@@ -52,7 +46,5 @@ class User < ActiveRecord::Base
 
   def karma
     reputation_for(:karma).to_i
-    #(reputation_for(:questioning_skill) + reputation_for(:answering_skill)).to_i
   end
-
 end
