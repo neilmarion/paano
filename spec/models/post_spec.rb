@@ -34,7 +34,7 @@ describe Post do
       tag_list = "tag"
       @post_1 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
       @post_2 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
-      @post_2.add_evaluation(:votes, 10, FactoryGirl.create(:user_facebook))
+      @post_2.add_evaluation(:question_votes, 10, FactoryGirl.create(:user_facebook))
     end
 
     it 'finds posts ordered by highest reputation at descending order' do

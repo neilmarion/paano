@@ -1,6 +1,6 @@
 class Answer < Post
   attr_accessible :post_id, :user_id
-  has_reputation :votes, :source => :user, :source_of => { reputation: :karma, of: :user }
+  has_reputation :answer_votes, :source => :user, :source_of => { reputation: :karma, of: :user }
   belongs_to :question, :foreign_key => "post_id"
   before_create :inherit_question_attr
   after_create :increment_question_answers_count
@@ -13,4 +13,8 @@ class Answer < Post
     self.tag_list = self.question.tag_list.join(',')
     self.user ||= self.question.user
   end
+
+  def votes
+    reputation_for(:answer_votes).to_i
+  end 
 end

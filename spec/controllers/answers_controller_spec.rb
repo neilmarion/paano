@@ -19,6 +19,7 @@ describe AnswersController do
       @post = FactoryGirl.create(:answer, question: question)
       @params = {id: @post.id}
       @model_class = Answer
+      @rep_name = :answer_votes
       sign_in_user
     end 
   

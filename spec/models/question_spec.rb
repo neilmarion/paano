@@ -7,6 +7,11 @@ describe Question do
   it_behaves_like "a post"
   it { should validate_presence_of(:tag_list)
     .with_message(I18n.t('activerecord.errors.models.post.attributes.tag_list.blank')) }
+  it "has votes" do
+    question = FactoryGirl.create(:question)
+    question.votes
+    question.votes.should eq 0
+  end
 
   describe "filters question" do
     before(:each) do

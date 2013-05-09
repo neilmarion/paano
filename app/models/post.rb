@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
 
   scope :join_rs_reputations, 
     :joins => "LEFT JOIN rs_reputations ON posts.id = rs_reputations.target_id
-        AND rs_reputations.reputation_name = 'votes'
+        AND rs_reputations.reputation_name LIKE '%votes'
         AND rs_reputations.active = 't'"
 
   scope :where_title_and_content_matches, lambda { |query|
@@ -42,10 +42,6 @@ class Post < ActiveRecord::Base
 
   scope :paginate, lambda { |page|
     page(page).per(PAGINATION['posts_index']) }
-
-  def votes
-    reputation_for(:votes).to_i
-  end
 
   private
 
