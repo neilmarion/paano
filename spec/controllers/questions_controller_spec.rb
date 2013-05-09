@@ -163,4 +163,15 @@ describe QuestionsController do
       response.should be_success
     end
   end
+
+  describe 'voting' do
+    before(:each) do
+      @post = FactoryGirl.create(:question) 
+      @params = {id: @post.id}
+      @model_class = Question
+      sign_in_user
+    end 
+  
+    it_behaves_like "a user voted on a post"
+  end
 end

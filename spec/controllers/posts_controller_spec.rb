@@ -62,44 +62,6 @@ describe PostsController do
     end
   end
 
-  describe "voting" do
-    before(:each) do
-      @post = FactoryGirl.create(:question) 
-      @params = {id: @post.id}
-      sign_in_user
-    end
-  
-    describe  "vote_up" do
-      it "succeeds" do
-        expect{
-          xhr :put, :vote_up, @params
-        }.to change{@post.reputation_for(:votes)}.by SCORING['up']
-      end
-
-      it "fails" do
-        Question.any_instance.should_receive(:add_evaluation).and_return false 
-        expect{
-          xhr :put, :vote_up, @params
-        }.to_not change{@post.reputation_for(:votes)}.by SCORING['up']
-      end
-    end
-
-    describe "with vote_down" do
-      it "succeeds" do
-        expect{
-          xhr :get, :vote_down, @params
-        }.to change{@post.reputation_for(:votes)}.by SCORING['down']
-      end
-
-      it "fails" do
-        Question.any_instance.should_receive(:add_evaluation).and_return false 
-        expect{
-          xhr :get, :vote_down, @params
-        }.to_not change{@post.reputation_for(:votes)}.by SCORING['down']
-      end
-    end
-  end
-
   describe "comment" do #authentication whether or not user can comment or not on a post
     it 'fails if user is not logged in' do
       xhr :get, :comment, {format: :json}

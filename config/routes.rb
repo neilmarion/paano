@@ -5,6 +5,8 @@ Ppm::Application.routes.draw do
       get :mine
       get :unanswered
       get :answer
+      get :vote_up
+      get :vote_down
     end
   end
 
@@ -14,14 +16,14 @@ Ppm::Application.routes.draw do
       get :autocomplete_tag_name
       get :comment
     end
+  end
 
-    member do
+  resources :answers do
+    collection do
       get :vote_up
       get :vote_down
     end
   end
-
-  resources :answers
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
                      controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
