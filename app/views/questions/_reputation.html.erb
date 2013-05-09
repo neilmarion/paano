@@ -1,6 +1,6 @@
 <div class="reputation_with_vote_links">
   <div class="vote-lnk">
-    <%= link_to vote_up_questions_path(post), remote: true, class: "vote-up" do %>
+    <%= link_to post.class.name == Question.name ? vote_up_question_path(post) : vote_up_answer_path(post), remote: true, class: "vote-up" do %>
       <div class="icon-chevron-up-div">
         <i class="icon-chevron-up"></i>
       </div>
@@ -11,7 +11,7 @@
       post.reputation_for(:answer_votes).to_i %>
   </div>
   <div class="vote-lnk">
-    <%= link_to vote_down_questions_path(post), remote: true, class: "vote-up" do %>
+    <%= link_to post.class.name == Question.name ? vote_down_question_path(post) : vote_down_answer_path(post), remote: true, class: "vote-down" do %>
       <div class="icon-chevron-up-div">
         <i class="icon-chevron-down"></i>
       </div>

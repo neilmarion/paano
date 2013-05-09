@@ -11,7 +11,7 @@ $ ->
 
   $(".vote-down").on "click", ->
     vote_down = $(this) 
-    console.log 
+    console.log(vote_down.attr('href'))
     $.ajax
       url: vote_down.attr('href')
       type: "GET"

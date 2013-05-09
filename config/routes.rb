@@ -1,10 +1,14 @@
 Ppm::Application.routes.draw do
   root :to => 'posts#index'
+
   resources :questions do
     collection do
       get :mine
       get :unanswered
       get :answer
+    end
+
+    member do
       get :vote_up
       get :vote_down
     end
@@ -19,7 +23,7 @@ Ppm::Application.routes.draw do
   end
 
   resources :answers do
-    collection do
+    member do
       get :vote_up
       get :vote_down
     end
