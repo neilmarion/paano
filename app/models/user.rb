@@ -47,4 +47,12 @@ class User < ActiveRecord::Base
   def karma
     reputation_for(:karma).to_i
   end
+
+  def voted_up_for?(post)
+    ReputationSystem::Evaluation.exists?(source_id: id, target_id: post.id, value: SCORING['up'])
+  end
+
+  def voted_down_for?(post)
+    ReputationSystem::Evaluation.exists?(source_id: id, target_id: post.id, value: SCORING['down'])
+  end
 end
