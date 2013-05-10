@@ -75,4 +75,14 @@ describe PostsController do
       response.should be_success
     end
   end
+
+  describe "recent" do
+    it 'returns all the posts from the most recent to the oldest' do
+      post_1 = FactoryGirl.create(:question, title: 'title', content: 'content', tag_list: 'tag_list')
+      post_2 = FactoryGirl.create(:question, title: 'title', content: 'content', tag_list: 'tag_list')
+      
+      xhr :get, :recent
+      assigns(:posts).should eq [post_2, post_1]
+    end
+  end
 end

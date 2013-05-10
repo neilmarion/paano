@@ -19,6 +19,7 @@ Ppm::Application.routes.draw do
       get :top
       get :autocomplete_tag_name
       get :comment
+      get :recent
     end
   end
 
