@@ -1,4 +1,5 @@
 <div class="post_controls">
+<% unless post.content == post.truncated_content %>
   <span class="post_control">
     <%= link_to '#', class: 'preview_expand' do %>
       <i class="icon-plus"></i>
@@ -9,6 +10,7 @@
       <%= t('.collapse') %>      
     <% end %>
   </span>
+<% end %>
   <span class="post_control">
     <%= link_to '#' do %>
       <i class="icon-share"></i>

@@ -1,5 +1,5 @@
 <div class="reputation_with_vote_links">
-  <div class="<%= current_user.voted_up_for?(post) ? "voted-up" : "vote-lnk"%>">
+  <div class="<%= current_user && current_user.voted_up_for?(post) ? "voted-up" : "vote-lnk"%>">
     <%= link_to post.class.name == Question.name ? vote_up_question_path(post) : vote_up_answer_path(post), remote: true, class: "vote-up" do %>
       <div class="icon-chevron-up-div">
         <i class="icon-chevron-up"></i>
@@ -9,7 +9,7 @@
   <div class="vote-count">
     <%= post.vote_count %>
   </div>
-  <div class="<%= current_user.voted_down_for?(post) ? "voted-down" : "vote-lnk"%>">
+  <div class="<%= current_user && current_user.voted_down_for?(post) ? "voted-down" : "vote-lnk"%>">
     <%= link_to post.class.name == Question.name ? vote_down_question_path(post) : vote_down_answer_path(post), remote: true, class: "vote-down" do %>
       <div class="icon-chevron-up-div">
         <i class="icon-chevron-down"></i>

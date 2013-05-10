@@ -43,6 +43,10 @@ class Post < ActiveRecord::Base
   scope :paginate, lambda { |page|
     page(page).per(PAGINATION['posts_index']) }
 
+  def truncated_content
+    content.truncate(200) 
+  end
+
   private
 
   def self.rank(query)

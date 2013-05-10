@@ -1,5 +1,5 @@
 <div class="preview-div collapsed">
-  <%=raw sanitize(simple_format(truncate(post.content, :length => 200)), :tags => %w(br p) ) %>
+  <%=raw sanitize(simple_format(post.truncated_content), :tags => %w(br p) ) %>
 </div>
 <div class="preview-div expanded">
   <p>
