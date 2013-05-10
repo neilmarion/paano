@@ -23,5 +23,10 @@
         </div>
       </div>
     <% end %>
+    <% if current_user && current_user.own_post?(post) %>
+      <div class="edit_post">
+        <%= render 'form' %>
+      </div>
+    <% end %>
   </div>
 </div>
