@@ -2,6 +2,8 @@ scoring: &scoring
   accepted: 15
   up: 10
   down: -2
+  vote_up: 1
+  vote_down: -1
 development:
   <<: *scoring
 

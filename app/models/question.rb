@@ -2,6 +2,7 @@ class Question < Post
   attr_accessible :answers_attributes
   validates_presence_of :title, :tag_list
   has_reputation :question_reputation, :source => :user, :source_of => { reputation: :karma, of: :user }
+  has_reputation :question_vote_count, :source => :user
   has_many :answers, :foreign_key => "post_id"
   accepts_nested_attributes_for :answers, :allow_destroy => true
 
@@ -14,5 +15,9 @@ class Question < Post
 
   def votes
     reputation_for(:question_reputation).to_i
+  end
+
+  def vote_count
+    reputation_for(:question_vote_count).to_i
   end
 end

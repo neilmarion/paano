@@ -15,4 +15,13 @@ describe Answer do
     question.answers.create(content: "Answer")
     question.answers.first.tags.should eq question.tags
   end
+
+  describe "vote_count reputation" do
+    before(:each) do
+      @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))
+      @rep = :answer_vote_count
+    end
+
+    it_behaves_like "it has vote_count reputation"
+  end
 end
