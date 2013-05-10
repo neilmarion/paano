@@ -7,8 +7,8 @@
     <% end %>
   </div>
   <div class="vote-count">
-    <%= post.class.name == Question.name ? post.reputation_for(:question_votes).to_i : 
-      post.reputation_for(:answer_votes).to_i %>
+    <%= post.class.name == Question.name ? post.reputation_for(:question_reputation).to_i : 
+      post.reputation_for(:answer_reputation).to_i %>
   </div>
   <div class="vote-lnk">
     <%= link_to post.class.name == Question.name ? vote_down_question_path(post) : vote_down_answer_path(post), remote: true, class: "vote-down" do %>

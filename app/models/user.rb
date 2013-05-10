@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
 
   has_reputation :karma,
     :source => [
-      {:reputation => :question_votes, :of => :questions},
-      {:reputation => :answer_votes, :of => :answers} ]
+      {:reputation => :question_reputation, :of => :questions},
+      {:reputation => :answer_reputation, :of => :answers} ]
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)

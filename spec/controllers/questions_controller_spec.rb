@@ -169,7 +169,7 @@ describe QuestionsController do
       @post = FactoryGirl.create(:question) 
       @params = {id: @post.id}
       @model_class = Question
-      @rep_name = :question_votes 
+      @rep_name = :question_reputation 
       sign_in_user
     end 
   

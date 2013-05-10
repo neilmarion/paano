@@ -8,14 +8,14 @@ describe User do
 
   it "should give user's reputation when a question is voted on" do
     question = FactoryGirl.create(:question)    
-    question.add_evaluation(:question_votes, 1, FactoryGirl.create(:user_facebook))
-    question.user.karma.should eq question.reputation_for(:question_votes)
+    question.add_evaluation(:question_reputation, 1, FactoryGirl.create(:user_facebook))
+    question.user.karma.should eq question.reputation_for(:question_reputation)
   end
 
   it "should give user's reputation when an answer is voted on" do
     question = FactoryGirl.create(:question)
     answer = FactoryGirl.create(:answer, question: question)    
-    answer.add_evaluation(:answer_votes, 1, FactoryGirl.create(:user_facebook))
-    answer.user.karma.should eq answer.reputation_for(:answer_votes)
+    answer.add_evaluation(:answer_reputation, 1, FactoryGirl.create(:user_facebook))
+    answer.user.karma.should eq answer.reputation_for(:answer_reputation)
   end
 end

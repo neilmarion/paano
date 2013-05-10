@@ -9,7 +9,7 @@ describe "Filtering top questions i.e. clicking the 'Top' link at home" do
     tag_list = "tag"
     @post_1 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
     @post_2 = FactoryGirl.create(:question, title: title, content: content, tag_list: tag_list)
-    @post_2.add_evaluation(:question_votes, 10, FactoryGirl.create(:user_facebook))
+    @post_2.add_evaluation(:question_reputation, 10, FactoryGirl.create(:user_facebook))
     visit root_path
     current_path.should eq root_path 
   end
