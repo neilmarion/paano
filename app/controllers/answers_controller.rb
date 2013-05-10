@@ -17,7 +17,8 @@ class AnswersController < ApplicationController
     @answer = Answer.find params[:id]
     respond_to do |format|
       if @answer.add_evaluation(:answer_reputation, SCORING['up'], current_user)
-        format.json { render :json => {votes: @answer.reputation_for(:answer_reputation).to_i} }
+        @answer.add_evaluation(:answer_vote_count, SCORING['vote_up'], current_user)
+        format.json { render :json => {votes: @answer.reputation_for(:answer_vote_count).to_i} }
       else
         format.json { render :json => @answer.errors.full_messages.to_sentence }
       end
@@ -28,7 +29,8 @@ class AnswersController < ApplicationController
     @answer = Answer.find params[:id]
     respond_to do |format|
       if @answer.add_evaluation(:answer_reputation, SCORING['down'], current_user)
-        format.json { render :json => {votes: @answer.reputation_for(:answer_reputation).to_i} }
+        @answer.add_evaluation(:answer_vote_count, SCORING['vote_down'], current_user)
+        format.json { render :json => {votes: @answer.reputation_for(:answer_vote_count).to_i} }
       else
         format.json { render :json => @answer.errors.full_messages.to_sentence }
       end

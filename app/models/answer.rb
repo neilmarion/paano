@@ -20,6 +20,6 @@ class Answer < Post
   end 
 
   def vote_count
-    reputation_for(:answer_vote_count) 
+    reputation_for(:answer_vote_count).to_i
   end
 end

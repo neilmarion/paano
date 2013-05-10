@@ -28,30 +28,38 @@ shared_examples "a user voted on a post" do
   describe  "vote_up" do
     it "succeeds" do
       expect{
-        xhr :put, :vote_up, @params
-      }.to change{@post.reputation_for(@rep_name)}.by SCORING['up']
+        expect{
+          xhr :put, :vote_up, @params
+        }.to change{@post.reputation_for(@rep_name)}.by SCORING['up']
+      }.to change(@post, :vote_count).by SCORING['vote_up']
     end 
 
     it "fails" do
       @model_class.any_instance.should_receive(:add_evaluation).and_return false 
       expect{
-        xhr :put, :vote_up, @params
-      }.to_not change{@post.reputation_for(@rep_name)}.by SCORING['up']
+        expect{
+          xhr :put, :vote_up, @params
+        }.to_not change{@post.reputation_for(@rep_name)}
+      }.to_not change(@post, :vote_count)
     end 
   end 
 
   describe "with vote_down" do
     it "succeeds" do
       expect{
-        xhr :get, :vote_down, @params
-      }.to change{@post.reputation_for(@rep_name)}.by SCORING['down']
+        expect{
+          xhr :get, :vote_down, @params
+        }.to change{@post.reputation_for(@rep_name)}.by SCORING['down']
+      }.to change(@post, :vote_count).by SCORING['vote_down']
     end 
 
     it "fails" do
       @model_class.any_instance.should_receive(:add_evaluation).and_return false 
       expect{
-        xhr :get, :vote_down, @params
-      }.to_not change{@post.reputation_for(@rep_name)}.by SCORING['down']
+        expect{
+          xhr :get, :vote_down, @params
+        }.to_not change{@post.reputation_for(@rep_name)}
+      }.to_not change(@post, :vote_count)
     end 
   end 
 end
