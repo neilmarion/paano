@@ -1,3 +1,6 @@
 <div class="reputations_div">
-  <span class="reputation-span"><%= t('.votes', votes: post.vote_count) %></span> 
+  <span class="reputation-span">
+    <%= t('.votes', votes: post.vote_count) %>,
+    <%= t('.answers', answers_count: post.answers.count) if post.class == Question%>
+  </span> 
 </div>

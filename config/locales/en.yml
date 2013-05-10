@@ -28,6 +28,7 @@ en:
         q: "Q: "
       reputations:
         votes: "%{votes} votes"
+        answers: "%{answers_count} answers"
       controls:
         expand: 'expand'
         collapse: 'collapse'
