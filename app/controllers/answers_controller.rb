@@ -7,8 +7,10 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.json { render :json => {name: current_user.name } }
+        format.html { redirect_to @answer.question }
       else
         format.json { render :json => @answer.errors.full_messages.to_sentence } #output javascript messages
+        format.html { redirect_to @answer.question }
       end
     end
   end

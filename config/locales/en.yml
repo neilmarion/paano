@@ -50,6 +50,10 @@ en:
   answers:
     form:
       answer: "What's your answer?" 
+    edit_form:
+      answer: "What's your answer?" 
+    update_submit:
+      update: "Update"
   comments:
     comment:
       commented: "%{time_ago} ago"

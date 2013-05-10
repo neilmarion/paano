@@ -1,32 +1,46 @@
-<div class="row-fluid <%= post.class.name.downcase %>">
-  <div class="span1">
-    <%= render 'reputation', post: post %>    
-  </div>
-  <div class="span11">
-    <div>
-      <h3><%= post.title %></h3>
+<div class="row-fluid <%= post.class.name.downcase %> question-show-row">
+  <div class="post">
+    <div class="span1">
+      <%= render 'reputation', post: post %>    
     </div>
-    <div>
-      <%=raw sanitize(simple_format(post.content), :tags => %w(br p) ) %>
-    </div>
-    <%= render 'posts/post/other', post: post %>
-    <% post.comments.new %>
-    <%= form_for post, :html => { :class => 'form-horizontal'} do |f| %>
-      <div class="row-fluid">
-        <div class="span11 offset1 small-grey-text">
-          <%= render 'comments/comments', post: post %>
-          <div class="control-group" id="comment_form">
-            <div class="controls">
-              <%= render 'comments/form', f: f %>
+    <div class="span11">
+      <div>
+        <h3><%= post.title %></h3>
+      </div>
+      <div class="post-row">
+        <div>
+          <%=raw sanitize(simple_format(post.content), :tags => %w(br p) ) %>
+        </div>
+        <% if current_user && current_user.own_post?(post) %>
+          <div>
+            <%= render 'questions/post/controls' %>
+          </div>
+        <% else %>
+        <% end %>
+      </div>
+      <%= render 'posts/post/other', post: post %>
+      <% post.comments.new %>
+      <%= form_for post, :html => { :class => 'form-horizontal'} do |f| %>
+        <div class="row-fluid">
+          <div class="span11 offset1 small-grey-text">
+            <%= render 'comments/comments', post: post %>
+            <div class="control-group" id="comment_form">
+              <div class="controls">
+                <%= render 'comments/form', f: f %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-    <% if current_user && current_user.own_post?(post) %>
-      <div class="edit_post">
-        <%= render 'form' %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+  <% if current_user && current_user.own_post?(post) %>
+    <div class="edit-post">
+      <% if post.class == Question%>
+        <%= render 'form' %>
+      <% elsif post.class == Answer %>
+        <%= render 'answers/edit_form', post: post%>
+      <% end %>
+    </div>
+  <% end %>
 </div>
