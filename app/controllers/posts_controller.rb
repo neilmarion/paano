@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def recent
-    @posts = Post.order('created_at DESC').paginate params[:page]
+    @posts = Post.where_post_is_not_a_comment.order('created_at DESC').paginate params[:page]
     render :index
   end
 
