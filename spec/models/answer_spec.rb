@@ -4,7 +4,7 @@ describe Answer do
   it { should belong_to :question }
   it_behaves_like "a post"
 
-  it "has votes" do
+  it "has reputation" do
     question = FactoryGirl.create(:question)
     answer = FactoryGirl.create(:answer, question: question)
     answer.reputation.should eq 0
@@ -20,8 +20,19 @@ describe Answer do
     before(:each) do
       @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))
       @rep = :answer_vote_count
+      @method = :vote_count
     end
 
-    it_behaves_like "it has vote_count reputation"
+    it_behaves_like "it has a reputation"
+  end
+
+  describe "reputation" do
+    before(:each) do
+      @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))
+      @rep = :answer_reputation
+      @method = :reputation
+    end
+
+    it_behaves_like "it has a reputation"
   end
 end
