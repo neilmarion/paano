@@ -1,4 +1,4 @@
-et :user, "deployer"
+set :user, "deployer"
 set :branch, "master"
 set :application, "paanouplb"
 set :deploy_to, "/home/#{user}/apps/#{application}"
