@@ -13,6 +13,6 @@ describe "Filtering questions without an answer i.e. clicking the 'Unanswered' l
     click_link I18n.t('.shared.home.left.unanswered') 
     page.should_not have_content @question_with_an_answer.title
     page.should have_content @question.title
-    page_should_have_votes_count(@question.votes)
+    page_should_have_votes_count(@question.reputation)
   end
 end

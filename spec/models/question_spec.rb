@@ -10,8 +10,7 @@ describe Question do
 
   it "has reputation" do
     question = FactoryGirl.create(:question)
-    question.votes
-    question.votes.should eq 0
+    question.reputation.should eq 0
   end
 
   describe "vote_count reputation" do

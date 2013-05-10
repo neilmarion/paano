@@ -16,7 +16,7 @@ describe "Searching" do
       visit root_path
       page.should have_content @question.title
       page.should have_css(".post-row", count: 1)
-      page_should_have_votes_count @question.votes
+      page_should_have_votes_count @question.reputation
     end
   end 
 

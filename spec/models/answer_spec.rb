@@ -7,7 +7,7 @@ describe Answer do
   it "has votes" do
     question = FactoryGirl.create(:question)
     answer = FactoryGirl.create(:answer, question: question)
-    answer.votes.should eq 0
+    answer.reputation.should eq 0
   end 
 
   it "inherits the tags of the parent on create" do

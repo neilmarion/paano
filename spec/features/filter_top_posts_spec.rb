@@ -16,7 +16,7 @@ describe "Filtering top questions i.e. clicking the 'Top' link at home" do
 
   it "filters questions without an answer" do
     page.body.should =~ /#{@post_2.title}.*#{@post_1.title}/ 
-    page_should_have_votes_count(@post_1.votes)
-    page_should_have_votes_count(@post_2.votes)
+    page_should_have_votes_count(@post_1.reputation)
+    page_should_have_votes_count(@post_2.reputation)
   end
 end

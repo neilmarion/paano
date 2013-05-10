@@ -15,7 +15,7 @@ class Answer < Post
     self.user ||= self.question.user
   end
 
-  def votes
+  def reputation 
     reputation_for(:answer_reputation).to_i
   end 
 

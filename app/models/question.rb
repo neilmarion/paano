@@ -13,7 +13,7 @@ class Question < Post
     Question.where("answers_count = 0")
   end
 
-  def votes
+  def reputation 
     reputation_for(:question_reputation).to_i
   end
 
