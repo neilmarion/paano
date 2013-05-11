@@ -179,7 +179,7 @@ describe QuestionsController do
   describe 'destroy' do
     before(:each) do
       @question = FactoryGirl.create(:question) 
-      @answer = FactoryGirl.create(:answer, question: question)
+      @answer = FactoryGirl.create(:answer, question: @question)
       @comment = FactoryGirl.create(:comment, post: @answer)
     end 
 

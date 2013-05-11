@@ -30,6 +30,8 @@ Ppm::Application.routes.draw do
     end
   end
 
+  resources :comments
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
                      controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
