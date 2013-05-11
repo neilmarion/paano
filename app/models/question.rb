@@ -3,7 +3,7 @@ class Question < Post
   validates_presence_of :title, :tag_list
   has_reputation :question_reputation, :source => :user, :source_of => { reputation: :karma, of: :user }
   has_reputation :question_vote_count, :source => :user
-  has_many :answers, :foreign_key => "post_id"
+  has_many :answers, :foreign_key => "post_id", :dependent => :destroy
   accepts_nested_attributes_for :answers, :allow_destroy => true
 
   scope :paginate, lambda { |page|

@@ -175,4 +175,33 @@ describe QuestionsController do
   
     it_behaves_like "a user voted on a post"
   end
+
+  describe 'destroy' do
+    before(:each) do
+      @question = FactoryGirl.create(:question) 
+      @answer = FactoryGirl.create(:answer, question: question)
+      @comment = FactoryGirl.create(:comment, post: @answer)
+    end 
+
+    it "will destroy it and the associated records" do
+      expect{
+        expect{
+          expect{
+            xhr :post, :destroy, {id: @question.id}  
+          }.to change(Question, :count).by -1
+        }.to change(Answer, :count).by -1
+      }.to change(Comment, :count).by -1
+    end 
+
+    it "will fail to destroy the record" do
+      Answer.any_instance.should_receive(:destroy).and_return false
+      expect{
+        expect{
+          expect{
+            xhr :post, :destroy, {id: @question.id}  
+          }.to_not change(Question, :count)
+        }.to_not change(Answer, :count)
+      }.to_not change(Comment, :count)
+    end 
+  end
 end

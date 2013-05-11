@@ -46,4 +46,22 @@ describe Post do
       Post.find_top_posts.should eq [@post_2, @post_1]
     end
   end
+
+  describe 'destroy' do
+    before(:each) do
+      @question = FactoryGirl.create(:question) 
+      @answer = FactoryGirl.create(:answer, question: @question)
+      @comment = FactoryGirl.create(:comment, post: @answer)
+    end
+
+    it "destroys the activerecord and all the related records" do
+      expect{
+        expect{
+          expect{
+            @question.destroy
+          }.to change(Question, :count).by -1
+        }.to change(Answer, :count).by -1
+      }.to change(Comment, :count).by -1
+    end
+  end
 end

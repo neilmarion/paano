@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :content
   belongs_to :user
 
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   accepts_nested_attributes_for :comments, :allow_destroy => true
   has_many :evaluations, class_name: "RSEvaluation", as: :source
