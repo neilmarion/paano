@@ -14,5 +14,9 @@
       <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, :"data-delimiter" => ', ', :class => 'text_field', placeholder: t('.tags') %> 
     </div>
   </div>
-  <%= render 'submit', f: f %>
+  <% if @question.new_record? %>
+    <%= render 'submit', f: f %>
+  <% else %>
+    <%= render 'update_submit', f: f %>
+  <% end %>
 <% end %>

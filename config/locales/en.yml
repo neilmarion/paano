@@ -38,6 +38,8 @@ en:
   questions:
     submit:
       post: "Post"
+    update_submit:
+      update: "Update"
     show:
       answer: 'Answer this question'
     notice: "Successfully answered question"
