@@ -35,6 +35,7 @@ en:
         share: 'share'
         vote-up: 'vote-up'
         vote-down: 'vote-down'
+        unvote: 'unvote'
   questions:
     submit:
       post: "Post"

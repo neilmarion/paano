@@ -1,0 +1,46 @@
+$ ->
+  #inside questions/
+  $(".vote-up").on "click", ->
+    vote_up = $(this) 
+    $.ajax
+      url: vote_up.attr('href')
+      type: "GET"
+      success: (data) ->
+        vote_up.closest(".reputation_with_vote_links").find(".vote-count").html(data['votes'])
+        vote_up.closest(".vote-lnk").attr('class', 'voted-up')
+
+  $(".vote-down").on "click", ->
+    vote_down = $(this) 
+    $.ajax
+      url: vote_down.attr('href')
+      type: "GET"
+      success: (data) ->
+        vote_down.closest(".reputation_with_vote_links").find(".vote-count").html(data['votes'])
+        vote_down.closest(".vote-lnk").attr('class', 'voted-down')
+
+  #in posts index
+
+  #inside questions/
+
+  replace_by_unvote = (e) ->
+    post_controls = e.closest(".post_controls")
+    post_controls.append("<span class='post_control'><a href='#'><i class='icon-refresh'></i><%= I18n.t('.posts.post.controls.unvote') %></a></span>")
+    post_controls.find('.post-index-vote-down').closest('.post_control').remove()
+    post_controls.find('.post-index-vote-up').closest('.post_control').remove()
+
+  $(".post-index-vote-up").on "click", ->
+    vote_up = $(this) 
+    $.ajax
+      url: vote_up.attr('href')
+      type: "GET"
+      success: (data) ->
+        replace_by_unvote(vote_up)
+
+  $(".post-index-vote-down").on "click", ->
+    vote_down = $(this) 
+    $.ajax
+      url: vote_down.attr('href')
+      type: "GET"
+      success: (data) ->
+        vote_down.closest(".post_controls").find(".vote-count").html(data['votes'])
+
