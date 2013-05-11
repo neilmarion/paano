@@ -22,11 +22,12 @@ $ ->
 
   #inside questions/
 
-  replace_by_unvote = (e) ->
+  replace_by_unvote = (e, data) ->
     post_controls = e.closest(".post_controls")
     post_controls.append("<span class='post_control'><a href='#'><i class='icon-refresh'></i><%= I18n.t('.posts.post.controls.unvote') %></a></span>")
     post_controls.find('.post-index-vote-down').closest('.post_control').remove()
     post_controls.find('.post-index-vote-up').closest('.post_control').remove()
+    post_controls.closest('td').find('.vote-count-reputation').html(data['votes']+" <%= I18n.t('.posts.post.reputations.votes', votes: '') %>")
 
   $(".post-index-vote-up").on "click", ->
     vote_up = $(this) 
@@ -34,7 +35,7 @@ $ ->
       url: vote_up.attr('href')
       type: "GET"
       success: (data) ->
-        replace_by_unvote(vote_up)
+        replace_by_unvote(vote_up, data)
 
   $(".post-index-vote-down").on "click", ->
     vote_down = $(this) 
@@ -42,5 +43,5 @@ $ ->
       url: vote_down.attr('href')
       type: "GET"
       success: (data) ->
-        vote_down.closest(".post_controls").find(".vote-count").html(data['votes'])
+        replace_by_unvote(vote_down, data)
 

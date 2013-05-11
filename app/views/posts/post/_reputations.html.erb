@@ -1,6 +1,10 @@
 <div class="reputations_div">
-  <span class="reputation-span">
-    <%= t('.votes', votes: post.vote_count) %>,
-    <%= t('.answers', answers_count: post.answers.count) if post.class == Question%>
-  </span> 
+  <div class="reputation-span row-fluid">
+    <div class="vote-count-reputation pull-left">
+      <%= t('.votes', votes: post.vote_count) %>
+    </div>
+    <div class="answer-count pull-left">
+      <%= ", #{t('.answers', answers_count: post.answers.count)}" if post.class == Question%>
+    </div>
+  </div> 
 </div>
