@@ -184,6 +184,10 @@ describe QuestionsController do
     end 
 
     describe "user signed in" do
+      before(:each) do
+        sign_in_user
+      end
+  
       it "will destroy it and the associated records" do
         expect{
           expect{
@@ -195,7 +199,7 @@ describe QuestionsController do
       end 
 
       it "will fail to destroy the record" do
-        Answer.any_instance.should_receive(:destroy).and_return false
+        Question.any_instance.should_receive(:destroy).and_return false
         expect{
           expect{
             expect{

@@ -76,4 +76,13 @@ class QuestionsController < ApplicationController
       end 
     end 
   end
+
+  def destroy
+    @question = Question.find(params[:id]) 
+    if @question.destroy
+      redirect_to mine_questions_path
+    else
+      render :show
+    end 
+  end
 end
