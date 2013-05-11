@@ -17,18 +17,27 @@
       <%= t('.share') %>      
     <% end %>
   </span>
+<% unless current_user.voted_for?(post)%>
   <span class="post_control">
-    <%= link_to '#' do %>
+  <%= link_to post.class.name == Question.name ? vote_up_question_path(post) : vote_up_answer_path(post), remote: true, class: "post-index-vote-up" do %>
       <i class="icon-chevron-up"></i>
       <%= t('.vote-up') %>      
     <% end %>
   </span>
   <span class="post_control">
-    <%= link_to '#' do %>
+    <%= link_to post.class.name == Question.name ? vote_down_question_path(post) : vote_down_answer_path(post), remote: true, class: "post-index-vote-down" do %>
       <i class="icon-chevron-down"></i>
       <%= t('.vote-down') %>      
     <% end %>
   </span>
+<% else %>
+   <span class="post_control">
+    <%= link_to '#' do %>
+      <i class="icon-refresh"></i>
+      <%= t('.unvote') %>    
+    <% end %>
+  </span> 
+<% end %>
 </div>
 
 <div class="post_controls_hide">

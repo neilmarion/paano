@@ -47,22 +47,33 @@ describe User do
         @user.voted_down_for?(@answer).should eq false 
       end
     end
-  
-    describe "is own post?" do
-      before(:each) do
-        @user = FactoryGirl.create(:user_facebook)
-        @question = FactoryGirl.create(:question, user: @user)
-        
-      end
 
+    describe "voted for" do
       it "is true" do
-        @user.own_post?(@question).should eq true
+        @question.add_evaluation(:question_reputation, SCORING['down'], @user)
+        @user.voted_for?(@question).should eq true 
       end
 
       it "is false" do
-        @answer = FactoryGirl.create(:answer, question: @question)
-        @user.own_post?(@answer).should eq false
+        @user.voted_for?(@answer).should eq false 
       end
+    end
+  end
+
+  describe "is own post?" do
+    before(:each) do
+      @user = FactoryGirl.create(:user_facebook)
+      @question = FactoryGirl.create(:question, user: @user)
+      
+    end
+
+    it "is true" do
+      @user.own_post?(@question).should eq true
+    end
+
+    it "is false" do
+      @answer = FactoryGirl.create(:answer, question: @question)
+      @user.own_post?(@answer).should eq false
     end
   end
 end

@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     ReputationSystem::Evaluation.exists?(source_id: id, target_id: post.id, value: SCORING['down'])
   end
 
+  def voted_for?(post)
+    ReputationSystem::Evaluation.exists?(source_id: id, target_id: post.id)
+  end
+
   def own_post?(post)
     case post.class.name
     when "Question"
