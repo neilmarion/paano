@@ -1,7 +1,7 @@
 <div class="form-actions row-fluid">
   <div class="span6 pull-left">
-    <%= f.submit t('.update'), :class => 'btn btn-violet btn-small', :id => 'post_button' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-              request.env['HTTP_REFERER'], :class => 'btn btn-cancel btn-small', :id => 'cancel_link' %>
+    <%= f.submit t('.update'), :class => 'btn btn-violet btn-small update-answer' %>
+    <%= link_to t('.cancel'),
+              '#', :remote => true, :class => 'btn btn-cancel btn-small cancel-update' %>
   </div>
 </div>

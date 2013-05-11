@@ -56,6 +56,7 @@ en:
       answer: "What's your answer?" 
     update_submit:
       update: "Update"
+      cancel: "Cancel"
   comments:
     comment:
       commented: "%{time_ago} ago"

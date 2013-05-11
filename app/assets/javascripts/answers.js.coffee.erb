@@ -5,3 +5,8 @@
 
 $ ->
   $(".text_field.new_answer").autosize()
+
+  $(".cancel-update").on "click", ->
+    $(this).closest(".question-show-row").find('.post').toggle()
+    $(this).closest(".question-show-row").find('.edit-post').toggle()
+    false
