@@ -6,7 +6,25 @@
 $ ->
   $(".text_field.new_answer").autosize()
 
+  toggle = (e) ->
+    e.closest(".question-show-row").find('.post').toggle()
+    e.closest(".question-show-row").find('.edit-post').toggle()
+
   $(".cancel-update").on "click", ->
-    $(this).closest(".question-show-row").find('.post').toggle()
-    $(this).closest(".question-show-row").find('.edit-post').toggle()
+    toggle($(this)) 
     false
+
+  $(".update-answer").on "click", ->
+    form = $(this).closest("form")
+    update_answer = $(this)
+    $.ajax
+      url: form.attr('action')
+      type: "PUT"
+      dataType: "json"
+      data: form.serialize()
+      success: (data) ->
+        toggle(update_answer)
+        post_content = update_answer.closest(".question-show-row").find('.post-content')
+        console.log post_content.attr('class')
+        post_content.html(data['content'])
+
