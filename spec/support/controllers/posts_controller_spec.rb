@@ -63,3 +63,12 @@ shared_examples "a user voted on a post" do
     end 
   end 
 end
+
+shared_examples "a user not signed in attempted to delete a post" do
+  it "will fail to destroy the record" do
+    expect{
+      xhr :post, :destroy, {id: @comment.id}
+    }.to_not change(Comment, :count)
+    should_be_unauthorized_access 
+  end
+end

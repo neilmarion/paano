@@ -30,12 +30,12 @@ describe CommentsController do
     end
 
     describe "user not signed in" do
-      it "will fail to destroy the record" do
-        expect{
-          xhr :post, :destroy, {id: @comment.id}
-        }.to_not change(Comment, :count)
-        should_be_unauthorized_access 
+      before(:each) do
+        @post = @comment
+        @model_class = @post.class
       end
+  
+      it_behaves_like "a user not signed in attempted to delete a post"
     end
   end
 end

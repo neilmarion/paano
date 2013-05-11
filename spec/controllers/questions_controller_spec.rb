@@ -183,25 +183,36 @@ describe QuestionsController do
       @comment = FactoryGirl.create(:comment, post: @answer)
     end 
 
-    it "will destroy it and the associated records" do
-      expect{
+    describe "user signed in" do
+      it "will destroy it and the associated records" do
         expect{
           expect{
-            xhr :post, :destroy, {id: @question.id}  
-          }.to change(Question, :count).by -1
-        }.to change(Answer, :count).by -1
-      }.to change(Comment, :count).by -1
-    end 
+            expect{
+              xhr :post, :destroy, {id: @question.id}  
+            }.to change(Question, :count).by -1
+          }.to change(Answer, :count).by -1
+        }.to change(Comment, :count).by -1
+      end 
 
-    it "will fail to destroy the record" do
-      Answer.any_instance.should_receive(:destroy).and_return false
-      expect{
+      it "will fail to destroy the record" do
+        Answer.any_instance.should_receive(:destroy).and_return false
         expect{
           expect{
-            xhr :post, :destroy, {id: @question.id}  
-          }.to_not change(Question, :count)
-        }.to_not change(Answer, :count)
-      }.to_not change(Comment, :count)
-    end 
+            expect{
+              xhr :post, :destroy, {id: @question.id}  
+            }.to_not change(Question, :count)
+          }.to_not change(Answer, :count)
+        }.to_not change(Comment, :count)
+      end 
+    end
+
+    describe "user not signed in" do
+      before(:each) do
+        @post = @question
+        @model_class = @post.class
+      end
+  
+      it_behaves_like "a user not signed in attempted to delete a post"
+    end
   end
 end
