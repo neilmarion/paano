@@ -17,7 +17,7 @@
       <%= t('.share') %>      
     <% end %>
   </span>
-<% unless current_user.voted_for?(post)%>
+<% unless current_user && current_user.voted_for?(post)%>
   <span class="post_control">
   <%= link_to post.class.name == Question.name ? vote_up_question_path(post) : vote_up_answer_path(post), remote: true, class: "post-index-vote-up" do %>
       <i class="icon-chevron-up"></i>
