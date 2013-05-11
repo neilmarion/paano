@@ -5,7 +5,11 @@ class PostsController < ApplicationController
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag' 
 
   def index
-    @posts = Post.text_search(params[:query]).paginate params[:page]
+    unless params[:query].blank?
+      @posts = Post.text_search(params[:query]).paginate params[:page]
+    else
+      redirect_to recent_posts_path 
+    end
   end
 
   def top

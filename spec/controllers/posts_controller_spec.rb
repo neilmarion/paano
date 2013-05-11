@@ -6,11 +6,11 @@ describe PostsController do
   describe "index" do
     let!(:user_1){ FactoryGirl.build(:user_facebook) }
 
-    it "returns all search results" do
+    it "returns all search results in desc chronological order" do
       #funny mock test. Will be returning back here soon. 
       post = FactoryGirl.create(:question)
       get :index
-      assigns(:posts).should eq [post]
+      response.should redirect_to recent_posts_path
     end
 
     describe "full-text search" do
@@ -23,9 +23,9 @@ describe PostsController do
         @post_3 = FactoryGirl.create(:question_with_an_answer, title: @query, content: @query, tag_list: @query)
       end
 
-      it "returns all posts if query is blank" do
+      it "returns all posts in desc chronological order if query is blank" do
         get :index, {query: ""}
-        assigns(:posts).count.should eq Post.count 
+        response.should redirect_to recent_posts_path
       end
 
       it "returns no search results" do

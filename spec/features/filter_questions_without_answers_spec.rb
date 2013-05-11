@@ -6,7 +6,7 @@ describe "Filtering questions without an answer i.e. clicking the 'Unanswered' l
     @question = FactoryGirl.create(:question) 
     @question_with_an_answer = FactoryGirl.create(:question_with_an_answer)
     visit root_path
-    current_path.should eq root_path 
+    current_path.should eq recent_posts_path 
   end
 
   it "filters questions without an answer" do

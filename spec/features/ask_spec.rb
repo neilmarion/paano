@@ -29,7 +29,7 @@ describe "Asking a question" do
 
     it "but will not post a question and return back to previous page when '#cancel_button is clicked'" do
       click_link "cancel_link"  
-      current_path.should eq root_path
+      current_path.should eq recent_posts_path 
     end
   end
   

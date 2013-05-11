@@ -4,7 +4,7 @@ describe "Filtering current user's question i.e. clicking the 'Mine' link at hom
   include_context "shared features stuff"
   before(:each) do
     visit root_path
-    current_path.should eq root_path 
+    current_path.should eq recent_posts_path 
   end
 
   it "the filter-by-current-user's-question will not be shown if the user is not logged in ('Mine')" do
