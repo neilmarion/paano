@@ -62,7 +62,7 @@ describe QuestionsController do
   end
 
   describe "create" do
-    let(:params) {{"question" => {"title" => "Question Title", "content" => "Question Content", "tag_list" => "tag_1, tag_2", "answers_attributes"=>{"0"=>{"content"=>""}}}}}
+    let(:params) {{"question" => {"title" => "Question Title", "content" => "Question Content", "tag_list" => "tag1, tag2", "answers_attributes"=>{"0"=>{"content"=>""}}}}}
 
     describe "success" do
       login_user 

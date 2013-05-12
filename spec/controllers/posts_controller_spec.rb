@@ -15,7 +15,7 @@ describe PostsController do
 
     describe "full-text search" do
       before(:each) do
-        @query = "Magnanimous"
+        @query = "magnanimous"
         word = "Other"
         @jiberish = "xxx"
         @post_1 = FactoryGirl.create(:question_with_an_answer, title: @query, content: @query, tag_list: @query)         
