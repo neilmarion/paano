@@ -41,9 +41,13 @@ describe AnswersController do
       it "will destroy it and the associated records" do
         expect{
           expect{
-            xhr :post, :destroy, {id: @answer.id}  
-          }.to change(Answer, :count).by -1
-        }.to change(Comment, :count).by -1
+            expect{
+              expect{
+                xhr :post, :destroy, {id: @answer.id}  
+              }.to change(Answer, :count).by -1
+            }.to change(Comment, :count).by -1
+          }.to_not change(Answer.with_deleted, :count)
+        }.to_not change(Comment.with_deleted, :count)
       end
 
       it "will fail to destroy the record" do

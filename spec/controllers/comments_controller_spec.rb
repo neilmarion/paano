@@ -17,8 +17,10 @@ describe CommentsController do
 
       it "will destroy the record" do
         expect{
-          xhr :post, :destroy, {id: @comment.id}
-        }.to change(Comment, :count).by -1
+          expect{
+            xhr :post, :destroy, {id: @comment.id}
+          }.to change(Comment, :count).by -1
+        }.to_not change(Comment.with_deleted, :count)
       end
 
       it "will fail to destroy the record" do

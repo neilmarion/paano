@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :answers_count, :default => 0
       t.integer :user_id
       t.integer :post_id #self reference since an answer belongs to a question
+      t.datetime :deleted_at
       t.timestamps
     end
   end

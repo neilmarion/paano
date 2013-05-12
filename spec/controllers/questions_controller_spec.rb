@@ -192,10 +192,16 @@ describe QuestionsController do
         expect{
           expect{
             expect{
-              xhr :post, :destroy, {id: @question.id}  
-            }.to change(Question, :count).by -1
-          }.to change(Answer, :count).by -1
-        }.to change(Comment, :count).by -1
+              expect{
+                expect{
+                  expect{
+                    xhr :post, :destroy, {id: @question.id}  
+                  }.to change(Question, :count).by -1
+                }.to change(Answer, :count).by -1
+              }.to change(Comment, :count).by -1
+            }.to_not change(Question.with_deleted, :count)
+          }.to_not change(Answer.with_deleted, :count)
+        }.to_not change(Comment.with_deleted, :count)
       end 
 
       it "will fail to destroy the record" do

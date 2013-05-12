@@ -58,10 +58,16 @@ describe Post do
       expect{
         expect{
           expect{
-            @question.destroy
-          }.to change(Question, :count).by -1
-        }.to change(Answer, :count).by -1
-      }.to change(Comment, :count).by -1
+            expect{
+              expect{
+                expect{
+                  @question.destroy
+                }.to change(Question, :count).by -1
+              }.to change(Answer, :count).by -1
+            }.to change(Comment, :count).by -1
+          }.to_not change(Question.with_deleted, :count)
+        }.to_not change(Answer.with_deleted, :count)
+      }.to_not change(Comment.with_deleted, :count)
     end
   end
 end

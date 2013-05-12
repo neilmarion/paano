@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :content, :title, :user_id, :tag_list, :comments_attributes
   acts_as_taggable
+  acts_as_paranoid
   validates_presence_of :content
   belongs_to :user
 
