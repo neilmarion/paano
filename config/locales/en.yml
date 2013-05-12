@@ -50,6 +50,10 @@ en:
       tags: "At least a tag"
     errors:
       login_first: "Please login first before answering a question"
+    post:
+      controls:
+        delete: "delete"
+        delete_confirm: "Are you sure you wanted to remove this question? Eh?"
   answers:
     form:
       answer: "What's your answer?" 

@@ -12,7 +12,7 @@
     <% end %>
   </span>
   <span class="post_control">
-    <%= link_to '#' do %>
+    <%= link_to post, :confirm => t('.delete_confirm'), :method => :delete do %>
       <i class="icon-remove-circle"></i>
       <%= t('.delete') %>    
     <% end %>

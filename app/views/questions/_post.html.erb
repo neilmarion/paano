@@ -13,7 +13,7 @@
         </div>
         <% if current_user && current_user.own_post?(post) %>
           <div>
-            <%= render 'questions/post/controls' %>
+            <%= render 'questions/post/controls', post: post %>
           </div>
         <% else %>
           <div class="no-controls"></div>
