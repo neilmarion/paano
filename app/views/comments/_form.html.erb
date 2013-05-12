@@ -1,5 +1,4 @@
-<%= f.fields_for :comments do |comment_fields|%>
-  <%= comment_fields.text_area :content, :class=> 'text_field new_comment', placeholder: t('.comment') if comment_fields.object.new_record? %>  
-  <%= comment_fields.hidden_field :user_id, value: current_user.id if current_user %>
+<%= f.fields_for :comments, current_user ? post.comments.build(user_id: current_user.id): post.comments.build do |comment_fields|%>
+  <%= comment_fields.text_area :content, :class=> 'text_field new_comment', placeholder: t('.comment')  %>  
 <% end %>
   
