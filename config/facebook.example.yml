@@ -1,0 +1,15 @@
+development:
+  key: 
+  secret: 
+
+test:
+  key: 
+  secret: 
+
+production:
+  key: 
+  secret: 
+
+staging:
+  key: 
+  secret: 

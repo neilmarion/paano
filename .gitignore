@@ -17,4 +17,5 @@
 *.swp
 /coverage
 config/database.yml
+config/facebook.yml
 ppm_notes
