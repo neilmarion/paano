@@ -11,6 +11,7 @@ en:
               blank: "Please put a title"
             tag_list:
               blank: "Please put at least one tag"
+              invalid: "Tags cannot have spaces"
             content:
               blank: "Please put a content"
   general:
