@@ -38,4 +38,13 @@ class AnswersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @answer = Answer.find(params[:id]) 
+    if @answer.destroy
+      head :no_content
+    else
+      render :json => {error: I18n.t('.comments.errors.destroy')}
+    end 
+  end
 end

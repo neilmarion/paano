@@ -58,6 +58,8 @@ en:
     update_submit:
       update: "Update"
       cancel: "Cancel"
+    errors:
+      destroy: "There's a problem deleting your answer. :("
   comments:
     comment:
       commented: "%{time_ago} ago"
