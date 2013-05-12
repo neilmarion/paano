@@ -11,12 +11,21 @@
       <%= t('.share') %>    
     <% end %>
   </span>
-  <span class="post_control">
-    <%= link_to post, :confirm => t('.delete_confirm'), :method => :delete do %>
-      <i class="icon-remove-circle"></i>
-      <%= t('.delete') %>    
-    <% end %>
-  </span>
+  <% if post.class == Question%>
+    <span class="post_control">
+      <%= link_to post, :confirm => t('.delete_question_confirm'), :method => :delete do %>
+        <i class="icon-remove-circle"></i>
+        <%= t('.delete') %>    
+      <% end %>
+    </span>
+  <% elsif post.class == Answer %>
+    <span class="post_control">
+      <%= link_to post, :confirm => t('.delete_answer_confirm'), :method => :delete, :class => 'remove-answer' do %>
+        <i class="icon-remove-circle"></i>
+        <%= t('.delete') %>    
+      <% end %>
+    </span>
+  <% end %>
 
 </div>
 

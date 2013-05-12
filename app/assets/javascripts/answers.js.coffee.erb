@@ -28,3 +28,14 @@ $ ->
         console.log post_content.attr('class')
         post_content.html(data['content'])
 
+  $(".remove-answer").on "click", ->
+    if window.confirm("<%= I18n.t('.questions.post.controls.delete_answer_confirm') %>")
+      remove_answer_link = $(this)
+      $.ajax
+        url: remove_answer_link.attr('href') 
+        type: "DELETE"
+        dataType: "json"
+        success: (data) ->
+          remove_answer_link.closest(".question-show-row").fadeOut()
+    false
+
