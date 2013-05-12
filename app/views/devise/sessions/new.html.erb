@@ -1,12 +1,25 @@
 
-<div class="row">
-  <div class="span1">
-  </div>
-  <div class="span9">
-    <div id="sign_in_text">
-     <%= link_to t('general.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), :class => 'btn btn-facebook btn-large' %>  
+<div class="row-fluid">
+  <div id="sign-in-text">
+    <div id="sign-in-message">
+      <%= t('login.message') %>
     </div>
-  </div>
-  <div class="span2">
+    <div id="sign-in-button">
+   <%= link_to t('general.sign_in_with_facebook'), user_omniauth_authorize_path(:facebook), :class => 'btn btn-facebook btn-large' %>  
+    </div>
+    <div class="row-fluid login-footer">
+      <div class="span1 offset4"> 
+        <%= link_to t('footer.about'), '#' %>
+      </div>
+      <div class="span1"> 
+        <%= link_to t('footer.github'), '#' %>
+      </div>
+      <div class="span1"> 
+        <%= link_to t('footer.facebook'), '#' %>
+      </div>
+      <div class="span1"> 
+        <%= link_to t('footer.bugs'), '#' %>
+      </div>
+    </div>
   </div>
 </div>

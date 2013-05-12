@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%= render 'shared/head' %>
-  <body>
-    <%= render 'shared/navbar-login' %>
-    <%= render 'shared/content'%>
-    <%= javascript_include_tag "application" %>
-  </body>
-
+  <%= render 'shared/head-login' %>
   <style>
     body { 
       background: url("https://dl.dropboxusercontent.com/u/5938276/photos/pegaraw.jpg") no-repeat center center fixed;  
@@ -14,6 +8,12 @@
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
+      font-family: 'Merriweather Sans', sans-serif;
     }
   </style>
+  <body>
+    <%= render 'shared/navbar-login' %>
+    <%= render 'shared/content'%>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

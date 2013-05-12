@@ -99,3 +99,10 @@ en:
   user:
     reputations:
       tooltip: "This is your fucking reputation! :P" 
+  login:
+    message: "Contribute your knowledge to our beloved UPLB"
+  footer:
+    about: "about"
+    github: "github"
+    facebook: "facebook"
+    bugs: "bugs"
