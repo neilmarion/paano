@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :evaluations, class_name: "RSEvaluation", as: :source
   has_many :questions
   has_many :answers
+  has_many :comments
 
   has_reputation :karma,
     :source => [
@@ -66,6 +67,8 @@ class User < ActiveRecord::Base
       questions.exists? post
     when "Answer"
       answers.exists? post 
+    when "Comment"
+      comments.exists? post
     end
   end
 end
