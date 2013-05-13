@@ -2,7 +2,7 @@ $ ->
   postToFeed = (link, uri, name, caption, description)->
     # calling the API ...
     callback = (response) ->
-      document.getElementById("msg").innerHTML = "Post ID: " + response["post_id"]
+      a = response.post_id
     obj =
       method: "feed"
       link: link 
