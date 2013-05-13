@@ -32,3 +32,16 @@ $ ->
 
     postToFeed(link, uri, name, caption, description) 
     false
+
+  $('.fb-share-questions-a').on "click", ->
+    fb_share = $(this)
+    uri = "<%= FB['uri'] %>" 
+    link = uri+window.location.pathname 
+    name = "<%= I18n.t('posts.post.title.a')%> " + $('body').find('.question').find('h3').text()
+
+    caption = "<%= I18n.t('.facebook.answered') %>" + fb_share.closest('.question-show-row').find('.posted-by').text()
+    description = fb_share.closest('.question-show-row').find('.post-content').find('p').text()
+
+    postToFeed(link, uri, name, caption, description)
+    false
+

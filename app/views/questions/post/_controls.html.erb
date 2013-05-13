@@ -7,7 +7,7 @@
       <% end %>
     </span>
     <span class="post_control">
-      <%= link_to '#' do %>
+      <%= link_to '#', class: post.class == Answer ? "fb-share-questions-a" : "fb-share-questions-q" do %>
         <i class="icon-share"></i>
         <%= t('.share') %>    
       <% end %>
@@ -32,7 +32,7 @@
 <% else %>
   <div class="post_controls">
     <span class="post_control">
-      <%= link_to '#' do %>
+      <%= link_to '#', class: post.class == Answer ? "fb-share-questions-a" : "fb-share-questions-q" do %>
         <i class="icon-share"></i>
         <%= t('.share') %>    
       <% end %>
