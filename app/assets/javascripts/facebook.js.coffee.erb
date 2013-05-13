@@ -7,7 +7,7 @@ $ ->
     obj =
       method: "feed"
       link: link 
-      picture: "http://www.fbrell.com/f8.jpg"
+      picture: "https://dl.dropboxusercontent.com/u/5938276/photos/paanouplb_facebook_feed_dialogue_image_small.jpg"
       name: name 
       #caption: "Reference Documentation"
       description: description 
@@ -18,7 +18,7 @@ $ ->
     status: true
     cookie: true
 
-  $('.fb-share').on "click", ->
+  $('.fb-share-posts').on "click", ->
     fb_share = $(this)
     uri = "<%= FB['uri'] %>"
     link = uri+fb_share.closest('tr').find('.post-title').find('a').attr('href')
