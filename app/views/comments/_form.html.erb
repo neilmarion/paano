@@ -1,5 +1,5 @@
-<%= f.fields_for :comments, post.comments.build do |comment_fields|%>
-  <%= comment_fields.text_area :content, :class=> 'text_field new_comment', placeholder: t('.comment')  %>  
-  <%= comment_fields.hidden_field :user_id, value: current_user.id if current_user %>
+<%= form_for current_user ? current_user.comments.new : Comment.new, :html => { :class => 'form-horizontal'     } do |f|%>
+  <%= f.text_area :content, :class=> 'text_field new_comment', placeholder: t('.comment')  %>  
+  <%= f.hidden_field :post_id, value: post.id %>
 <% end %>
   
