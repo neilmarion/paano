@@ -11,13 +11,9 @@
         <div class="post-content">
           <%=raw sanitize(simple_format(post.content), :tags => %w(br p) ) %>
         </div>
-        <% if current_user && current_user.own_post?(post) %>
-          <div>
-            <%= render 'questions/post/controls', post: post %>
-          </div>
-        <% else %>
-          <div class="no-controls"></div>
-        <% end %>
+        <div>
+          <%= render 'questions/post/controls', post: post %>
+        </div>
       </div>
       <%= render 'posts/post/other', post: post %>
       <% post.comments.new %>
