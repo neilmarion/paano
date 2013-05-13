@@ -36,7 +36,7 @@ gem 'bootstrap_helper'
 gem 'rails3-jquery-autocomplete'
 gem 'paranoia'
 
-gem 'capistrano'
+gem 'friendly_id'
 
 
 
@@ -50,7 +50,7 @@ gem 'capistrano'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'

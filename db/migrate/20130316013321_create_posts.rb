@@ -8,7 +8,10 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :user_id
       t.integer :post_id #self reference since an answer belongs to a question
       t.datetime :deleted_at
+      t.string :slug
       t.timestamps
     end
+
+    add_index :posts, :slug, unique: true
   end
 end

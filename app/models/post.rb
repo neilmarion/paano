@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  extend FriendlyId
   attr_accessible :content, :title, :tag_list, :comments_attributes, :user_id
   acts_as_taggable
   acts_as_paranoid

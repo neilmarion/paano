@@ -95,6 +95,7 @@ GEM
     faraday (0.8.7)
       multipart-post (~> 1.1)
     ffi (1.4.0)
+    friendly_id (4.0.9)
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -304,6 +305,7 @@ DEPENDENCIES
   devise
   factory_girl
   faker
+  friendly_id
   guard-rspec
   jquery-rails
   kaminari
