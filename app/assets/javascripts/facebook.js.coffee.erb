@@ -16,10 +16,11 @@ $ ->
     fb_share = $(this)
     uri = "<%= FB['uri'] %>"
     anchor = fb_share.closest('.post-row').find('input[type=hidden][name=id]').val()
-    link = uri+fb_share.closest('tr').find('.post-title').find('a').attr('href')+'#'+anchor
-    console.log link
+    link = uri+fb_share.closest('tr').find('.post-title').find('a').attr('href')
     name =  fb_share.closest('tr').find('.post-title').find('a').text()
     description =  fb_share.closest('tr').find('.preview-div.collapsed').find('p').text()
+
+    console.log link
 
     if name.indexOf("A: ") >= 0
       caption =  "<%= I18n.t('.facebook.answered')%> " + fb_share.closest('tr').find('.posted-by').text()
