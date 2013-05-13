@@ -3,6 +3,40 @@ require 'spec_helper'
 describe AnswersController do
   include_context "common controller stuff"
 
+  describe "create" do
+    let(:params) {{"answer" => {"content" => "Answer Content"}}}
+
+    describe "user signed in" do
+      before(:each) do
+        @question = FactoryGirl.create(:question)
+        params["answer"]["post_id"] = @question.id
+        sign_in_user
+      end
+
+      it "creates a new answer" do
+        expect{
+          xhr :post, :create, params 
+        }.to change(Answer, :count).by 1 
+      end
+
+      it "will fail to create a new answer" do
+        Answer.any_instance.should_receive(:create).and_return false
+        expect{
+          xhr :post, :create, params 
+        }.to_not change(Answer, :count)
+      end
+    end
+
+    describe "user not signed in" do
+      it "will fail to create an answer" do
+        expect{
+          xhr :post, :create, params 
+        }.to_not change(Answer, :count)
+        should_be_unauthorized_access 
+      end
+    end
+  end
+
   describe "update" do
     before(:each) do
       @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))

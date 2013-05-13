@@ -1,6 +1,16 @@
 class AnswersController < ApplicationController
   before_filter :authenticate_user!
 
+  def create
+    @answer = User.find(current_user.id).answers.new params[:answer]
+    if @answer.save
+      redirect_to question_path(@answer.question)+"##{@answer.id}"
+    else
+      flash[:error] = @answer.errors.full_messages.to_sentence
+      redirect_to question_path @answer.question 
+    end 
+  end
+
   def update
     @answer = Answer.find(params[:id])
 

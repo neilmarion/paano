@@ -25,7 +25,7 @@ describe "Answering a question in the question show page" do
   it "succeeds if user is signed in" do
     all('a').select {|elt| elt.text == I18n.t('general.sign_in_with_facebook') }.first.click
     expect{ 
-      fill_in :question_answers_attributes_0_content, with: "My Answer" 
+      fill_in :answer_content, with: "My Answer" 
       click_button I18n.t('questions.submit.post')
     }.to change(Answer, :count)
   end

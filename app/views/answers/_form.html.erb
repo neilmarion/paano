@@ -1,12 +1,9 @@
-<%= form_for @question, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for current_user ? current_user.answers.new : Answer.new, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group" id="answer_form">
     <div class="controls">
-        <%= f.fields_for :answers, @question.answers.build do |answer_fields|%>
-          <%= answer_fields.text_area :content, :class=> 'text_field new_answer', placeholder: t('.answer') %>  
-          <%= answer_fields.hidden_field :user_id, value: current_user.id if current_user %>
-        <% end %>
+          <%= f.text_area :content, :class=> 'text_field new_answer', placeholder: t('.answer') %>  
+          <%= f.hidden_field :post_id, value: @question.id %>
     </div>
   </div>
   <%= render 'submit', f: f %>
 <% end %>
-<% else %>

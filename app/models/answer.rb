@@ -1,5 +1,5 @@
 class Answer < Post
-  attr_accessible :post_id, :user_id
+  attr_accessible :post_id, :post_id 
   has_reputation :answer_reputation, :source => :user, :source_of => { reputation: :karma, of: :user }
   has_reputation :answer_vote_count, :source => :user
   belongs_to :question, :foreign_key => "post_id"
