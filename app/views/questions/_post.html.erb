@@ -1,3 +1,6 @@
+<div class="question-show-block">
+<input type="hidden" name="id" value="<%= post.id %>">
+<a id="<%= post.id %>"></a>
 <div class="row-fluid <%= post.class.name.downcase %> question-show-row">
   <div class="post">
     <div class="span1">
@@ -40,4 +43,5 @@
       <% end %>
     </div>
   <% end %>
+</div>
 </div>

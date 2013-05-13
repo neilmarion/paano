@@ -15,7 +15,9 @@ $ ->
   $('.fb-share-posts').on "click", ->
     fb_share = $(this)
     uri = "<%= FB['uri'] %>"
-    link = uri+fb_share.closest('tr').find('.post-title').find('a').attr('href')
+    anchor = fb_share.closest('.post-row').find('input[type=hidden][name=id]').val()
+    link = uri+fb_share.closest('tr').find('.post-title').find('a').attr('href')+'#'+anchor
+    console.log link
     name =  fb_share.closest('tr').find('.post-title').find('a').text()
     description =  fb_share.closest('tr').find('.preview-div.collapsed').find('p').text()
 
@@ -30,7 +32,8 @@ $ ->
   $('.fb-share-questions-a').on "click", ->
     fb_share = $(this)
     uri = "<%= FB['uri'] %>" 
-    link = uri+window.location.pathname 
+    anchor = fb_share.closest('.question-show-block').find('input[type=hidden][name=id]').val()
+    link = uri+window.location.pathname+'#'+anchor
     name = "<%= I18n.t('posts.post.title.a')%> " + $('body').find('.question').find('h3').text()
 
     caption = "<%= I18n.t('.facebook.answered') %>" + fb_share.closest('.question-show-row').find('.posted-by').text()
@@ -42,7 +45,8 @@ $ ->
   $('.fb-share-questions-q').on "click", ->
     fb_share = $(this)
     uri = "<%= FB['uri'] %>" 
-    link = uri+window.location.pathname 
+    anchor = fb_share.closest('.question-show-block').find('input[type=hidden][name=id]').val()
+    link = uri+window.location.pathname+'#'+anchor
     name = "<%= I18n.t('posts.post.title.q')%> " + $('body').find('.question').find('h3').text()
 
     caption = "<%= I18n.t('.facebook.asked') %>" + fb_share.closest('.question-show-row').find('.posted-by').text()

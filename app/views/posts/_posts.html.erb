@@ -1,5 +1,6 @@
 <% posts.each do |post| %>
   <tr class = "post-row">
+    <input type="hidden" name="id" value="<%= post.id %>"> 
     <td>
       <%= render 'posts/post', post: post %>
     </td>
