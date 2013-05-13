@@ -1,5 +1,4 @@
 $ ->
-
   postToFeed = (link, uri, name, caption, description)->
     # calling the API ...
     callback = (response) ->
@@ -11,12 +10,7 @@ $ ->
       name: name 
       caption: caption 
       description: description 
-
     FB.ui obj, callback
-  FB.init
-    appId: "<%= FB['key'] %>"
-    status: true
-    cookie: true
 
   $('.fb-share-posts').on "click", ->
     fb_share = $(this)
