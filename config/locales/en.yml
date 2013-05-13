@@ -106,3 +106,6 @@ en:
     github: "github"
     facebook: "facebook"
     bugs: "bugs"
+  facebook:
+    asked: "A question asked by "
+    answered: "A question answered by "

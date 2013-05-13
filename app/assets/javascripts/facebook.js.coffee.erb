@@ -1,6 +1,6 @@
 $ ->
 
-  postToFeed = (link, uri, name, description)->
+  postToFeed = (link, uri, name, caption, description)->
     # calling the API ...
     callback = (response) ->
       document.getElementById("msg").innerHTML = "Post ID: " + response["post_id"]
@@ -9,7 +9,7 @@ $ ->
       link: link 
       picture: "https://dl.dropboxusercontent.com/u/5938276/photos/paanouplb_facebook_feed_dialogue_image_small.jpg"
       name: name 
-      #caption: "Reference Documentation"
+      caption: caption 
       description: description 
 
     FB.ui obj, callback
@@ -24,5 +24,11 @@ $ ->
     link = uri+fb_share.closest('tr').find('.post-title').find('a').attr('href')
     name =  fb_share.closest('tr').find('.post-title').find('a').text()
     description =  fb_share.closest('tr').find('.preview-div.collapsed').find('p').text()
-    postToFeed(link, uri, name, description) 
+
+    if name.indexOf("A: ") >= 0
+      caption =  "<%= I18n.t('.facebook.answered')%> " + fb_share.closest('tr').find('.posted-by').text()
+    else
+      caption =  "<%= I18n.t('.facebook.asked')%> " + fb_share.closest('tr').find('.posted-by').text()
+
+    postToFeed(link, uri, name, caption, description) 
     false
