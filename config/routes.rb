@@ -30,7 +30,12 @@ Ppm::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    collection do
+      get :recent
+      get :top
+    end
+  end
 
   resources :comments
 

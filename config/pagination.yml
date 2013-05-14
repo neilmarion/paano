@@ -1,5 +1,6 @@
 pagination: &pagination
   posts_index: 10
+  users_index: 20
 development:
   <<: *pagination
 

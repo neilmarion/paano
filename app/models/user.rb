@@ -19,6 +19,16 @@ class User < ActiveRecord::Base
       {:reputation => :question_reputation, :of => :questions},
       {:reputation => :answer_reputation, :of => :answers} ]
 
+  scope :paginate, lambda { |page|
+    page(page).per(PAGINATION['users_index']) }
+
+  scope :join_rs_reputations,
+    :joins => "LEFT JOIN rs_reputations ON users.id = rs_reputations.target_id AND rs_reputations.target_type = 'User'
+        AND rs_reputations.reputation_name = 'karma' AND rs_reputations.active = 't'"
+
+  scope :order_by_rep,
+    order("COALESCE(rs_reputations.value, 0) DESC") 
+
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
@@ -77,6 +87,6 @@ class User < ActiveRecord::Base
   end
 
   def self.top
-    find_with_reputation(:karma, :all, {:order => :karma}).reverse
+    join_rs_reputations.order_by_rep
   end
 end
