@@ -85,6 +85,8 @@ en:
         hot: "Hot"  
         mine: "Mine"
         recent: "Recent"
+        recent_users: "Recent Users"
+        top_users: "Top Users"
     navbar:
       user_links:
         user_dropdown:

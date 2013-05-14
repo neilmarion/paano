@@ -1,6 +1,17 @@
+<div>
+
 <%= render_list :class => "nav nav-list left" do |li|
   li << link_to(t(".recent"), recent_posts_path)
   li << link_to(t(".unanswered"), unanswered_questions_path )
   li << link_to(t(".top"), top_posts_path)
   li << link_to(t(".mine"), mine_questions_path) if current_user
 end %>
+
+</div>
+
+<div class="users-links-container">
+  <%= render_list :class => "nav nav-list users-links" do |li|
+    li << link_to(t(".recent_users"), recent_users_path)
+    li << link_to(t(".top_users"), top_users_path )
+  end %>
+</div>
