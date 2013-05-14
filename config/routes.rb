@@ -30,18 +30,18 @@ Ppm::Application.routes.draw do
     end
   end
 
+  resources :comments
+
+  devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
+                     controllers: {omniauth_callbacks: "users/omniauth_callbacks", 
+                        sessions: "users/sessions"}
+
   resources :users do
     collection do
       get :recent
       get :top
     end
   end
-
-  resources :comments
-
-  devise_for :users, path_names: {sign_in: "login", sign_out: "signout"},
-                     controllers: {omniauth_callbacks: "users/omniauth_callbacks", 
-                        sessions: "users/sessions"}
 
   get 'tags/:tag', to: 'posts#index', as: :tag
 
