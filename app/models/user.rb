@@ -71,4 +71,12 @@ class User < ActiveRecord::Base
       comments.exists? post
     end
   end
+
+  def self.recent 
+    order('created_at DESC')
+  end
+
+  def self.top
+    find_with_reputation(:karma, :all, {:order => :karma}).reverse
+  end
 end
