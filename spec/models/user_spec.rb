@@ -20,18 +20,30 @@ describe User do
     answer.user.karma.should eq answer.reputation_for(:answer_reputation)
   end
 
-  it "returns all users on descending order of karma reputation" do
-    user1 = FactoryGirl.create(:user_facebook)
-    user2 = FactoryGirl.create(:user_facebook)
+  describe "sorting users" do
+    before(:each) do
+      @user1 = FactoryGirl.create(:user_facebook)
+      @user2 = FactoryGirl.create(:user_facebook)
+    end
 
-    question1 = FactoryGirl.create(:question, user: user2)
-    question2 = FactoryGirl.create(:question, user: user1)
+    it "returns all users on descending order of karma reputation" do
+      question1 = FactoryGirl.create(:question, user: @user2)
+      question2 = FactoryGirl.create(:question, user: @user1)
 
-    question1.add_evaluation(:question_reputation, 10, user2)
-    question2.add_evaluation(:question_reputation, 2, user1)
+      question1.add_evaluation(:question_reputation, 10, @user2)
+      question2.add_evaluation(:question_reputation, 2, @user1)
 
-    User.top.should eq [user2, user1]
+      User.top.should eq [@user2, @user1]
+    end
+
+    it "returns all users on descending order of recency of creation" do
+      User.recent.should eq [@user2, @user1]
+    end
   end
+
+  
+
+  
 
   describe "determining whether or not the user has voted for a post or not" do
     before(:each) do
