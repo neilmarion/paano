@@ -24,7 +24,8 @@ file = File.read(
 
 def user(uid = @uids[rand(19)])
   token = Devise.friendly_token[0,20]
-  User.create(provider: "facebook", uid: uid, name: Faker::Name.name,
+  User.create(provider: "facebook", uid: uid, first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     email: Faker::Internet.email, password: token, password_confirmation: token)
 end
 

@@ -104,7 +104,8 @@ ActiveRecord::Schema.define(:version => 20130513134820) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username"
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.string   "email",               :default => "", :null => false

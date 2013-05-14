@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation,
-          :name, :provider, :uid
+          :first_name, :last_name, :provider, :uid
 
   validates_presence_of :provider
   validates_presence_of :uid
@@ -37,7 +37,8 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
+      user.first_name = auth["info"]["first_name"]
+      user.last_name = auth["info"]["last_name"]
       user.username = auth["info"]["nickname"]
       user.email = auth["info"]["email"]
       user.password = Devise.friendly_token[0,20]
@@ -80,6 +81,10 @@ class User < ActiveRecord::Base
     when "Comment"
       comments.exists? post
     end
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 
   def self.recent 

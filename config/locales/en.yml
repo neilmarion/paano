@@ -97,7 +97,7 @@ en:
       by: 'by'
     search_field:
       search_field:
-        search: "Search"
+        search: "Search for Answers"
       search_field_holder:
         ask: "Ask"
   user:
