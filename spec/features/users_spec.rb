@@ -9,14 +9,12 @@ describe "clicking sorting users links" do
   end 
 
   it "on recent users" do
-    User.any_instance.should_receive(:recent).and_return @user
     click_link I18n.t('.shared.home.left.recent_users')
-    page.should have_link @user.name
+    page.should have_content @user.name
   end 
 
   it "on top users" do
-    User.any_instance.should_receive(:top).and_return @user
     click_link I18n.t('.shared.home.left.top_users')
-    page.should have_link @user.name
+    page.should have_content @user.name
   end
 end
