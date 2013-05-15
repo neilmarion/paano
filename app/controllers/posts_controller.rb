@@ -34,4 +34,26 @@ class PostsController < ApplicationController
       render :json => post.errors.full_messages.to_sentence 
     end
   end
+
+  def vote_up
+    post = Post.find params[:id]
+    respond_to do |format|
+      if post.vote_up(current_user)
+        format.json { render :json => {votes: post.vote_count, id: post.id} }
+      else
+        format.json { render :json => post.errors.full_messages.to_sentence }
+      end 
+    end 
+  end 
+
+  def vote_down
+    post = Post.find params[:id]
+    respond_to do |format|
+      if post.vote_down(current_user)
+        format.json { render :json => {votes: post.vote_count, id: post.id} }
+      else
+        format.json { render :json => post.errors.full_messages.to_sentence }
+      end 
+    end 
+  end 
 end

@@ -35,7 +35,7 @@ $ ->
     post_controls.find('.post-index-unvote').closest('.post_control').remove()
     post_controls.closest('td').find('.vote-count-reputation').html(data['votes']+" <%= I18n.t('.posts.post.reputations.votes', votes: '') %>")
 
-  $(".post-index-vote-up").on "click", ->
+  $(document).on "click", ".post-index-vote-up", ->
     vote_up = $(this) 
     $.ajax
       url: vote_up.attr('href')
@@ -43,7 +43,7 @@ $ ->
       success: (data) ->
         replace_by_unvote(vote_up, data)
 
-  $(".post-index-vote-down").on "click", ->
+  $(document).on "click", ".post-index-vote-down", ->
     vote_down = $(this) 
     $.ajax
       url: vote_down.attr('href')
