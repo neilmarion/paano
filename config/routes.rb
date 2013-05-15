@@ -20,7 +20,10 @@ Ppm::Application.routes.draw do
       get :autocomplete_tag_name
       get :comment
       get :recent
-      post :unvote
+    end
+
+    member do
+      get :unvote
     end
   end
 

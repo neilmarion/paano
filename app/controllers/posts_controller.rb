@@ -28,7 +28,10 @@ class PostsController < ApplicationController
 
   def unvote
     post = Post.find(params[:id])
-    post.unvote(current_user)
-    head :no_content
+    if post.unvote(current_user)
+      render :json => {votes: post.vote_count, id: post.id}
+    else
+      render :json => post.errors.full_messages.to_sentence 
+    end
   end
 end

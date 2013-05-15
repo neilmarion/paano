@@ -96,7 +96,7 @@ describe PostsController do
       aft_reputation = question.reputation
       
       expect{
-        xhr :post, :unvote, {:id => question.id}
+        xhr :get, :unvote, {:id => question.id}
       }.to change(question, :reputation).by bef_reputation - aft_reputation
       
     end

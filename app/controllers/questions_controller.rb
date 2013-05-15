@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
     respond_to do |format|
       if @question.vote_up(current_user)
-        format.json { render :json => {votes: @question.vote_count} }
+        format.json { render :json => {votes: @question.vote_count, id: @question.id} }
       else
         format.json { render :json => @question.errors.full_messages.to_sentence }
       end 
@@ -68,7 +68,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
     respond_to do |format|
       if @question.vote_down(current_user)
-        format.json { render :json => {votes: @question.vote_count} }
+        format.json { render :json => {votes: @question.vote_count, id: @question.id} }
       else
         format.json { render :json => @question.errors.full_messages.to_sentence }
       end 

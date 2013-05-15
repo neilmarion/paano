@@ -24,9 +24,15 @@ $ ->
 
   replace_by_unvote = (e, data) ->
     post_controls = e.closest(".post_controls")
-    post_controls.append("<span class='post_control'><a href='#'><i class='icon-refresh'></i><%= I18n.t('.posts.post.controls.unvote') %></a></span>")
+    post_controls.append("<span class='post_control'><a href='/posts/"+data['id']+"/unvote' class='post-index-unvote' data-remote=true><i class='icon-refresh'></i><%= I18n.t('.posts.post.controls.unvote') %></a></span>")
     post_controls.find('.post-index-vote-down').closest('.post_control').remove()
     post_controls.find('.post-index-vote-up').closest('.post_control').remove()
+    post_controls.closest('td').find('.vote-count-reputation').html(data['votes']+" <%= I18n.t('.posts.post.reputations.votes', votes: '') %>")
+
+  replace_by_vote = (e, data) ->
+    post_controls = e.closest(".post_controls")
+    post_controls.append("<span class='post_control'><a href='/posts/"+data['id']+"/vote_up' class='post-index-vote-up' data-remote=true><i class='icon-chevron-up'></i><%= I18n.t('.posts.post.controls.vote-up') %></a></span><span class='post_control'><a href='/posts/"+data['id']+"/vote_down' class='post-index-vote-down' data-remote=true><i class='icon-chevron-down'></i><%= I18n.t('.posts.post.controls.vote-down') %></a></span>")
+    post_controls.find('.post-index-unvote').closest('.post_control').remove()
     post_controls.closest('td').find('.vote-count-reputation').html(data['votes']+" <%= I18n.t('.posts.post.reputations.votes', votes: '') %>")
 
   $(".post-index-vote-up").on "click", ->
@@ -45,3 +51,11 @@ $ ->
       success: (data) ->
         replace_by_unvote(vote_down, data)
 
+  $(document).on "click", ".post-index-unvote", ->
+  #$('.post-index-unvote').on "click", ->
+    unvote = $(this)
+    $.ajax
+      url: unvote.attr('href') 
+      type: "GET"
+      success: (data) ->
+        replace_by_vote(unvote, data)

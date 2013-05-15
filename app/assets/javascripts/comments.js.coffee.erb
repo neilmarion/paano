@@ -9,7 +9,22 @@ $ ->
   ), ->
     $(this).find('.post_controls').hide()
 
-  $(".text_field.new_comment").keyup (e) ->
+  
+
+  $(".text_field.new_comment").autosize()
+
+  $(".remove-comment").on "click", ->
+    remove_comment_link = $(this)
+    $.ajax
+      url: remove_comment_link.attr('href') 
+      type: "DELETE"
+      dataType: "json"
+      success: (data) ->
+        remove_comment_link.closest(".comment").fadeOut()
+    false
+
+  $(document).on "keyup", ".text_field.new_comment", (e) ->
+  #$(".text_field.new_comment").keyup (e) ->
     if e.which is 13    
       text_field = $(this)
       text_field.css('height', '28px')
@@ -28,15 +43,3 @@ $ ->
       $(this).val('')
       e.preventDefault
       false
-
-  $(".text_field.new_comment").autosize()
-
-  $(".remove-comment").on "click", ->
-    remove_comment_link = $(this)
-    $.ajax
-      url: remove_comment_link.attr('href') 
-      type: "DELETE"
-      dataType: "json"
-      success: (data) ->
-        remove_comment_link.closest(".comment").fadeOut()
-    false

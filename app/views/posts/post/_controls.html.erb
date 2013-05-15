@@ -32,7 +32,7 @@
   </span>
 <% elsif current_user && current_user.voted_for?(post)%>
   <span class="post_control">
-    <%= link_to '#' do %>
+    <%= link_to unvote_post_path(post), remote: true, class: "post-index-unvote" do %>
       <i class="icon-refresh"></i>
       <%= t('.unvote') %>    
     <% end %>
