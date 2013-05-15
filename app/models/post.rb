@@ -49,6 +49,15 @@ class Post < ActiveRecord::Base
     content.truncate(200) 
   end
 
+  def vote_count #this is slow. Extend the twitter activerecord reputation gem
+    #this is also dangerous: What if the SCORING values changed?
+    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
+    up_votes = ReputationSystem::Evaluation.where(reputation_name: reputation_name.to_s, target_type: self.class.name, value: SCORING['up'], target_id: id).count
+    down_votes = ReputationSystem::Evaluation.where(reputation_name: reputation_name.to_s, target_type: self.class.name, value: SCORING['down'], target_id: id).count
+
+    up_votes - down_votes
+  end
+
   private
 
   def self.rank(query)

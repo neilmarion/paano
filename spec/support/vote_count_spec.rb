@@ -4,12 +4,16 @@ shared_examples "it has a reputation" do
   end
 
   it "it's (any) reputation iterates by 1 whenever a user votes up for it" do
-    @post.add_evaluation(@rep, 1, @user)
-    @post.send(@method).should eq 1 
+    @post.add_evaluation(@rep, SCORING['up'], @user)
+    #@post.send(@method).should eq 1 
+    @post.reputation.should eq SCORING['up']
+    @post.vote_count.should eq 1
   end
 
   it "it's (any) reputation iterates by -1 whenever a user votes down for it" do
-    @post.add_evaluation(@rep, -1, @user)
-    @post.send(@method).should eq -1
+    @post.add_evaluation(@rep, SCORING['down'], @user)
+    #@post.send(@method).should eq -1
+    @post.reputation.should eq SCORING['down']
+    @post.vote_count.should eq -1
   end
 end

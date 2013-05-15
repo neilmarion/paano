@@ -3,7 +3,6 @@ class Question < Post
   validates_presence_of :title, :tag_list
   validates_format_of :tag_list, :with => /^(([a-z0-9\-\_]+[^ ])+(, )?)+$/ 
   has_reputation :question_reputation, :source => :user, :source_of => { reputation: :karma, of: :user }
-  has_reputation :question_vote_count, :source => :user
   friendly_id :title, use: :history
   has_many :answers, :foreign_key => "post_id", :dependent => :destroy
   accepts_nested_attributes_for :answers, :allow_destroy => true
@@ -17,9 +16,5 @@ class Question < Post
 
   def reputation 
     reputation_for(:question_reputation).to_i
-  end
-
-  def vote_count
-    reputation_for(:question_vote_count).to_i
   end
 end

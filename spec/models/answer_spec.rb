@@ -16,16 +16,6 @@ describe Answer do
     question.answers.first.tags.should eq question.tags
   end
 
-  describe "vote_count reputation" do
-    before(:each) do
-      @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))
-      @rep = :answer_vote_count
-      @method = :vote_count
-    end
-
-    it_behaves_like "it has a reputation"
-  end
-
   describe "reputation" do
     before(:each) do
       @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))

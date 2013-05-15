@@ -13,16 +13,6 @@ describe Question do
     question.reputation.should eq 0
   end
 
-  describe "vote_count reputation" do
-    before(:each) do
-      @post = FactoryGirl.create(:question)
-      @rep = :question_vote_count
-      @method = :vote_count
-    end
-
-    it_behaves_like "it has a reputation"
-  end
-
   describe "reputation" do
     before(:each) do
       @post = FactoryGirl.create(:question)
