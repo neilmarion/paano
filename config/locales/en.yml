@@ -116,3 +116,7 @@ en:
     asked: "A question asked by "
     answered: "A question answered by "
     posted: "Posted by "
+  users:
+    search_field:
+      search_field: 
+        search: "Search for users"

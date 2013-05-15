@@ -1,0 +1,6 @@
+<%= form_tag search_users_path, :method => 'get', :class => 'search' do %>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-search"></i></span>
+    <%= text_field_tag :query, params[:query], class: "input-xlarge", placeholder: t('.search') %>
+  </div>
+<% end %>

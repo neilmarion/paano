@@ -103,4 +103,9 @@ describe User do
       @user.own_post?(@answer).should eq false
     end
   end
+
+  it "searches users by name" do
+    user = FactoryGirl.create(:user_facebook, first_name: "Xxneilxx")
+    User.search("neil").should eq [user]
+  end
 end

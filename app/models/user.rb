@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def self.search(query)
+    User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+  end
+
   def self.recent 
     order('created_at DESC')
   end

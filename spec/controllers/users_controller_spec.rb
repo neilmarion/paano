@@ -35,4 +35,10 @@ describe UsersController do
       response.should render_template("show") 
     end
   end
+
+  it "searches for users by name" do
+    user = FactoryGirl.create(:user_facebook, first_name: "Xxneilxx")
+    xhr :get, :search, {query: "neil"}
+    assigns(:users).should eq [user]
+  end
 end

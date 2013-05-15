@@ -46,6 +46,7 @@ Ppm::Application.routes.draw do
     collection do
       get :recent
       get :top
+      get :search
     end
   end
 

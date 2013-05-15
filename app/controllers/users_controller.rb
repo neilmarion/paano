@@ -18,4 +18,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_posts = @user.posts.paginate params[:page]
   end
+
+  def search
+    @users = User.search(params[:query]).paginate params[:page]
+    render :index
+  end
 end
