@@ -1,19 +1,63 @@
 <div class="reputation_with_vote_links">
-  <div class="<%= current_user && current_user.voted_up_for?(post) ? "voted-up" : "vote-lnk"%>">
-    <%= link_to vote_up_post_path(post), remote: true, class: "vote-up" do %>
-      <div class="icon-chevron-up-div">
-        <i class="icon-chevron-up"></i>
+  <% if current_user %>
+    <% if current_user.voted_up_for? post %>
+      <div class="voted-up">
+        <%= link_to unvote_post_path(post), remote: true, class: "unvote-up" do %>
+          <div class="icon-chevron-up-div">
+            <i class="icon-chevron-up"></i>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="vote-lnk">
+        <%= link_to vote_up_post_path(post), remote: true, class: "vote-up" do %>
+          <div class="icon-chevron-up-div">
+            <i class="icon-chevron-up"></i>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  </div>
-  <div class="vote-count">
-    <%= post.vote_count %>
-  </div>
-  <div class="<%= current_user && current_user.voted_down_for?(post) ? "voted-down" : "vote-lnk"%>">
-    <%= link_to vote_down_post_path(post), remote: true, class: "vote-down" do %>
-      <div class="icon-chevron-up-div">
-        <i class="icon-chevron-down"></i>
+    <div class="vote-count">
+      <%= post.vote_count %>
+    </div>
+    <% if current_user.voted_down_for? post %>
+      <div class="voted-down">
+        <%= link_to unvote_post_path(post), remote: true, class: "unvote-down" do %>
+          <div class="icon-chevron-up-div">
+            <i class="icon-chevron-down"></i>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="vote-lnk">
+        <%= link_to vote_down_post_path(post), remote: true, class: "vote-down" do %>
+          <div class="icon-chevron-up-div">
+            <i class="icon-chevron-down"></i>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  </div>
+  <% else %>
+    <div class="vote-lnk">
+      <%= link_to vote_up_post_path(post), remote: true, class: "vote-up" do %>
+        <div class="icon-chevron-up-div">
+          <i class="icon-chevron-up"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="vote-count">
+      <%= post.vote_count %>
+    </div>
+    <div class="vote-lnk">
+      <%= link_to vote_down_post_path(post), remote: true, class: "vote-down" do %>
+        <div class="icon-chevron-up-div">
+          <i class="icon-chevron-down"></i>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
+
+  
 </div>
