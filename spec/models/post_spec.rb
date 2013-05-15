@@ -70,4 +70,42 @@ describe Post do
       }.to_not change(Comment.with_deleted, :count)
     end
   end
+
+  describe 'a user votes' do
+    before(:each) do
+      @user1 = FactoryGirl.create(:user_facebook)
+      @user2 = FactoryGirl.create(:user_facebook)
+      @question = FactoryGirl.create(:question, user: @user1)
+    end
+
+    it 'up' do
+      expect{
+        @question.vote_up(@user2)
+      }.to change(@question, :reputation).by SCORING['up']
+    end
+
+    it 'down' do
+      expect{
+        @question.vote_down(@user2)
+      }.to change(@question, :reputation).by SCORING['down']
+    end
+
+    describe 'but should not be able to vote own post' do
+      it 'votes up' do
+        expect{
+          expect{
+            @question.vote_up(@user1)
+          }.to raise_error
+        }.to_not change(@question, :reputation)
+      end
+
+      it 'votes down' do
+        expect{
+          expect {
+            @question.vote_down(@user1)
+          }.to raise_error
+        }.to_not change(@question, :reputation)
+      end
+    end
+  end
 end

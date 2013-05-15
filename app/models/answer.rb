@@ -13,8 +13,4 @@ class Answer < Post
     self.tag_list = self.question.tag_list.join(',')
     self.user ||= self.question.user
   end
-
-  def reputation 
-    reputation_for(:answer_reputation).to_i
-  end 
 end

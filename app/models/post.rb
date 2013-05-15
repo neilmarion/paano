@@ -58,6 +58,25 @@ class Post < ActiveRecord::Base
     up_votes - down_votes
   end
 
+  class IllegalVoting < StandardError; end
+
+  def vote_up(voter)
+    raise IllegalVoting.new(I18n.t('.activerecord.errors.models.post.violations.self_vote')) if voter == user
+    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
+    add_evaluation(reputation_name, SCORING['up'], voter)
+  end 
+
+  def vote_down(voter)
+    raise IllegalVoting.new(I18n.t('.activerecord.errors.models.post.violations.self_vote')) if voter == user
+    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
+    add_evaluation(reputation_name, SCORING['down'], voter)
+  end
+  
+  def reputation
+    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
+    reputation_for(reputation_name).to_i
+  end
+
   private
 
   def self.rank(query)

@@ -13,8 +13,4 @@ class Question < Post
   def self.find_questions_without_an_answer
     Question.where("answers_count = 0")
   end
-
-  def reputation 
-    reputation_for(:question_reputation).to_i
-  end
 end

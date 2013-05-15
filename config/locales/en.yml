@@ -14,6 +14,8 @@ en:
               invalid: "Tags cannot have spaces"
             content:
               blank: "Please put a content"
+          violations:
+            self_vote: "You cannot vote for your own post"
   general:
     sign_in_with_facebook: "Sign in with Facebook"  
     just_now: "just now"

@@ -50,11 +50,14 @@ describe AnswersController do
   describe 'voting' do
     before(:each) do
       question = FactoryGirl.create(:question) 
-      @post = FactoryGirl.create(:answer, question: question)
+      @user = sign_in_user
+      @user2 = FactoryGirl.create(:user_facebook)
+      @post = FactoryGirl.create(:answer, question: question, user: @user2)
+      @post2 = FactoryGirl.create(:answer, question: question, user: @user)
       @params = {id: @post.id}
+      @params2 = {id: @post2.id}
       @model_class = Answer
       @rep_name = :answer_reputation
-      sign_in_user
     end 
   
     it_behaves_like "a user voted on a post"

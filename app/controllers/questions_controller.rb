@@ -56,7 +56,7 @@ class QuestionsController < ApplicationController
   def vote_up
     @question = Question.find params[:id]
     respond_to do |format|
-      if @question.add_evaluation(:question_reputation, SCORING['up'], current_user)
+      if @question.vote_up(current_user)
         format.json { render :json => {votes: @question.vote_count} }
       else
         format.json { render :json => @question.errors.full_messages.to_sentence }
@@ -67,7 +67,7 @@ class QuestionsController < ApplicationController
   def vote_down
     @question = Question.find params[:id]
     respond_to do |format|
-      if @question.add_evaluation(:question_reputation, SCORING['down'], current_user) 
+      if @question.vote_down(current_user)
         format.json { render :json => {votes: @question.vote_count} }
       else
         format.json { render :json => @question.errors.full_messages.to_sentence }
