@@ -5,6 +5,7 @@ describe User do
   it { should validate_presence_of :uid } 
   it { should have_many :questions }
   it { should have_many :answers }
+  it { should have_many :posts }
   it { should have_many :comments }
 
   it "should give user's reputation when a question is voted on" do

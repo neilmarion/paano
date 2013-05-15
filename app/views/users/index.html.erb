@@ -1,22 +1,6 @@
 <div>
   <% @users.each_with_index do |user, i| %>
-      <div class="user-cell">
-        <div class="row-fluid">
-          <div class="span2">
-            <%= image_tag "http://graph.facebook.com/#{user.uid}/picture" %>
-          </div>
-          <div class="span8">
-            <div class="name"> 
-              <%= link_to user.name, user %> 
-            </div>
-            <div class="user-stats">
-              <span class="user-stat"><i class="icon-asterisk"></i><%= user.karma %></span>
-              <span class="user-stat"><b> Q </b><%= user.questions.count %></span>
-              <span class="user-stat"><b>A</b> <%= user.answers.count %></span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <%= render 'user_cell', user: user%>
   <% end %>
 </div>
 

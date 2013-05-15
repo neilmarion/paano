@@ -1,0 +1,6 @@
+<%= render 'user_cell', user: @user%>
+<% @user.posts.each do |post| %>
+  <div class="post-row">
+    <%= render 'posts/post', post: post%>
+  </div>
+<% end %>

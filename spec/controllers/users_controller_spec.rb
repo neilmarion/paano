@@ -27,4 +27,12 @@ describe UsersController do
       assigns(:users).should eq [@user2, @user1]
     end
   end
+
+  describe "show" do
+    it "renders user profile" do
+      @user1 = FactoryGirl.create(:user_facebook)
+      xhr :get, :show, :id => @user1.id
+      response.should render_template("show") 
+    end
+  end
 end
