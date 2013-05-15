@@ -25,28 +25,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  def vote_up
-    @answer = Answer.find params[:id]
-    respond_to do |format|
-      if @answer.vote_up(current_user)
-        format.json { render :json => {votes: @answer.vote_count, id: @answer.id} }
-      else
-        format.json { render :json => @answer.errors.full_messages.to_sentence }
-      end
-    end
-  end
-
-  def vote_down
-    @answer = Answer.find params[:id]
-    respond_to do |format|
-      if @answer.vote_down(current_user)
-        format.json { render :json => {votes: @answer.vote_count, id: @answer.id} }
-      else
-        format.json { render :json => @answer.errors.full_messages.to_sentence }
-      end
-    end
-  end
-
   def destroy
     @answer = Answer.find(params[:id]) 
     if @answer.destroy

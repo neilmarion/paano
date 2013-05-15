@@ -164,21 +164,6 @@ describe QuestionsController do
     end
   end
 
-  describe 'voting' do
-    before(:each) do
-      @user = sign_in_user
-      @user2 = FactoryGirl.create(:user_facebook)
-      @post = FactoryGirl.create(:question, user: @user2) 
-      @post2 = FactoryGirl.create(:question, user: @user)
-      @params = {id: @post.id}
-      @params2 = [id: @post2.id]
-      @model_class = Question
-      @rep_name = :question_reputation 
-    end 
-  
-    it_behaves_like "a user voted on a post"
-  end
-
   describe 'destroy' do
     before(:each) do
       @question = FactoryGirl.create(:question) 

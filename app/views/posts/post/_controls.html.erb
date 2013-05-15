@@ -19,13 +19,13 @@
   </span>
 <% if current_user && !current_user.voted_for?(post)%>
   <span class="post_control">
-  <%= link_to post.class.name == Question.name ? vote_up_question_path(post) : vote_up_answer_path(post), remote: true, class: "post-index-vote-up" do %>
+  <%= link_to vote_up_post_path(post), remote: true, class: "post-index-vote-up" do %>
       <i class="icon-chevron-up"></i>
       <%= t('.vote-up') %>      
     <% end %>
   </span>
   <span class="post_control">
-    <%= link_to post.class.name == Question.name ? vote_down_question_path(post) : vote_down_answer_path(post), remote: true, class: "post-index-vote-down" do %>
+    <%= link_to vote_down_post_path(post), remote: true, class: "post-index-vote-down" do %>
       <i class="icon-chevron-down"></i>
       <%= t('.vote-down') %>      
     <% end %>
