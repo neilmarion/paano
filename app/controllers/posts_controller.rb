@@ -25,4 +25,10 @@ class PostsController < ApplicationController
   def comment #validator whether user is able to comment or not
     render :json => {}
   end
+
+  def unvote
+    post = Post.find(params[:id])
+    post.unvote(current_user)
+    head :no_content
+  end
 end

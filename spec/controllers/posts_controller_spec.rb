@@ -85,4 +85,20 @@ describe PostsController do
       assigns(:posts).should eq [post_2, post_1]
     end
   end
+
+  describe "unvote" do
+    it "unvotes" do
+      user1 = sign_in_user
+      user2 = FactoryGirl.create(:user_facebook)
+      question = FactoryGirl.create(:question, user: user2)
+      bef_reputation = question.reputation
+      question.vote_up(user1)
+      aft_reputation = question.reputation
+      
+      expect{
+        xhr :post, :unvote, {:id => question.id}
+      }.to change(question, :reputation).by bef_reputation - aft_reputation
+      
+    end
+  end
 end

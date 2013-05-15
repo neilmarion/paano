@@ -77,6 +77,11 @@ class Post < ActiveRecord::Base
     reputation_for(reputation_name).to_i
   end
 
+  def unvote(unvoter)
+    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
+    delete_evaluation(reputation_name, unvoter)
+  end
+
   private
 
   def self.rank(query)

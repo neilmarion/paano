@@ -71,7 +71,7 @@ describe Post do
     end
   end
 
-  describe 'a user votes' do
+  describe 'voting' do
     before(:each) do
       @user1 = FactoryGirl.create(:user_facebook)
       @user2 = FactoryGirl.create(:user_facebook)
@@ -105,6 +105,25 @@ describe Post do
             @question.vote_down(@user1)
           }.to raise_error
         }.to_not change(@question, :reputation)
+      end
+    end
+
+    describe 'unvoting' do
+      it 'unvotes' do
+        bef_reputation = @question.reputation
+        @question.vote_up(@user2)
+        aft_reputation = @question.reputation
+        
+        expect {
+          expect {
+            @question.unvote(@user2)
+          }.to change(@question, :reputation).by bef_reputation - aft_reputation
+        }.to change(@user1, :karma).by bef_reputation - aft_reputation
+
+        #votes again
+        expect {
+          @question.vote_up(@user2)
+        }.to change(@question, :reputation).by SCORING['up']
       end
     end
   end
