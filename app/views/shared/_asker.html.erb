@@ -4,7 +4,7 @@
       t('.asked', time_ago: time_ago_in_words(post.created_at)).html_safe : 
       t('.answered', time_ago: time_ago_in_words(post.created_at)).html_safe %>
     <%= t('.by') %>
-    <%= link_to post.user.name, '#', class: "posted-by"%>
+    <%= link_to post.user.name, user_path(post.user), class: "posted-by"%>
   </div>
   <div class="span2">
     <%= image_tag "http://graph.facebook.com/#{post.user.uid}/picture" %>

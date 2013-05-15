@@ -1,6 +1,8 @@
 <%= render 'user_cell', user: @user%>
-<% @user.posts.each do |post| %>
-  <div class="post-row">
-    <%= render 'posts/post', post: post%>
-  </div>
-<% end %>
+
+<table class="table">
+  <tbody>
+    <%= render "posts/posts", posts: @user_posts %>
+  </tbody>
+</table>
+<%= render "shared/pagination", collection: @user_posts %>

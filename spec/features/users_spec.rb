@@ -35,3 +35,16 @@ describe "clicking a user name link" do
     page.should have_link @answer.title
   end
 end
+
+describe "clicking a user name link in the posts path" do
+  before(:each) do
+    @user = FactoryGirl.create(:user_facebook)
+    @question = FactoryGirl.create(:question, user: @user)
+    visit recent_posts_path
+  end
+
+  it "should lead to the user's profile page" do
+    click_link @user.name
+    current_path.should eq user_path(@user)
+  end
+end
