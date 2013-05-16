@@ -17,8 +17,14 @@ class User < ActiveRecord::Base
 
   has_reputation :karma,
     :source => [
-      {:reputation => :question_reputation, :of => :questions},
-      {:reputation => :answer_reputation, :of => :answers} ]
+      {:reputation => :questioning_skill},
+      {:reputation => :answering_skill} ]
+
+  has_reputation :questioning_skill,
+    :source => { :reputation => :answer_reputation, :of => :answers}
+
+  has_reputation :answering_skill,
+    :source => { :reputation => :question_reputation, :of => :questions}
 
   scope :paginate, lambda { |page|
     page(page).per(PAGINATION['users_index']) }
