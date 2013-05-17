@@ -2,6 +2,7 @@ class Question < Post
   attr_accessible :answers_attributes
   validates_presence_of :title, :tag_list
   validates_format_of :tag_list, :with => /^(([a-z0-9\-\_]+[^ ])+(, )?)+$/ 
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
   has_reputation :question_reputation, :source => :user, :source_of => { reputation: :questioning_skill, of: :user }
   friendly_id :title, use: :history
   has_many :answers, :foreign_key => "post_id", :dependent => :destroy

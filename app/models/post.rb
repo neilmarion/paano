@@ -5,11 +5,9 @@ class Post < ActiveRecord::Base
   acts_as_paranoid
   validates_presence_of :content
   belongs_to :user
-
   has_many :comments, :dependent => :destroy
 
   accepts_nested_attributes_for :comments, :allow_destroy => true
-  has_many :evaluations, class_name: "RSEvaluation", as: :source
 
   def self.text_search(query)
     if query.present?
@@ -62,27 +60,44 @@ class Post < ActiveRecord::Base
 
   def vote_up(voter)
     raise IllegalVoting.new(I18n.t('.activerecord.errors.models.post.violations.self_vote')) if voter == user
-    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
     add_evaluation(reputation_name, SCORING['up'], voter)
   end 
 
   def vote_down(voter)
     raise IllegalVoting.new(I18n.t('.activerecord.errors.models.post.violations.self_vote')) if voter == user
-    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
     add_evaluation(reputation_name, SCORING['down'], voter)
   end
   
   def reputation
-    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
     reputation_for(reputation_name).to_i
   end
 
   def unvote(unvoter)
-    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
     delete_evaluation(reputation_name, unvoter)
   end
 
+  def destroy
+    if self.class == Answer || self.class == Question    
+      reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
+      evaluators = ReputationSystem::Evaluation.where(target_id: id, target_type: self.class.name, reputation_name: reputation_name)
+          .collect(&:source_id)
+          .collect{ |id| User.find(id) }
+      # once pull request https://github.com/twitter/activerecord-reputation-system/pull/57 is approved, change it to this
+      # evaluators = evaluators_for(reputation_name)
+
+      evaluators.each do |evaluator|
+        delete_evaluation(reputation_name, evaluator)
+      end 
+    end
+    
+    super
+  end
+
   private
+
+  def reputation_name
+    self.class.name == "Answer" ? :answer_reputation : :question_reputation
+  end
 
   def self.rank(query)
     rank = <<-RANK
@@ -91,4 +106,6 @@ class Post < ActiveRecord::Base
     RANK
     rank
   end
+
+  
 end

@@ -49,19 +49,26 @@ describe Post do
 
   describe 'destroy' do
     before(:each) do
-      @question = FactoryGirl.create(:question) 
+      @user = FactoryGirl.create(:user_facebook)
+      @question = FactoryGirl.create(:question, user: @user) 
       @answer = FactoryGirl.create(:answer, question: @question)
       @comment = FactoryGirl.create(:comment, post: @answer)
+      @bef_reputation = @user.karma
+      @question.vote_up(FactoryGirl.create(:user_facebook))
+      @aft_reputation = @user.karma
     end
 
     it "destroys the activerecord and all the related records" do
+      puts @user.karma.inspect
       expect{
         expect{
           expect{
             expect{
               expect{
                 expect{
+                  expect{
                   @question.destroy
+                  }.to change(@user, :karma).by @bef_reputation - @aft_reputation
                 }.to change(Question, :count).by -1
               }.to change(Answer, :count).by -1
             }.to change(Comment, :count).by -1
