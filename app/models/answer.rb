@@ -1,8 +1,7 @@
 class Answer < Post
   attr_accessible :post_id, :post_id 
   belongs_to :question, :foreign_key => "post_id"
-  belongs_to :user
-  reputation :answer_reputation, :source => :user, :source_of => { reputation: :answer_reputation, of: :user }
+  has_reputation :answer_reputation, :source => :user, :source_of => { reputation: :answer_reputation, of: :user }
   before_create :inherit_question_attr
   after_create :increment_question_answers_count
 
