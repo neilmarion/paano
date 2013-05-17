@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
 
   has_reputation :karma,
     :source => [
-      {:reputation => :question_reputation},
-      {:reputation => :answer_reputation} ]
+      {:reputation => :questioning_skill},
+      {:reputation => :answering_skill} ]
 
-  has_reputation :answer_reputation,
+  has_reputation :answering_skill,
     :source => { :reputation => :answer_reputation, :of => :answers}
 
-  has_reputation :question_reputation,
+  has_reputation :questioning_skill,
     :source => { :reputation => :question_reputation, :of => :questions}
 
   scope :paginate, lambda { |page|
