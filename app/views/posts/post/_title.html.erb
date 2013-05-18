@@ -1,3 +1,3 @@
 <div class="post-title">
-  <%= link_to post.type == "Question" ? t('.q') + post.title : t('.a') + post.becomes(Answer).question.title, "#{question_path(post.type == "Question" ? post : post.question)}##{post.id}" %>
+  <%= link_to post.type == "Question" ? t('.q') + post.title : t('.a') + post.becomes(Answer).question.title, post.type == 'Question' ? question_path(post) : question_path(post.question)+'#'+post.id.to_s %>
 </div>
