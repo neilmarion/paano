@@ -17,6 +17,7 @@ en:
           violations:
             self_vote: "You cannot vote for your own post"
   general:
+    title: "Paano? UPLB"
     sign_in_with_facebook: "Sign in with Facebook"  
     just_now: "just now"
   layouts:
