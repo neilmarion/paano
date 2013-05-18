@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   end
 
   def voted_up_for?(post)
-    ReputationSystem::Evaluation.exists?(source_id: id, target_id: post.id, value: SCORING['up'])
+    ReputationSystem::Evaluation.exists?(source_id: id, target_id: post.id, value: post.class.name == "Answer" ? SCORING['up'] : SCORING['question_up'])
   end
 
   def voted_down_for?(post)
