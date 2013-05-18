@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_posts = @user.posts.paginate params[:page]
+    @user_posts = @user.posts.where_post_is_not_a_comment.paginate params[:page]
   end
 
   def search
