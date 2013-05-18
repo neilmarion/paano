@@ -1,6 +1,6 @@
 <div class="user-cell">
   <div class="row-fluid">
-    <div class="span2">
+    <div class="span2 user-thumb">
       <%= image_tag "http://graph.facebook.com/#{user.uid}/picture" %>
     </div>
     <div class="span8">
@@ -9,8 +9,12 @@
       </div>
       <div class="user-stats">
         <span class="user-stat"><i class="icon-asterisk"></i><%= user.karma %></span>
-        <span class="user-stat"><b> Q </b><%= user.questions.count %></span>
-        <span class="user-stat"><b>A</b> <%= user.answers.count %></span>
+      </div>
+      <div class="user-stats">
+        <div class="pull-right">
+          <div class="user-activity"><b><%= user.questions.count %></b> <%= t('.questions') %></div>
+          <div class="user-activity"><b><%= user.answers.count %></b> <%= t('.answers') %></div>
+        </div>
       </div>
     </div>
   </div>
