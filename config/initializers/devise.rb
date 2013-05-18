@@ -239,8 +239,8 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   FB = YAML.load_file("#{::Rails.root}/config/facebook.yml")[::Rails.env]
-  config.omniauth :facebook, FB['key'], FB['secret']
-
+  config.omniauth :facebook, FB['key'], FB['secret'],
+    :scope => 'email,user_education_history'
   config.authentication_keys = [ :username ]
   config.case_insensitive_keys = [ :username ]
   config.strip_whitespace_keys = [ :username ]

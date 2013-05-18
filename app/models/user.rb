@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
     order("COALESCE(rs_reputations.value, 0) DESC") 
 
   def self.from_omniauth(auth)
+    
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
 
@@ -49,6 +50,19 @@ class User < ActiveRecord::Base
       user.username = auth["info"]["nickname"]
       user.email = auth["info"]["email"]
       user.password = Devise.friendly_token[0,20]
+      if auth['extra']
+        if auth['raw_info']
+          if auth['education']
+            auth['extra']['raw_info']['education'].each do |school|
+              if school['type'] == 'College'
+                user.concentration = school['concentration'][0]['name'] if school['concentration']
+                user.college = school['school']['name'] if school['school']
+                break
+              end
+            end
+          end
+        end
+      end
     end
   end
 
