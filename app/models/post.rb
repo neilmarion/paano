@@ -49,8 +49,7 @@ class Post < ActiveRecord::Base
 
   def vote_count #this is slow. Extend the twitter activerecord reputation gem
     #this is also dangerous: What if the SCORING values changed?
-    reputation_name = self.class.name == "Answer" ? :answer_reputation : :question_reputation
-    up_votes = ReputationSystem::Evaluation.where(reputation_name: reputation_name.to_s, target_type: self.class.name, value: SCORING['up'], target_id: id).count
+    up_votes = ReputationSystem::Evaluation.where(reputation_name: reputation_name.to_s, target_type: self.class.name, value: up_score, target_id: id).count
     down_votes = ReputationSystem::Evaluation.where(reputation_name: reputation_name.to_s, target_type: self.class.name, value: SCORING['down'], target_id: id).count
 
     up_votes - down_votes
@@ -60,7 +59,7 @@ class Post < ActiveRecord::Base
 
   def vote_up(voter)
     raise IllegalVoting.new(I18n.t('.activerecord.errors.models.post.violations.self_vote')) if voter == user
-    add_evaluation(reputation_name, SCORING['up'], voter)
+    add_evaluation(reputation_name, up_score, voter)
   end 
 
   def vote_down(voter)
@@ -97,6 +96,10 @@ class Post < ActiveRecord::Base
 
   def reputation_name
     self.class.name == "Answer" ? :answer_reputation : :question_reputation
+  end
+
+  def up_score
+    self.class.name == "Answer" ? SCORING['up'] : SCORING['question_up']
   end
 
   def self.rank(query)
