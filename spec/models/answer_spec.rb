@@ -21,6 +21,7 @@ describe Answer do
       @post = FactoryGirl.create(:answer, question: FactoryGirl.create(:question))
       @rep = :answer_reputation
       @method = :reputation
+      @model_class = @post.class
     end
 
     it_behaves_like "it has a reputation"

@@ -51,30 +51,54 @@ describe Post do
     before(:each) do
       @user = FactoryGirl.create(:user_facebook)
       @question = FactoryGirl.create(:question, user: @user) 
-      @answer = FactoryGirl.create(:answer, question: @question)
-      @comment = FactoryGirl.create(:comment, post: @answer)
-      @bef_reputation = @user.karma
-      @question.vote_up(FactoryGirl.create(:user_facebook))
-      @aft_reputation = @user.karma
+      @answer = FactoryGirl.create(:answer, question: @question, user: @user)
+      @comment = FactoryGirl.create(:comment, post: @answer, user: @user)
     end
 
-    it "destroys the activerecord and all the related records" do
-      puts @user.karma.inspect
-      expect{
+    describe "destroys the activerecord and all the related records" do
+      it "of a question" do
+        bef_reputation = @user.karma
+        @question.vote_up(FactoryGirl.create(:user_facebook))
+        aft_reputation = @user.karma
+
         expect{
           expect{
             expect{
               expect{
                 expect{
                   expect{
-                  @question.destroy
-                  }.to change(@user, :karma).by @bef_reputation - @aft_reputation
-                }.to change(Question, :count).by -1
-              }.to change(Answer, :count).by -1
-            }.to change(Comment, :count).by -1
-          }.to_not change(Question.with_deleted, :count)
-        }.to_not change(Answer.with_deleted, :count)
-      }.to_not change(Comment.with_deleted, :count)
+                    expect{
+                    @question.destroy
+                    }.to change(@user, :karma).by bef_reputation - aft_reputation
+                  }.to change(Question, :count).by -1
+                }.to change(Answer, :count).by -1
+              }.to change(Comment, :count).by -1
+            }.to_not change(Question.with_deleted, :count)
+          }.to_not change(Answer.with_deleted, :count)
+        }.to_not change(Comment.with_deleted, :count)
+      end
+
+      it "of an answer" do
+        bef_reputation = @user.karma
+        @answer.vote_up(FactoryGirl.create(:user_facebook))
+        aft_reputation = @user.karma
+
+        expect{
+          expect{
+            expect{
+              expect{
+                expect{
+                  expect{
+                    expect{
+                      @answer.destroy
+                    }.to change(@user, :karma).by bef_reputation - aft_reputation
+                  }.to_not change(Question, :count)
+                }.to change(Answer, :count).by -1
+              }.to change(Comment, :count).by -1
+            }.to_not change(Question.with_deleted, :count)
+          }.to_not change(Answer.with_deleted, :count)
+        }.to_not change(Comment.with_deleted, :count)
+      end
     end
   end
 
@@ -85,52 +109,96 @@ describe Post do
       @question = FactoryGirl.create(:question, user: @user1)
     end
 
-    it 'up' do
-      expect{
-        @question.vote_up(@user2)
-      }.to change(@question, :reputation).by SCORING['up']
+    describe 'on a question' do
+      it 'up' do
+        expect{
+          @question.vote_up(@user2)
+        }.to change(@question, :reputation).by SCORING['question_up']
+      end
+
+      it 'down' do
+        expect{
+          @question.vote_down(@user2)
+        }.to change(@question, :reputation).by SCORING['down']
+      end
     end
 
-    it 'down' do
-      expect{
-        @question.vote_down(@user2)
-      }.to change(@question, :reputation).by SCORING['down']
+    describe 'on an answer' do
+      before(:each) do
+        @answer = FactoryGirl.create(:answer, question: @question, user: @user1)
+      end
+
+      it 'up' do
+        expect{
+          @answer.vote_up(@user2)
+        }.to change(@answer, :reputation).by SCORING['up']
+      end
+
+      it 'down' do
+        expect{
+          @answer.vote_down(@user2)
+        }.to change(@answer, :reputation).by SCORING['down']
+      end
     end
 
     describe 'but should not be able to vote own post' do
+      before(:each) do
+        @answer = FactoryGirl.create(:answer, user: @user1, question: @question)
+      end
+
       it 'votes up' do
         expect{
           expect{
-            @question.vote_up(@user1)
+            @answer.vote_up(@user1)
           }.to raise_error
-        }.to_not change(@question, :reputation)
+        }.to_not change(@answer, :reputation)
       end
 
       it 'votes down' do
         expect{
           expect {
-            @question.vote_down(@user1)
+            @answer.vote_down(@user1)
           }.to raise_error
-        }.to_not change(@question, :reputation)
+        }.to_not change(@answer, :reputation)
       end
     end
 
     describe 'unvoting' do
-      it 'unvotes' do
-        bef_reputation = @question.reputation
-        @question.vote_up(@user2)
-        aft_reputation = @question.reputation
-        
-        expect {
-          expect {
-            @question.unvote(@user2)
-          }.to change(@question, :reputation).by bef_reputation - aft_reputation
-        }.to change(@user1, :karma).by bef_reputation - aft_reputation
-
-        #votes again
-        expect {
+      describe 'unvotes' do
+        it 'on question' do
+          bef_reputation = @question.reputation
           @question.vote_up(@user2)
-        }.to change(@question, :reputation).by SCORING['up']
+          aft_reputation = @question.reputation
+          
+          expect {
+            expect {
+              @question.unvote(@user2)
+            }.to change(@question, :reputation).by bef_reputation - aft_reputation
+          }.to change(@user1, :karma).by bef_reputation - aft_reputation
+
+          #votes again
+          expect {
+            @question.vote_up(@user2)
+          }.to change(@question, :reputation).by SCORING['question_up']
+        end
+
+        it 'on answer' do
+          @answer = FactoryGirl.create(:answer, user: @user1, question: @question)
+          bef_reputation = @answer.reputation
+          @answer.vote_up(@user2)
+          aft_reputation = @answer.reputation
+          
+          expect {
+            expect {
+              @answer.unvote(@user2)
+            }.to change(@answer, :reputation).by bef_reputation - aft_reputation
+          }.to change(@user1, :karma).by bef_reputation - aft_reputation
+
+          #votes again
+          expect {
+            @answer.vote_up(@user2)
+          }.to change(@answer, :reputation).by SCORING['up']
+        end
       end
     end
   end

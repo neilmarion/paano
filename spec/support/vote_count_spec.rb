@@ -4,9 +4,9 @@ shared_examples "it has a reputation" do
   end
 
   it "it's (any) reputation iterates by 1 whenever a user votes up for it" do
-    @post.add_evaluation(@rep, SCORING['up'], @user)
+    @post.add_evaluation(@rep, @model_class == Answer ? SCORING['up'] : SCORING['question_up'], @user)
     #@post.send(@method).should eq 1 
-    @post.reputation.should eq SCORING['up']
+    @post.reputation.should eq @model_class == Answer ? SCORING['up'] : SCORING['question_up'] 
     @post.vote_count.should eq 1
   end
 
