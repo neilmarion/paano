@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.json { render :json => {name: current_user.name} } 
+        format.json { render :json => {id: current_user.id, name: current_user.name} } 
       else
         format.json { render :json => @comment.errors.full_messages.to_sentence } #output javascript messages
       end   

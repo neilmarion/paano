@@ -39,7 +39,7 @@ $ ->
         success: (data) ->
           console.log data
           text_field.closest(".span11.offset1.small-grey-text").
-            find(".comments").append "<div class='comment row-fluid'><div class='comment_content span11'><a href='#'>" + data['name'] + "</a> - " + val + " - " + "<%= I18n.t('general.just_now') %></div><div class='span1'><div class='post_controls'><span class='post_control'><a href='/comments/160' class='remove-comment' data-method='delete' rel='nofollow'><i class='icon-remove'></i></a></div></div></div></div>"
+            find(".comments").append "<div class='comment row-fluid'><div class='comment_content span11'><a href='/users/"+data['id']+"'>" + data['name'] + "</a> - " + val + " - " + "<%= I18n.t('general.just_now') %></div><div class='span1'><div class='post_controls'><span class='post_control'><a href='/comments/160' class='remove-comment' data-method='delete' rel='nofollow'><i class='icon-remove'></i></a></div></div></div></div>"
       $(this).val('')
       e.preventDefault
       false

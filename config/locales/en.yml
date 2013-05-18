@@ -49,7 +49,7 @@ en:
     notice: "Successfully answered question"
     form:
       title: "Title of your question"
-      content: "What's your question?"
+      content: "What's your question? But please write in english. Because for now it's more findable."
       tags: "At least a tag"
     errors:
       login_first: "Please login first before answering a question"
@@ -104,7 +104,7 @@ en:
         ask: "Ask"
   user:
     reputations:
-      tooltip: "This is your fucking reputation! :P" 
+      tooltip: "This is your reputation!" 
   login:
     message: "Contribute your knowledge to our beloved UPLB"
   footer:
