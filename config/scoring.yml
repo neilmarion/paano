@@ -1,5 +1,6 @@
 scoring: &scoring
   accepted: 15
+  question_up: 5
   up: 10
   down: -2
   vote_up: 1

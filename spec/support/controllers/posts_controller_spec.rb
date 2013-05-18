@@ -31,7 +31,7 @@ shared_examples "a user voted on a post" do
         expect{
           expect{
             xhr :put, :vote_up, @params
-          }.to change{@post.reputation_for(@rep_name)}.by SCORING['up']
+          }.to change{@post.reputation_for(@rep_name)}.by @model_class == Answer ? SCORING['up'] : SCORING['question_up']
         }.to change(@post, :vote_count).by SCORING['vote_up']
       end 
 

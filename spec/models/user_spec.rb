@@ -54,24 +54,50 @@ describe User do
     end
 
     describe "voted up for" do
-      it "is true" do
-        @answer.add_evaluation(:answer_reputation, SCORING['up'], @user)
-        @user.voted_up_for?(@answer).should eq true
+      describe 'question' do
+        it "is true" do
+          @question.add_evaluation(:question_reputation, SCORING['question_up'], @user)
+          @user.voted_up_for?(@question).should eq true
+        end
+
+        it "is false" do
+          @user.voted_up_for?(@question).should eq false 
+        end
       end
 
-      it "is false" do
-        @user.voted_up_for?(@question).should eq false 
+      describe 'answer' do
+        it "is true" do
+          @answer.add_evaluation(:answer_reputation, SCORING['up'], @user)
+          @user.voted_up_for?(@answer).should eq true
+        end
+
+        it "is false" do
+          @user.voted_up_for?(@question).should eq false 
+        end
       end
     end
 
     describe "voted down for" do
-      it "is true" do
-        @question.add_evaluation(:question_reputation, SCORING['down'], @user)
-        @user.voted_down_for?(@question).should eq true 
+      describe 'question' do
+        it "is true" do
+          @question.add_evaluation(:question_reputation, SCORING['down'], @user)
+          @user.voted_down_for?(@question).should eq true 
+        end
+
+        it "is false" do
+          @user.voted_down_for?(@question).should eq false 
+        end
       end
 
-      it "is false" do
-        @user.voted_down_for?(@answer).should eq false 
+      describe 'answer' do
+        it "is true" do
+          @answer.add_evaluation(:answer_reputation, SCORING['down'], @user)
+          @user.voted_down_for?(@answer).should eq true 
+        end
+
+        it "is false" do
+          @user.voted_down_for?(@answer).should eq false 
+        end
       end
     end
 
@@ -91,7 +117,6 @@ describe User do
     before(:each) do
       @user = FactoryGirl.create(:user_facebook)
       @question = FactoryGirl.create(:question, user: @user)
-      
     end
 
     it "is true" do
