@@ -25,8 +25,8 @@ $ ->
       success: (data) ->
         toggle(update_answer)
         post_content = update_answer.closest(".question-show-row").find('.post-content')
-        console.log post_content.attr('class')
-        post_content.html(data['content'])
+        console.log data['content']
+        post_content.html(data['content'].replace('/\r/\n', "<br />"))
 
   $(".remove-answer").on "click", ->
     if window.confirm("<%= I18n.t('.questions.post.controls.delete_answer_confirm') %>")

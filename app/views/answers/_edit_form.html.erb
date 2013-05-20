@@ -1,7 +1,7 @@
 <%= form_for post, :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
-  <div class="control-group">
+  <div class="control-group" id="answer_form">
     <div class="controls">
-      <%= f.text_area :content, :class => 'text_field', placeholder: t('.answer') %>
+      <%= f.text_area :content, :class => 'text_field new_answer', placeholder: t('.answer') %>
     </div>
   </div>
   <%= render 'answers/update_submit', f: f %>
