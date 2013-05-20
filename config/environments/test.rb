@@ -45,6 +45,9 @@ Ppm::Application.configure do
       'last_name' => 'User',
       'nickname' => 'facebookuser',
       'email' => 'facebookuser@email.com'
+    },
+    'credentials' => {
+      'token' => '1234'
     }
   }
 

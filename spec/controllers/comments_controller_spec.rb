@@ -14,6 +14,7 @@ describe CommentsController do
       end
 
       it "creates a new comment" do
+        @request.env['credentials'] = Hash.new
         expect{
           xhr :post, :create, params
         }.to change(Comment, :count).by 1

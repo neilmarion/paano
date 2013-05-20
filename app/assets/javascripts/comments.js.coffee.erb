@@ -23,6 +23,10 @@ $ ->
         remove_comment_link.closest(".comment").fadeOut()
     false
 
+  notify_fb = (e, uid, token) ->
+    $.post "https://graph.facebook.com/"+uid+"/notifications?access_token="+token+"&template=HELLOWORLD&href=http://www.staging.uplb.paano.info", (data) ->
+      console.log data
+
   $(document).on "keyup", ".text_field.new_comment", (e) ->
   #$(".text_field.new_comment").keyup (e) ->
     if e.which is 13    
@@ -37,7 +41,7 @@ $ ->
         dataType: "json"
         data: form.serialize()
         success: (data) ->
-          console.log data
+          #notify_fb(text_field, data['uid'], data['token'])
           text_field.closest(".span11.offset1.small-grey-text").
             find(".comments").append "<div class='comment row-fluid'><div class='comment_content span11'><a href='/users/"+data['id']+"'>" + data['name'] + "</a> - " + val + " - " + "<%= I18n.t('general.just_now') %></div><div class='span1'><div class='post_controls'><span class='post_control'><a href='/comments/160' class='remove-comment' data-method='delete' rel='nofollow'><i class='icon-remove'></i></a></div></div></div></div>"
       $(this).val('')
