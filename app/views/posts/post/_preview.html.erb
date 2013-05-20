@@ -2,7 +2,5 @@
   <%=raw sanitize(simple_format(post.truncated_content), :tags => %w(br p) ) %>
 </div>
 <div class="preview-div expanded">
-  <p>
-    <%= post.content %>
-  </p>
+  <%=raw sanitize(simple_format(post.content), :tags => %w(br p)) %>
 </div>
